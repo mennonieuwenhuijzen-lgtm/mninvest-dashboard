@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Week 22 · Nieuws &amp; effect per positie · MNinvest</title>
+<link rel="stylesheet" href="week.css">
+</head>
+<body>
+<div class="wrap">
+
+  <header class="masthead a1">
+    <div class="masthead-brand">MNinvest · Nieuwsarchief</div>
+    <h1>Week 22</h1>
+    <div class="masthead-sub">25 – 31 mei 2026 · nieuws &amp; effect per positie</div>
+    <div class="masthead-meta">
+      <span><strong>24</strong> bronnen</span>
+      <span><strong>3</strong> sectoren geraakt</span>
+      <span><strong>0</strong> trades</span>
+    </div>
+  </header>
+
+  <section class="intro a2">
+    <p>De drukste week van het archief. Twee grote bewegingen: (1) een <b>VS-Iran tussendeal</b> kwam in zicht (60-dagen-bestand + Hormuz-heropening) en stuurde Brent hard omlaag naar <b>~$92</b> &mdash; mei werd met &minus;19% de slechtste maand sinds maart 2020; (2) een echte <b>defensie-doorbraak</b>: de NAVO koos voor het eerst in 43 jaar een niet-Amerikaanse AWACS (Saab GlobalEye). Daarnaast een havikse Fed (Warsh) en het IMF-WEO. Brent bleef nog net boven $90: geen breaker, geen trade.</p>
+  </section>
+
+  <div class="chartcard a2">
+    <h3>Koersverloop deze week</h3>
+    <div class="chart-sub">Genormaliseerd: % vanaf de eerste handelsdag. Klik een ticker in de legenda om te tonen of verbergen, beweeg over de lijn voor de exacte stand.</div>
+    <div class="chart-holder"><canvas id="weekChart"></canvas></div>
+    <div class="chart-note">Bron: yfinance daggegevens. Posities zoals gehouden in deze week (mei kende 4 handelsdagen door Memorial Day).</div>
+  </div>
+
+  <span class="sector-label">Olie · ~29% van de portefeuille</span>
+  <div class="pos">
+    <div class="pos-head">
+      <div class="pos-id"><span class="pos-ticker">RIG · TTE · OXY</span><span class="pos-name">Transocean · TotalEnergies · Occidental</span></div>
+      <div class="pos-right"><span class="chip chip-w">~29%</span><span class="chip chip-grey">Brent zakt, hold</span></div>
+    </div>
+    <div class="pos-verdict">Brent van ~$94 naar ~$92 op de-escalatie-hoop (mei &minus;19%), maar nog boven $90 = hold-band. Geen breaker geraakt, C8 = 2, geen kans-shift.</div>
+    <div class="news-item">
+      <div class="news-head">"Tussendeal" VS-Iran in de maak, Brent zakt 6% naar $94</div>
+      <div class="news-src">The Economist · 25 mei</div>
+      <div class="news-effect">Geen vredesdeal maar een interim-akkoord: bestand met minstens 60 dagen verlengen. <b>Effect:</b> de-escalatie-hoop drukt de risicopremie; Brent richting onderkant hold-band. Geen actie.</div>
+    </div>
+    <div class="news-item">
+      <div class="news-head">Tussendeal "grotendeels rond"; Brent $92,56, mei &minus;19%</div>
+      <div class="news-src">The Economist + websearch · 27–30 mei</div>
+      <div class="news-effect">60-dagen-bestand + Hormuz-heropening + sanctieontheffing voor wat olie-export; Iran wil bij ~$100 mrd bevroren tegoeden. <b>Effect:</b> slechtste oliemaand sinds maart 2020, maar thesis bevestigd &mdash; krapte-vloer blijft tot de deal getekend en Hormuz fysiek open is.</div>
+    </div>
+    <div class="news-item">
+      <div class="news-head">Iraanse "schaduwvloot" — blokkade lekt, olie stroomt naar China</div>
+      <div class="news-src">video-documentaire · 30 mei</div>
+      <div class="news-effect">Ghost-tankers pompen Iraanse olie over in de EOPL-zone (Maleisië); de VS-havenblokkade van 12 april lekt. <b>Effect:</b> bevestigt dat fysiek aanbod deels terugkeert; geen écht-nieuwe handelbare data, geen kans-shift.</div>
+    </div>
+    <div class="news-item">
+      <div class="news-head">Olievlek-risico Golf + Oekraïne "twee oorlogen"</div>
+      <div class="news-src">The Economist · 29 mei</div>
+      <div class="news-effect"><b>Effect:</b> structurele watchpoint-dimensie (oorlogs-olievlek bijna niet schoon te maken) en Brent-floor via Russische export-disruptie. Geen breuk, geen kans-shift.</div>
+    </div>
+    <div class="news-item">
+      <div class="news-head">IMF — belastingen in het Midden-Oosten (TTE-specifiek)</div>
+      <div class="news-src">IMF-boek + IMF WEO april · 29 mei</div>
+      <div class="news-effect">TTE primair geraakt. <b>Effect:</b> thesis TTE bevestigd, C8-score 2 ongewijzigd, geen actie. WEO bevestigt ook RIG en SAAB.</div>
+    </div>
+  </div>
+
+  <span class="sector-label">Defensie · ~12% van de portefeuille</span>
+  <div class="pos">
+    <div class="pos-head">
+      <div class="pos-id"><span class="pos-ticker">SAAB B</span><span class="pos-name">Saab AB</span></div>
+      <div class="pos-right"><span class="chip chip-w">~12%</span><span class="chip chip-green">Directe doorbraak</span></div>
+    </div>
+    <div class="pos-verdict">De sterkste positieve katalysator van de week: een concrete NAVO-order voor het Saab-platform. Thesis versterkt, geen breaker.</div>
+    <div class="news-item">
+      <div class="news-head">NAVO kiest Saab GlobalEye AWACS — einde 43-jaar VS-monopolie</div>
+      <div class="news-src">The Economist "Europe's buyer's remorse" · 25 mei</div>
+      <div class="news-effect">De NAVO-aanbestedingsdienst koos een Zweeds-Canadees toestel als vervanger van de Boeing E-3 Sentry. De Iran-oorlog verbrandde 1.300+ Patriot-interceptors (2 jaar productie); VS leidt leveringen om naar eigen voorraden. <b>Effect:</b> direct positief &mdash; concrete order plus "buyer's remorse" over VS-afhankelijkheid speelt Saab structureel in de kaart.</div>
+    </div>
+    <div class="news-item">
+      <div class="news-head">"Rutte and NATO's fatal obstinacy" + Hegseth in Singapore</div>
+      <div class="news-src">The Economist · 25 + 31 mei</div>
+      <div class="news-effect">Transatlantische basis wankelt; VS kondigt onverwachte troepenreducties aan; Europese landen starten stilletjes "Plan B". Hegseth (Shangri-La) zweeg over Taiwan, hard over Europa. <b>Effect:</b> bevestigt de Europese-herbewapening- en autonomie-rugwind voor Saab.</div>
+    </div>
+    <div class="news-item">
+      <div class="news-head">"The dangerous delusion of modern warfare" (cover)</div>
+      <div class="news-src">The Economist · 28 mei</div>
+      <div class="news-effect"><b>Effect:</b> Dalio C8-context (externe-conflict-as). Bevestigend, geen meetbare trigger.</div>
+    </div>
+  </div>
+
+  <span class="sector-label">Goud · ~22% van de portefeuille</span>
+  <div class="pos">
+    <div class="pos-head">
+      <div class="pos-id"><span class="pos-ticker">IGLN · WPM</span><span class="pos-name">iShares Physical Gold · Wheaton Precious Metals</span></div>
+      <div class="pos-right"><span class="chip chip-w">~22%</span><span class="chip chip-green">Structurele rugwind</span></div>
+    </div>
+    <div class="pos-verdict">Havikse Fed + hoge lange rentes = stagflatie-hedge structureel bevestigd. Hold.</div>
+    <div class="news-item">
+      <div class="news-head">Kevin Warsh en de inflatie-klem — markt prijst renteVERHOGING in</div>
+      <div class="news-src">The Economist · 30 mei</div>
+      <div class="news-effect">CPI +7,3% annualised over 3 maanden; inflatie breed en sticky; het "olie-excuus" om erdoorheen te kijken verzwakt. <b>Effect:</b> reële rentes blijven onder druk → structureel intact voor goud.</div>
+    </div>
+    <div class="news-item">
+      <div class="news-head">"Convulsing bond markets" — Japan 30j &gt;4%, VS &gt;5%, VK richting 6%</div>
+      <div class="news-src">The Economist · 25 mei</div>
+      <div class="news-effect">40% van fondsbeheerders ziet een inflatoire golf als grootste staartrisico. <b>Effect:</b> Dalio late-stage-decay-signaal in de grote obligatiemarkten → goud-rugwind bevestigd.</div>
+    </div>
+  </div>
+
+  <div class="untouched">
+    <h3>Macro-context &amp; archief (geen positie direct geraakt)</h3>
+    <ul class="macro-list">
+      <li><span class="mt">"MAGA tax" leader — ~0,75pp BBP-rem + olie-last</span> <span class="ms">· Economist · 25 mei · 1A-pad, indirect olie/goud</span></li>
+      <li><span class="mt">China's zonne-industrie — overcapaciteit &amp; shakeout</span> <span class="ms">· Economist · 29 mei · geen solar-positie</span></li>
+      <li><span class="mt">Israël naar de stembus + economische veerkracht/demografie</span> <span class="ms">· Economist · 26 mei · Iran-context, Arrow 3 als defensie-concurrent</span></li>
+      <li><span class="mt">Mélenchon &amp; Frans links-populisme · Europa's intergenerationele ongelijkheid</span> <span class="ms">· Economist · 30 mei · slow-burn-politiek, indirect SAAB</span></li>
+      <li><span class="mt">Moral Economics (Roth) · AI &amp; banen (Bartleby) · Premier League als rolmodel · macro-boekenlijst</span> <span class="ms">· Economist · 25–30 mei · achtergrond/anti-bias, geen positie</span></li>
+    </ul>
+    <div class="untouched-row" style="margin-top:14px">
+      Niet geraakt: <b>HCC</b> · <b>AMR</b> (kolen) · <b>FCX</b> (koper) · <b>KSPI</b> (fintech) — geen positiespecifiek nieuws deze week.
+    </div>
+  </div>
+
+  <div class="foot">
+    Bron: alle items uit <code>bronnen/2026-W22/</code> (24 stuks). Effecten overgenomen uit de "Portefeuille-relevantie"-velden per bronnotitie. Wegingen zijn die van vóór de herbalancering van 1 juni. Geen financieel advies — statische preview.
+  </div>
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script>var WEEK_CHART = {"dates":["2026-05-26","2026-05-27","2026-05-28","2026-05-29"],"series":{"RIG":[0.0,-4.63,-4.01,-4.48],"TTE":[0.0,-3.75,-3.19,-3.02],"OXY":[0.0,-0.99,-0.24,-1.44],"HCC":[0.0,4.18,12.35,1.57],"AMR":[0.0,4.19,10.83,3.18],"FCX":[0.0,-1.13,2.35,2.1],"KSPI":[0.0,0.33,-0.05,-2.64],"WPM":[0.0,-2.29,-0.0,1.94],"SAAB":[0.0,-0.7,6.6,5.33],"IGLN":[0.0,-1.48,-0.56,1.65]}};</script>
+<script src="chart-init.js"></script>
+<script src="week-quiz.js"></script>
+</body>
+</html>

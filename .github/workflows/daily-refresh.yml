@@ -1,0 +1,48 @@
+name: Dagelijkse koers-refresh
+
+# Draait in GitHub's cloud, dus laptop-onafhankelijk.
+# Genereert live.json opnieuw en commit het; Vercel zet de site automatisch live.
+
+on:
+  schedule:
+    # 22:30 UTC = na sluiting Amerikaanse beurs (vangt de koers van die dag).
+    - cron: "30 22 * * *"
+  workflow_dispatch: {}   # knop om handmatig te draaien vanuit het Actions-tabblad
+
+permissions:
+  contents: write
+
+concurrency:
+  group: daily-refresh
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Repo ophalen
+        uses: actions/checkout@v4
+
+      - name: Python klaarzetten
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: yfinance installeren
+        run: pip install --quiet yfinance
+
+      - name: Koersen verversen
+        run: python refresh_live.py
+
+      - name: Wijziging committen (alleen als er iets veranderde)
+        run: |
+          git config user.name  "mninvest-bot"
+          git config user.email "actions@users.noreply.github.com"
+          if git status --porcelain live.json | grep -q .; then
+            git add live.json
+            git commit -m "chore: dagelijkse koers-refresh ($(date -u +%Y-%m-%d))"
+            git push
+            echo "live.json bijgewerkt en gepusht."
+          else
+            echo "Geen wijziging in live.json, niets te committen."
+          fi

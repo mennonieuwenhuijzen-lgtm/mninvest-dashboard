@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard · Markt vs. Analisten × Thesis · MNinvest</title>
+<style>
+:root{
+  --cream:#f7f3ed; --paper:#fefcf8; --ink:#1a1714; --ink2:#3d3830; --ink3:#7a6f64;
+  --gold:#b07d2a; --gold-lt:#e8d5a8; --green:#2a5c43; --green-lt:#d4eadf;
+  --red:#8b2331; --red-lt:#f0d8dc; --blue:#2b3f7c; --blue-lt:#d8dff0; --rule:#d8cfc4;
+  --mono:'Courier New',Courier,monospace; --serif:Georgia,'Times New Roman',serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--cream);color:var(--ink);font-family:var(--serif);font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+.wrap{max-width:1120px;margin:0 auto;padding:0 22px 70px;}
+a{color:inherit;}
+
+/* MASTHEAD compact */
+.masthead{padding:20px 0 16px;border-bottom:2px solid var(--ink);}
+.mh-top{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;}
+.mh-brand{font-family:var(--mono);font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--ink3);font-weight:700;}
+.mh-brand .dot{color:var(--gold);}
+.mh-title{font-size:30px;font-weight:400;letter-spacing:-.02em;line-height:1.1;margin-top:4px;}
+.mh-sub{font-size:13px;color:var(--ink3);font-style:italic;margin-top:2px;}
+.mh-links{display:flex;gap:8px;flex-wrap:wrap;}
+.mh-btn{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;padding:8px 12px;border:1px solid var(--rule);border-radius:5px;background:var(--paper);text-decoration:none;color:var(--ink2);white-space:nowrap;}
+.mh-btn:hover{border-color:var(--gold);color:var(--gold);}
+.mh-btn.gold{background:var(--green);color:var(--paper);border-color:var(--green);}
+.mh-meta{display:flex;gap:18px;flex-wrap:wrap;margin-top:12px;font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);}
+.mh-meta b{color:var(--gold);}
+
+/* MACRO STAT ROW */
+.stat-row{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-top:18px;}
+.stat{background:var(--paper);border:1px solid var(--rule);border-radius:7px;padding:11px 13px;}
+.stat-lbl{font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3);}
+.stat-val{font-family:var(--mono);font-size:20px;font-weight:700;margin-top:3px;line-height:1;}
+.stat-chg{font-family:var(--mono);font-size:11px;margin-top:3px;}
+.up{color:var(--green);} .down{color:var(--red);} .flat{color:var(--ink3);}
+@media(max-width:880px){.stat-row{grid-template-columns:repeat(3,1fr);}}
+@media(max-width:520px){.stat-row{grid-template-columns:repeat(2,1fr);}}
+
+/* DAY BANNER */
+.daybar{margin-top:14px;background:var(--ink);color:var(--paper);border-radius:7px;padding:13px 18px;display:flex;gap:14px;align-items:baseline;flex-wrap:wrap;}
+.daybar .tag{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-lt);}
+.daybar .txt{font-size:14px;color:rgba(255,255,255,.88);line-height:1.5;}
+.daybar .verdict{font-family:var(--mono);font-size:11px;background:var(--green);color:var(--paper);padding:3px 9px;border-radius:3px;white-space:nowrap;}
+
+/* SECTION HEADERS */
+.sec{margin-top:34px;}
+.sec-kicker{font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);}
+.sec-h{font-size:20px;font-weight:400;letter-spacing:-.01em;margin:4px 0 2px;}
+.sec-note{font-size:12px;color:var(--ink3);margin-bottom:14px;}
+
+/* POSITION GRID */
+.pos-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+@media(max-width:980px){.pos-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:640px){.pos-grid{grid-template-columns:1fr;}}
+.tile{background:var(--paper);border:1px solid var(--rule);border-top:3px solid var(--ink3);border-radius:8px;overflow:hidden;display:flex;flex-direction:column;}
+.tile[data-c8="2"]{border-top-color:var(--green);}
+.tile[data-c8="1"]{border-top-color:var(--gold);}
+.tile[data-c8="0"]{border-top-color:var(--red);}
+.pt-head{width:100%;text-align:left;background:none;border:none;cursor:pointer;padding:13px 15px;font-family:var(--serif);display:block;}
+.pt-head:hover{background:#fcf9f3;}
+.pt-row1{display:flex;justify-content:space-between;align-items:center;gap:8px;}
+.pt-ticker{font-family:var(--mono);font-size:19px;font-weight:700;letter-spacing:.03em;color:var(--ink);}
+.pt-c8{font-family:var(--mono);font-size:10px;font-weight:700;padding:3px 8px;border-radius:3px;white-space:nowrap;}
+.c8-2{background:var(--green-lt);color:var(--green);}
+.c8-1{background:var(--gold-lt);color:#7a4515;}
+.c8-0{background:var(--red-lt);color:var(--red);}
+.pt-name{font-size:12px;color:var(--ink3);margin-top:3px;}
+.pt-stats{display:flex;gap:14px;margin-top:10px;align-items:baseline;flex-wrap:wrap;}
+.pt-stat b{font-family:var(--mono);font-size:15px;font-weight:700;}
+.pt-stat i{font-family:var(--mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink3);font-style:normal;margin-left:4px;}
+.pt-foot{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:11px;}
+.pt-verdict{font-family:var(--mono);font-size:10px;letter-spacing:.04em;padding:4px 9px;border-radius:3px;}
+.v-hold{background:var(--green-lt);color:var(--green);}
+.v-watch{background:var(--gold-lt);color:#7a4515;}
+.v-flag{background:var(--red-lt);color:var(--red);}
+.pt-chev{font-family:var(--mono);font-size:13px;color:var(--gold);transition:transform .25s;}
+.pt-head.open .pt-chev{transform:rotate(180deg);}
+.pt-detail{max-height:0;overflow:hidden;transition:max-height .35s ease;border-top:0 solid var(--rule);}
+.pt-detail.open{max-height:1400px;border-top:1px solid var(--rule);}
+.pt-detail-inner{padding:13px 15px;font-size:13px;}
+.pt-cons{font-family:var(--mono);font-size:11px;color:var(--ink2);margin-bottom:10px;}
+.lyr-lbl{font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);display:block;margin:10px 0 3px;}
+.lyr-lbl.gold{color:var(--gold);}
+.mva{font-size:13px;color:var(--ink2);line-height:1.55;}
+.trg{list-style:none;margin-top:4px;}
+.trg li{font-size:12.5px;color:var(--ink2);line-height:1.5;padding:4px 0 4px 14px;position:relative;border-bottom:1px solid var(--rule);}
+.trg li:last-child{border-bottom:none;}
+.trg li::before{content:"";position:absolute;left:0;top:11px;width:6px;height:6px;border-radius:50%;}
+.trg .t-on::before{background:var(--green);} .trg .t-watch::before{background:var(--gold);}
+.trg .t-wait::before{background:var(--ink3);} .trg .t-struct::before{background:var(--blue);}
+.trg .st{font-family:var(--mono);font-size:10px;color:var(--ink3);}
+.th-badges{display:flex;gap:6px;flex-wrap:wrap;margin:4px 0 6px;}
+.th-badges span{font-family:var(--mono);font-size:10px;padding:3px 8px;border-radius:3px;background:var(--cream);border:1px solid var(--rule);}
+.th-badges .ok{color:var(--green);} .th-badges .warn{color:var(--red);}
+.th-txt{font-size:12.5px;color:var(--ink2);line-height:1.55;}
+.th-txt strong{color:var(--ink);}
+.flag-9{background:rgba(176,125,42,.08);border-left:3px solid var(--gold);padding:7px 10px;border-radius:0 4px 4px 0;font-size:12.5px;color:var(--ink2);margin-top:8px;line-height:1.5;}
+.flag-9 b{color:var(--gold);}
+
+/* BENCHMARKS */
+.bm-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;}
+@media(max-width:880px){.bm-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:480px){.bm-grid{grid-template-columns:1fr;}}
+.bm{background:var(--paper);border:1px solid var(--rule);border-left:4px solid var(--rule);border-radius:0 7px 7px 0;padding:12px 14px;}
+.bm.under{border-left-color:var(--green);} .bm.over{border-left-color:var(--red);} .bm.neutral{border-left-color:var(--gold);}
+.bm-top{display:flex;justify-content:space-between;align-items:baseline;gap:8px;}
+.bm-name{font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.04em;}
+.bm-px{font-family:var(--mono);font-size:16px;font-weight:700;}
+.bm-txt{font-size:12px;color:var(--ink2);line-height:1.5;margin:7px 0;}
+.bm-src{font-size:10px;color:var(--ink3);line-height:1.5;border-top:1px solid var(--rule);padding-top:6px;}
+
+/* DALIO FORCES */
+.force-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;}
+@media(max-width:880px){.force-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:480px){.force-grid{grid-template-columns:1fr;}}
+.force{background:var(--paper);border:1px solid var(--rule);border-left:4px solid var(--rule);border-radius:0 7px 7px 0;padding:12px 14px;}
+.force.f-gold{border-left-color:var(--gold);} .force.f-red{border-left-color:var(--red);}
+.force.f-blue{border-left-color:var(--blue);} .force.f-grey{border-left-color:var(--ink3);}
+.force-k{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);}
+.force-h{font-size:14px;font-weight:700;margin:3px 0 5px;}
+.force-t{font-size:12px;color:var(--ink2);line-height:1.5;}
+
+/* ACTIEPUNTEN */
+.acts{list-style:none;}
+.acts li{font-size:13px;color:var(--ink2);line-height:1.55;padding:8px 0 8px 20px;position:relative;border-bottom:1px solid var(--rule);}
+.acts li::before{content:"▸";position:absolute;left:0;color:var(--gold);}
+.acts li strong{color:var(--ink);}
+.acts li.q{background:rgba(176,125,42,.06);border-radius:5px;padding-left:30px;}
+.acts li.q::before{content:"?";left:11px;font-family:var(--mono);font-weight:700;}
+
+footer{margin-top:36px;padding-top:18px;border-top:1px solid var(--rule);font-size:11px;color:var(--ink3);line-height:1.7;}
+footer .brand{font-family:var(--mono);letter-spacing:.2em;font-size:10px;color:var(--gold);text-transform:uppercase;display:block;margin-top:6px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- MASTHEAD -->
+  <div class="masthead">
+    <div class="mh-top">
+      <div>
+        <div class="mh-brand">MN<span class="dot">·</span>INVEST &nbsp;·&nbsp; Markt × Analisten × Thesis</div>
+        <div class="mh-title">Dashboard</div>
+        <div class="mh-sub">13 posities · Pabrai Dhandho × Dalio Big Cycle · klik een tegel voor de vier lagen</div>
+      </div>
+      <div class="mh-links">
+        <a class="mh-btn" href="koersen.html">Koersen →</a>
+        <a class="mh-btn gold" href="uitleg.html">Theorie &amp; criteria →</a>
+      </div>
+    </div>
+    <div class="mh-meta">
+      <span>Datum <b>9 juni 2026</b></span>
+      <span>Posities <b>13</b></span>
+      <span>Macro <b>Olie-de-escalatie · koersruis</b></span>
+      <span>Breakers geraakt <b>0 / 13</b></span>
+    </div>
+  </div>
+
+  <!-- MACRO STAT ROW -->
+  <div class="stat-row">
+    <div class="stat"><div class="stat-lbl">Brent</div><div class="stat-val">$91,1</div><div class="stat-chg down">−3,3% dag</div></div>
+    <div class="stat"><div class="stat-lbl">Goud</div><div class="stat-val">$4.323</div><div class="stat-chg down">−0,3%</div></div>
+    <div class="stat"><div class="stat-lbl">Koper</div><div class="stat-val">$6,40</div><div class="stat-chg up">+1,1%</div></div>
+    <div class="stat"><div class="stat-lbl">US 10Y</div><div class="stat-val">4,55%</div><div class="stat-chg flat">rente-hike-vrees</div></div>
+    <div class="stat"><div class="stat-lbl">DXY</div><div class="stat-val">99,8</div><div class="stat-chg flat">dollar</div></div>
+    <div class="stat"><div class="stat-lbl">EUR/USD</div><div class="stat-val">1,16</div><div class="stat-chg flat">—</div></div>
+  </div>
+
+  <!-- DAY BANNER -->
+  <div class="daybar">
+    <span class="tag">9 juni</span>
+    <span class="txt"><b style="color:#fff">Olie-dag.</b> Iran en Israël pauzeren de aanvallen, de Hormuz-premie loopt uit de olieprijs en trekt het energie/grondstoffen-blok mee omlaag. Goud vlak, koper en China-namen groen. Geen enkele breker of C8-veto geraakt.</span>
+    <span class="verdict">Verdict: koersruis</span>
+  </div>
+
+  <!-- POSITIES -->
+  <div class="sec">
+    <span class="sec-kicker">01 · Posities</span>
+    <div class="sec-h">Alle 13, op weging</div>
+    <div class="sec-note">Per tegel: C8-status (rand + badge), weging, Dhandho-score, gap tot analistendoel, dag-beweging en het verdict. Klik voor de vier lagen.</div>
+    <div class="pos-grid">
+
+      <!-- RIG -->
+      <div class="tile" data-c8="2">
+        <button class="pt-head">
+          <div class="pt-row1"><span class="pt-ticker">RIG</span><span class="pt-c8 c8-2">C8 · 2</span></div>
+          <div class="pt-name">Transocean · Offshore drilling · 14%</div>
+          <div class="pt-stats"><span class="pt-stat"><b>15/18</b><i>score</i></span><span class="pt-stat"><b>+15%</b><i>gap ↑</i></span><span class="pt-stat down"><b>−3,8%</b><i>dag</i></span></div>
+          <div class="pt-foot"><span class="pt-verdict v-hold">Hold · merger-arb</span><span class="pt-chev">▾</span></div>
+        </button>
+        <div class="pt-detail"><div class="pt-detail-inner">
+          <div class="pt-cons">$6,07 · 16 analisten Moderate Buy · doel $6,96 (laag $4,50 / hoog $10,00) · short 20%</div>
+          <span class="lyr-lbl">① Markt vs. analisten</span>
+          <p class="mva">Markt staat ~15% onder het analistendoel ($6,96 consensus). RIG hield in de risk-off relatief stand en de verdeeldheid (3 sells, 20% short) weerspiegelt schulddruk, niet de dag-beweging.</p>
+          <span class="lyr-lbl">③ Triggers</span>
+          <ul class="trg">
+            <li class="t-on"><strong>Brent &gt;$90 sustained</strong> → dag-rates hoog → schuldzorg kleiner. <span class="st">● Actief: $91</span></li>
+            <li class="t-watch"><strong>Valaris EGM fusiestem</strong> → sectorconsolidatie. <span class="st">● Datum TBD, 2H 2026</span></li>
+            <li class="t-wait"><strong>Brent &lt;$75</strong> → cashflow daalt → C8-hertoets. <span class="st">● Bewaken</span></li>
+          </ul>
+          <span class="lyr-lbl gold">④ Dalio × Pabrai thesis</span>
+          <div class="th-badges"><span>15/18</span><span class="ok">C8=2 stagflatie + Iran</span><span class="ok">Breaker $65 — niet geraakt</span></div>
+          <p class="th-txt"><strong>Pabrai:</strong> grootste deepwater-vloot, backlog $7,1 mrd; zwakte is schuld. <strong>Dalio:</strong> C8=2, Hormuz-premie houdt dag-rates hoog. Hold zolang Brent hoog staat.</p>
+          <div class="flag-9"><b>9 juni — Pabrai Q1-13F (besloten: laten staan):</b> Pabrai trimde RIG −24,6% maar houdt nog <b>$135 mln / 20,4 mln aandelen</b> aan (zijn 2e positie); Valaris 100% verkocht, metcoal (HCC/AMR) bijgekocht. Gelezen als pre-close merger-arb (5D-regel), geen thesisbreuk → <b>hold op 14%, ongewijzigd</b>. Watchpoint: een trim &gt;20% ná deal-closing telt wél als thesis-signaal.</div>
+        </div></div>
+      </div>
+
+      <!-- HCC -->
+      <div class="tile" data-c8="2">
+        <button class="pt-head">
+          <div class="pt-row1"><span class="pt-ticker">HCC</span><span class="pt-c8 c8-2">C8 · 2</span></div>
+          <div class="pt-name">Warrior Met Coal · Kolen · 11%</div>
+          <div class="pt-stats"><span class="pt-stat"><b>17/18</b><i>score 🏆</i></span><span class="pt-stat"><b>≈ doel</b><i>+1%</i></span><span class="pt-stat down"><b>−3,9%</b><i>dag</i></span></div>
+          <div class="pt-foot"><span class="pt-verdict v-hold">Hold</span><span class="pt-chev">▾</span></div>
+        </button>
+        <div class="pt-detail"><div class="pt-detail-inner">
+          <div class="pt-cons">~$106 · 7 analisten Buy · doel $104,83 (high $120) · PLV $207–244/t</div>
+          <span class="lyr-lbl">① Markt vs. analisten</span>
+          <p class="mva">De markt staat ~1% bóven het verse consensus-doel ($104,83), ruim ónder het hoogste target ($120). Geen vrije upside op het mean-doel; de volgende beweging hangt af van PLV.</p>
+          <span class="lyr-lbl">③ Triggers</span>
+          <ul class="trg">
+            <li class="t-watch"><strong>PLV &gt;$235/t superbull</strong> → marge maximaal. <span class="st">● Bron-afhankelijk: SGX $244 vs spot $207</span></li>
+            <li class="t-watch"><strong>Blue Creek H2 2026 FCF-inflectie</strong>. <span class="st">● Monitoren</span></li>
+            <li class="t-wait"><strong>PLV &lt;$150/t</strong> → C8-hertoets. <span class="st">● Ver weg</span></li>
+          </ul>
+          <span class="lyr-lbl gold">④ Dalio × Pabrai thesis</span>
+          <div class="th-badges"><span>17/18 hoogste</span><span class="ok">C8=2 stagflatie + ESG</span><span class="ok">Breaker ver van $150</span></div>
+          <p class="th-txt"><strong>Pabrai:</strong> hoogste score; enige US pure-play premium kolen, maar MoS ≈ 0 bij huidige koers → geen bijkoop. <strong>Dalio:</strong> C8=2, ESG-onderinvestering + India-vraag. 9 juni: Pabrai bevestigde de positie (+0,6%).</p>
+        </div></div>
+      </div>
+
+      <!-- WPM -->
+      <div class="tile" data-c8="2">
+        <button class="pt-head">
+          <div class="pt-row1"><span class="pt-ticker">WPM</span><span class="pt-c8 c8-2">C8 · 2</span></div>
+          <div class="pt-name">Wheaton Precious Metals · Goud streaming · 10%</div>
+          <div class="pt-stats"><span class="pt-stat"><b>14/18</b><i>score</i></span><span class="pt-stat"><b>+67%</b><i>gap ↑</i></span><span class="pt-stat down"><b>−0,8%</b><i>dag</i></span></div>
+          <div class="pt-foot"><span class="pt-verdict v-watch">Hold · bijkoop-zone</span><span class="pt-chev">▾</span></div>
+        </button>
+        <div class="pt-detail"><div class="pt-detail-inner">
+          <div class="pt-cons">~$111 · 16 analisten Strong Buy · doel $185 · IV ~$160 · cash $2,16B</div>
+          <span class="lyr-lbl">① Markt vs. analisten</span>
+          <p class="mva">Strong Buy (10/0/0), doel ~$180-185, maar de koers zakte vorige week −11,4% — ruim 2× de goud-daling: de streamer-hefboom werkt omlaag net zo hard als omhoog. Rente-hike-risk-off, geen fundamentele breuk.</p>
+          <span class="lyr-lbl">③ Triggers</span>
+          <ul class="trg">
+            <li class="t-on"><strong>Iran de-escaleert</strong> → Brent lager → Fed-cut → goud herstelt. <span class="st">● Eerste signaal</span></li>
+            <li class="t-wait"><strong>CPI &lt;2,5%</strong> → Fed knipt. <span class="st">● CPI 3,3% — te hoog</span></li>
+            <li class="t-struct"><strong>CB-aankopen 585t/kwartaal</strong>. <span class="st">● Intact</span></li>
+          </ul>
+          <span class="lyr-lbl gold">④ Dalio × Pabrai thesis</span>
+          <div class="th-badges"><span>14/18</span><span class="ok">C8=2 directe tailwind</span><span class="ok">Breaker niet geraakt</span></div>
+          <p class="th-txt"><strong>Pabrai:</strong> streaming-moat zonder capex, nul schuld; IV ~$160, de $120 bijkoop-drempel = de 25%-MoS-lijn. <strong>Dalio:</strong> C8=2, monetaire devaluatie. Daalt zonder breaker = thesis wordt sterker. Caveat: IV leunt op hoog goud.</p>
+        </div></div>
+      </div>
+
+      <!-- IGLN -->
+      <div class="tile" data-c8="2">
+        <button class="pt-head">
+          <div class="pt-row1"><span class="pt-ticker">IGLN</span><span class="pt-c8 c8-2">C8 · 2</span></div>
+          <div class="pt-name">iShares Physical Gold · Anker · 10%</div>
+          <div class="pt-stats"><span class="pt-stat"><b>anker</b><i>geen score</i></span><span class="pt-stat"><b>+25%</b><i>gap ↑</i></span><span class="pt-stat down"><b>−0,8%</b><i>dag</i></span></div>
+          <div class="pt-foot"><span class="pt-verdict v-hold">Hold</span><span class="pt-chev">▾</span></div>
+        </button>
+        <div class="pt-detail"><div class="pt-detail-inner">
+          <div class="pt-cons">~$4.323/oz · GS target $5.400 · +25% opwaarts · bank-mediaan ~$5.400</div>
+          <span class="lyr-lbl">① Markt vs. bank-aggregatie</span>
+          <p class="mva">Goud staat ruim 20% onder de mediaan-bankprognose. De markt prijst een Fed-renteverhoging, reële yields stijgen en non-yielding goud werd tijdelijk minder aantrekkelijk. De structurele Dalio-thesis is onaangetast.</p>
+          <span class="lyr-lbl">③ Triggers</span>
+          <ul class="trg">
+            <li class="t-on"><strong>Iran de-escalatie</strong> → inflatie daalt → goud-ETF-instroom. <span class="st">● Eerste signaal</span></li>
+            <li class="t-wait"><strong>CPI verbetert</strong> → Fed-cut. <span class="st">● CPI 3,3%</span></li>
+            <li class="t-struct"><strong>CB-aankopen 585t/kwartaal</strong>. <span class="st">● Intact</span></li>
+          </ul>
+          <span class="lyr-lbl gold">④ Dalio × Pabrai thesis</span>
+          <div class="th-badges"><span>Anker</span><span class="ok">C8=2 puurste uitdrukking</span><span class="ok">TIPS 4,55% — bewaken</span></div>
+          <p class="th-txt"><strong>Dalio:</strong> meest directe uitdrukking van de monetaire-devaluatie-thesis, puur goud. <strong>Pabrai:</strong> n.v.t. als ETC; rol is structurele hedge. Breaker (reële TIPS &gt;+2% sustained) niet geraakt.</p>
+        </div></div>
+      </div>
+
+      <!-- TTE -->
+      <div class="tile" data-c8="2">
+        <button class="pt-head">
+          <div class="pt-row1"><span class="pt-ticker">TTE</span><span class="pt-c8 c8-2">C8 · 2</span></div>
+          <div class="pt-name">TotalEnergies · Olie geïntegreerd · 10%</div>
+          <div class="pt-stats"><span class="pt-stat"><b>14/18</b><i>score</i></span><span class="pt-stat"><b>+11%</b><i>gap ↑</i></span><span class="pt-stat down"><b>−1,5%</b><i>dag</i></span></div>
+          <div class="pt-foot"><span class="pt-verdict v-hold">Hold · ondergewaardeerd</span><span class="pt-chev">▾</span></div>
+        </button>
+        <div class="pt-detail"><div class="pt-detail-inner">
+          <div class="pt-cons">$89,51 · 21 analisten Buy (13B/7H/1S) · doel ~$99 (mediaan $102) · fwd P/E 9×</div>
+          <span class="lyr-lbl">① Markt vs. analisten</span>
+          <p class="mva">TTE staat ~11% ónder het analistendoel ($99 gem.) — de markt prijst voorzichtig in vanwege Iran-volatiliteit en het Mélenchon-staartrisico, terwijl de sell-side de geïntegreerde kasstroom hoger waardeert.</p>
+          <span class="lyr-lbl">③ Triggers</span>
+          <ul class="trg">
+            <li class="t-on"><strong>Brent &gt;$90 sustained</strong> → koers richting $99-102. <span class="st">● Actief: $91</span></li>
+            <li class="t-wait"><strong>Iran ceasefire → Brent &lt;$75</strong> → oliewinst daalt (geen breaker). <span class="st">● Bewaken bij ontspanning</span></li>
+            <li class="t-struct"><strong>LNG breakeven $60/vat</strong>. <span class="st">● Intact</span></li>
+          </ul>
+          <span class="lyr-lbl gold">④ Dalio × Pabrai thesis</span>
+          <div class="th-badges"><span>14/18</span><span class="ok">C8=2 stagflatie</span><span class="ok">Breaker $65 — niet geraakt</span></div>
+          <p class="th-txt"><strong>Pabrai:</strong> laagste fwd P/E (9×), breakeven $60. <strong>Dalio:</strong> C8=2 versterkt door Iran. Pabrai-MoS en Dalio-tailwind wijzen dezelfde kant op: ondergewaardeerd.</p>
+        </div></div>
+      </div>
+
+      <!-- ADBE -->
+      <div class="tile" data-c8="1">
+        <button class="pt-head">
+          <div class="pt-row1"><span class="pt-ticker">ADBE</span><span class="pt-c8 c8-1">C8 · 1</span></div>
+          <div class="pt-name">Adobe · Software · 8%</div>
+          <div class="pt-stats"><span class="pt-stat"><b>14/18</b><i>score</i></span><span class="pt-stat"><b>+28%</b><i>gap ↑</i></span><span class="pt-stat down"><b>−2,1%</b><i>dag</i></span></div>
+          <div class="pt-foot"><span class="pt-verdict v-watch">Watch · cijfers 11 jun</span><span class="pt-chev">▾</span></div>
+        </button>
+        <div class="pt-detail"><div class="pt-detail-inner">
+          <div class="pt-cons">~$248 · 22 analisten Hold · doel ~$327 (+28–39%) · FCF yield 8,6% · fwd P/E 10×</div>
+          <span class="lyr-lbl">① Markt vs. analisten</span>
+          <p class="mva">Al fors afgeprijsd (−28% YTD), dus weinig om te vallen. Markt staat ~28-39% ónder consensus — multiple-compressie door AI-vrees, geen fundamentele krimp (Q1 sub-omzet +13%, ARR +11%). Q2-cijfers 11 juni zijn de echte breaker-test.</p>
+          <span class="lyr-lbl">③ Triggers</span>
+          <ul class="trg">
+            <li class="t-watch"><strong>ARR-groei + Firefly-ARPU stijgt</strong> → AI versterkt Adobe. <span class="st">● Cijfers 11 jun</span></li>
+            <li class="t-watch"><strong>Koers &lt;$240 of fwd P/E &lt;9×</strong> → MoS &gt;45% → bijkoop. <span class="st">● ~$248, nadert $240</span></li>
+            <li class="t-wait"><strong>Betaalde subscribers dalen YoY</strong> → breaker. <span class="st">● Intact — Q1 abonnees +</span></li>
+          </ul>
+          <span class="lyr-lbl gold">④ Dalio × Pabrai thesis</span>
+          <div class="th-badges"><span>14/18</span><span class="warn">C8=1 geen macro-tailwind</span><span class="ok">Breaker intact</span></div>
+          <p class="th-txt"><strong>Pabrai:</strong> industrie-standaard moat, FCF yield 8,6%, −36% door AI-angst = "markt haat het". <strong>Dalio:</strong> C8=1, geen tailwind → bewust begrensd op 8%.</p>
+        </div></div>
+      </div>
+
+      <!-- SAAB -->
+      <div class="tile" data-c8="2">
+        <button class="pt-head">
+          <div class="pt-row1"><span class="pt-ticker">SAAB</span><span class="pt-c8 c8-2">C8 · 2</span></div>
+          <div class="pt-name">Saab AB · Defensie · 8% (2 tranches)</div>
+          <div class="pt-stats"><span class="pt-stat"><b>16/18</b><i>score</i></span><span class="pt-stat"><b>+10%</b><i>gap ↑</i></span><span class="pt-stat down"><b>−1,3%</b><i>dag</i></span></div>
+          <div class="pt-foot"><span class="pt-verdict v-watch">Hold · geen bijkoop</span><span class="pt-chev">▾</span></div>
+        </button>
+        <div class="pt-detail"><div class="pt-detail-inner">
+          <div class="pt-cons">525 SEK · 15 analisten neutraal · doel 578 SEK (+10%) · fwd P/E 54× · orderboek 3,5× omzet</div>
+          <span class="lyr-lbl">① Markt vs. analisten</span>
+          <p class="mva">Analisten zijn verdeeld omdat de hoge waardering (fwd P/E 54×) het opwaarts potentieel beperkt — Morgan Stanley gaf Underweight met "3-4% upside rechtvaardigt de premium niet".</p>
+          <span class="lyr-lbl">③ Triggers</span>
+          <ul class="trg">
+            <li class="t-struct"><strong>NAVO-budgetgroei 2%+</strong> → Gripen E + radar + naval orders. <span class="st">● Intact</span></li>
+            <li class="t-wait"><strong>Fwd P/E &lt;40×</strong> → Pabrai-bijkoop geopend. <span class="st">● Nu 54×</span></li>
+            <li class="t-watch"><strong>Analisten-revisie ná FCAS + Citi</strong>. <span class="st">● Volgen</span></li>
+          </ul>
+          <span class="lyr-lbl gold">④ Dalio × Pabrai thesis</span>
+          <div class="th-badges"><span>16/18</span><span class="ok">C8=2 versterkt</span><span class="warn">Bijkoop geblokkeerd: 54× P/E</span></div>
+          <p class="th-txt"><strong>Pabrai:</strong> orderboek 3,5× omzet, +23,6% organisch Q1, maar 54× P/E verbiedt bijkoop. <strong>Dalio:</strong> C8=2, sterkste Dalio-kracht.</p>
+          <div class="flag-9"><b>9 juni — FCAS versterkt:</b> Frankrijk en Duitsland staken het gezamenlijke NGF-jachtvliegtuig; Airbus noemt Saab expliciet als kandidaat. C8=2 <b>versterkt</b> (exact het tegenovergestelde van de neutralisatie-breaker). Maar de instap-gate blijft <b>rood</b> (54× P/E) → hold, geen bijkopen.</div>
+        </div></div>
+      </div>
+
+      <!-- KSPI -->
+      <div class="tile" data-c8="2">
+        <button class="pt-head">
+          <div class="pt-row1"><span class="pt-ticker">KSPI</span><span class="pt-c8 c8-2">C8 · 2</span></div>
+          <div class="pt-name">Kaspi.kz · EM fintech · 7%</div>
+          <div class="pt-stats"><span class="pt-stat"><b>15/18</b><i>score</i></span><span class="pt-stat"><b>+25%</b><i>gap ↑</i></span><span class="pt-stat down"><b>−2,6%</b><i>dag</i></span></div>
+          <div class="pt-foot"><span class="pt-verdict v-flag">⚠ Geel vlag</span><span class="pt-chev">▾</span></div>
+        </button>
+        <div class="pt-detail"><div class="pt-detail-inner">
+          <div class="pt-cons">$81,31 · 6 analisten verdeeld · consensus ~$98-126 · P/E 6,5× (peers 24,7×) · founder 66%</div>
+          <span class="lyr-lbl">① Markt vs. analisten</span>
+          <p class="mva">KSPI zakte vorige week −10% en staat nu &gt;20% ónder de analisten-consensus → <strong>geel vlaggetje</strong> (regel 15): geen automatisch koop-signaal, eerst uitzoeken of het markt-irrationaliteit (kans) of een waarschuwing is. Momentum gebroken, niet bijkopen.</p>
+          <span class="lyr-lbl">③ Triggers</span>
+          <ul class="trg">
+            <li class="t-watch"><strong>Hepsiburada EBITDA-breakeven</strong> → bijkoop naar 8–10%. <span class="st">● Nog niet</span></li>
+            <li class="t-watch"><strong>JPMorgan-update</strong> (aug 2025 verouderd). <span class="st">● Monitoren</span></li>
+            <li class="t-wait"><strong>OFAC-sancties direct op Kaspi</strong> → C8-veto. <span class="st">● Niet actief</span></li>
+          </ul>
+          <span class="lyr-lbl gold">④ Dalio × Pabrai thesis</span>
+          <div class="th-badges"><span>15/18</span><span class="ok">C8=2 Global South</span><span class="ok">Breaker niet actief</span></div>
+          <p class="th-txt"><strong>Pabrai:</strong> founder-led (66%), P/E 6,5× vs peers 24,7× = klassieke discount op kwaliteit. <strong>Dalio:</strong> C8=2, geopolitiek neutraal Kazachstan. Hold op 7% tot Hepsiburada-breakeven.</p>
+        </div></div>
+      </div>
+
+      <!-- OXY -->
+      <div class="tile" data-c8="2">
+        <button class="pt-head">
+          <div class="pt-row1"><span class="pt-ticker">OXY</span><span class="pt-c8 c8-2">C8 · 2</span></div>
+          <div class="pt-name">Occidental Petroleum · Olie · 6%</div>
+          <div class="pt-stats"><span class="pt-stat"><b>13/18</b><i>score</i></span><span class="pt-stat"><b>+10%</b><i>gap ↑</i></span><span class="pt-stat down"><b>−2,4%</b><i>dag</i></span></div>
+          <div class="pt-foot"><span class="pt-verdict v-hold">Hold</span><span class="pt-chev">▾</span></div>
+        </button>
+        <div class="pt-detail"><div class="pt-detail-inner">
+          <div class="pt-cons">$59,64 · 26 analisten Hold · doel $65,54 (+10%) · Berkshire 26,64% · breakeven ~$38</div>
+          <span class="lyr-lbl">① Markt vs. analisten</span>
+          <p class="mva">OXY staat 10% onder het analistendoel — de markt twijfelt aan het schuldtempo na CrownRock. Goldman Sachs upgradde 21 mei van Sell naar Neutral, een positief signaal.</p>
+          <span class="lyr-lbl">③ Triggers</span>
+          <ul class="trg">
+            <li class="t-on"><strong>Brent &gt;$90 sustained</strong> → FCF sterk bij $38 breakeven. <span class="st">● Actief: $91</span></li>
+            <li class="t-watch"><strong>Q2 earnings schuldafbouw</strong> → upgrade Hold→Buy. <span class="st">● Augustus 2026</span></li>
+            <li class="t-watch"><strong>Berkshire koopt boven 26,64%</strong>. <span class="st">● Geen recente bevestiging</span></li>
+          </ul>
+          <span class="lyr-lbl gold">④ Dalio × Pabrai thesis</span>
+          <div class="th-badges"><span>13/18 net onder drempel</span><span class="ok">C8=2 stagflatie + Permian</span><span class="ok">Breaker $50 — niet geraakt</span></div>
+          <p class="th-txt"><strong>Pabrai:</strong> 13/18, maar Berkshire-clone (26,64%) compenseert; Permian breakeven ~$38 = vloer. <strong>Dalio:</strong> C8=2. Hold ondanks lage score.</p>
+        </div></div>
+      </div>
+
+      <!-- TME -->
+      <div class="tile" data-c8="1">
+        <button class="pt-head">
+          <div class="pt-row1"><span class="pt-ticker">TME</span><span class="pt-c8 c8-1">C8 · 1</span></div>
+          <div class="pt-name">Tencent Music · China · 5%</div>
+          <div class="pt-stats"><span class="pt-stat"><b>14/18</b><i>score</i></span><span class="pt-stat"><b>+53%</b><i>gap ↑</i></span><span class="pt-stat up"><b>+0,7%</b><i>dag</i></span></div>
+          <div class="pt-foot"><span class="pt-verdict v-hold">Hold</span><span class="pt-chev">▾</span></div>
+        </button>
+        <div class="pt-detail"><div class="pt-detail-inner">
+          <div class="pt-cons">~$9,14 · 30 analisten Buy · mediaan-doel ~$14 (+53%) · fwd P/E 9× (Spotify 50×) · 125,7 mln betaald</div>
+          <span class="lyr-lbl">① Markt vs. analisten</span>
+          <p class="mva">Na de halvering staat de markt ~53% ónder het verse mediaan-doel ($14). De daling is bedrijfsspecifiek — ByteDance's Qishui/Douyin als eerste serieuze Chinese concurrent — niet macro. JPM het meest bearish ($10).</p>
+          <span class="lyr-lbl">③ Triggers</span>
+          <ul class="trg">
+            <li class="t-watch"><strong>China tech-regulering versoepelt</strong> → brede herwaardering. <span class="st">● Geen signaal</span></li>
+            <li class="t-watch"><strong>Koers &lt;$8,80</strong> → limiet-order (extra 2%). <span class="st">● Order actief</span></li>
+            <li class="t-wait"><strong>Betaalde abonnees dalen 2 kw YoY</strong> → breaker. <span class="st">● Niet geraakt</span></li>
+          </ul>
+          <span class="lyr-lbl gold">④ Dalio × Pabrai thesis</span>
+          <div class="th-badges"><span>14/18 op drempel</span><span class="warn">C8=1 China multipolair</span><span class="ok">Breaker niet actief</span></div>
+          <p class="th-txt"><strong>Pabrai:</strong> Chinese Spotify op 9× terwijl Spotify op 50× handelt; drie dominante platforms. <strong>Dalio:</strong> C8=1 = kans én risico → begrensd op 5%. 9 juni: Pentagon-lijst raakt Tencent/TME niet (WP-047).</p>
+        </div></div>
+      </div>
+
+      <!-- AMR -->
+      <div class="tile" data-c8="2">
+        <button class="pt-head">
+          <div class="pt-row1"><span class="pt-ticker">AMR</span><span class="pt-c8 c8-2">C8 · 2</span></div>
+          <div class="pt-name">Alpha Metallurgical · Kolen · 4%</div>
+          <div class="pt-stats"><span class="pt-stat"><b>15/18</b><i>score</i></span><span class="pt-stat down"><b>+9%</b><i>boven ↓</i></span><span class="pt-stat down"><b>−3,5%</b><i>dag</i></span></div>
+          <div class="pt-foot"><span class="pt-verdict v-hold">Hold · trim was correct</span><span class="pt-chev">▾</span></div>
+        </button>
+        <div class="pt-detail"><div class="pt-detail-inner">
+          <div class="pt-cons">$212,78 · 6 analisten Reduce (0B/4H/2S) · doel $195,33 (max $207) · insider 24,7% · PLV $207–244</div>
+          <span class="lyr-lbl">① Markt vs. analisten</span>
+          <p class="mva">AMR staat 9% bóven alle analistendoelen — meegesleurd door hoge PLV en sterk insider-bezit, maar Zacks gaf Strong Sell en FCF was negatief. Q1-nuance: gerealiseerde prijs slechts $124/ton door langlopende contracten.</p>
+          <span class="lyr-lbl">③ Triggers</span>
+          <ul class="trg">
+            <li class="t-wait"><strong>Koers corrigeert naar $195</strong> → MoS positief. <span class="st">● Loopt voor op analisten</span></li>
+            <li class="t-watch"><strong>Q2 FCF positief</strong> → analist-revisie. <span class="st">● Augustus 2026</span></li>
+            <li class="t-wait"><strong>PLV &lt;$165/t</strong> → C8-hertoets. <span class="st">● Ver weg</span></li>
+          </ul>
+          <span class="lyr-lbl gold">④ Dalio × Pabrai thesis</span>
+          <div class="th-badges"><span>15/18</span><span class="ok">C8=2 stagflatie + PLV</span><span class="warn">MoS negatief: koers &gt; targets</span></div>
+          <p class="th-txt"><strong>Pabrai:</strong> sterk, maar koers boven alle doelen = negatieve MoS → trim 5%→4% was conform. <strong>Dalio:</strong> C8=2, PLV hoog. 9 juni: Pabrai kocht juist bij (+6,8%, buy-on-dip). Hold op 4%.</p>
+        </div></div>
+      </div>
+
+      <!-- FCX -->
+      <div class="tile" data-c8="1">
+        <button class="pt-head">
+          <div class="pt-row1"><span class="pt-ticker">FCX</span><span class="pt-c8 c8-1">C8 · ⚠1</span></div>
+          <div class="pt-name">Freeport-McMoRan · Koper · 3,5%</div>
+          <div class="pt-stats"><span class="pt-stat"><b>13/18</b><i>score ⚠</i></span><span class="pt-stat down"><b>+3,5%</b><i>boven</i></span><span class="pt-stat up"><b>+1,2%</b><i>dag</i></span></div>
+          <div class="pt-foot"><span class="pt-verdict v-watch">Hold · eerste fundingbron</span><span class="pt-chev">▾</span></div>
+        </button>
+        <div class="pt-detail"><div class="pt-detail-inner">
+          <div class="pt-cons">$70,64 · 23 analisten Moderate Buy (19B/4H) · doel $68,27 (+3,5% boven) · Grasberg −9%/5j</div>
+          <span class="lyr-lbl">① Markt vs. analisten</span>
+          <p class="mva">FCX handelt licht boven het analistendoel (+3,5%) — analisten overwegend positief, maar de Grasberg-revisie (−9%/−7% over 5 jaar) en C8=1 houden de positie beperkt.</p>
+          <span class="lyr-lbl">③ Triggers</span>
+          <ul class="trg">
+            <li class="t-watch"><strong>Koper &gt;$7/lb sustained</strong> → analisten verhogen targets. <span class="st">● Koper $6,40 — onder</span></li>
+            <li class="t-wait"><strong>Betere kandidaat 14+/18 + C8=2</strong> → FCX sluiten. <span class="st">● Nog niet</span></li>
+            <li class="t-wait"><strong>MoU-intrekking Indonesië</strong> → breaker. <span class="st">● Niet actief</span></li>
+          </ul>
+          <span class="lyr-lbl gold">④ Dalio × Pabrai thesis</span>
+          <div class="th-badges"><span>13/18 onder drempel</span><span class="warn">C8=1 zwakste macro-link</span><span class="warn">Eerste fundingbron</span></div>
+          <p class="th-txt"><strong>Pabrai &amp; Dalio:</strong> beide wijzen FCX aan als zwakste positie (13/18, C8=1) → eerste fundingbron bij een betere kans. Markt licht boven target bevestigt de beperkte upside.</p>
+        </div></div>
+      </div>
+
+      <!-- PROSY -->
+      <div class="tile" data-c8="1">
+        <button class="pt-head">
+          <div class="pt-row1"><span class="pt-ticker">PROSY</span><span class="pt-c8 c8-1">C8 · 1</span></div>
+          <div class="pt-name">Prosus N.V. · China holding · 3,5%</div>
+          <div class="pt-stats"><span class="pt-stat"><b>13/18</b><i>score</i></span><span class="pt-stat"><b>+29%</b><i>MS ↑</i></span><span class="pt-stat up"><b>+2,3%</b><i>dag</i></span></div>
+          <div class="pt-foot"><span class="pt-verdict v-hold">Hold · bijkoop-kandidaat</span><span class="pt-chev">▾</span></div>
+        </button>
+        <div class="pt-detail"><div class="pt-detail-inner">
+          <div class="pt-cons">~$9,28 · Morgan Stanley Overweight (+29%) · NAV-korting ~33% · inkoop $1 mrd+/jr</div>
+          <span class="lyr-lbl">① Markt vs. analisten</span>
+          <p class="mva">Dekking verbreed (2 juni): Morgan Stanley Overweight met ~29% upside ("de korting piekt"). De ~33% NAV-korting blijft de kern-spanning: je betaalt ~$0,67 voor $1 aan Tencent-assets.</p>
+          <span class="lyr-lbl">③ Triggers</span>
+          <ul class="trg">
+            <li class="t-struct"><strong>Inkoop $1mrd+/kwartaal</strong> → NAV-korting mechanisch kleiner. <span class="st">● Lopend</span></li>
+            <li class="t-watch"><strong>Koers &lt;$8,50 + Tencent stabiel</strong> → bijkoop. <span class="st">● WP-PROSY-02</span></li>
+            <li class="t-wait"><strong>Xi-regulering Tencent</strong> → C8-veto. <span class="st">● Niet actief</span></li>
+          </ul>
+          <span class="lyr-lbl gold">④ Dalio × Pabrai thesis</span>
+          <div class="th-badges"><span>13/18 net onder drempel</span><span class="warn">C8=1 China indirect</span><span class="ok">Breaker niet actief</span></div>
+          <p class="th-txt"><strong>Pabrai:</strong> puur rekenkundig — 29% Tencent = $139 mrd, Prosus kost $96 mrd = koop $1 voor $0,67; buyback verkleint de korting. <strong>Dalio:</strong> C8=1, indirect. Geduld-positie op 3,5%.</p>
+        </div></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- BENCHMARKS -->
+  <div class="sec">
+    <span class="sec-kicker">02 · Benchmarks</span>
+    <div class="sec-h">Markt vs. de banken</div>
+    <div class="sec-note">Per grondstof: prijs nu, en of die ónder of bóven de bank-consensus ligt. Minstens twee bronnen, nooit één bank (regel 11).</div>
+    <div class="bm-grid">
+      <div class="bm under">
+        <div class="bm-top"><span class="bm-name">GOUD · 20%</span><span class="bm-px">~$4.323</span></div>
+        <p class="bm-txt">Markt staat <strong style="color:var(--green)">ruim 20% ónder</strong> de bank-mediaan (~$5.400). Vandaag vlak; de echte klap kwam vorige week via rente-hike-vrees. Structurele opwaartse ruimte juist groter.</p>
+        <div class="bm-src"><strong>Banken:</strong> JPM $5.055 · GS $5.400 · UBS $6.200 · Citi $5.000 &nbsp;|&nbsp; <strong>Regel:</strong> Dalio 5-15%, bijkopen op dips</div>
+      </div>
+      <div class="bm over">
+        <div class="bm-top"><span class="bm-name">BRENT · 30%</span><span class="bm-px">~$91</span></div>
+        <p class="bm-txt">Markt staat nog <strong style="color:var(--red)">bóven</strong> de banken (~$60-85), maar de Iran-premie loopt eruit: −3,3% vandaag op de de-escalatie. Aan de bovenkant van de hold-band.</p>
+        <div class="bm-src"><strong>Banken:</strong> JPM-base ~$60 (overshoot $150 bij Hormuz-sluiting) · GS 2026-gem. $85 &nbsp;|&nbsp; <strong>Regel:</strong> &gt;$90 hold · $75-90 base · &lt;$65 heranalyseer C8</div>
+      </div>
+      <div class="bm neutral">
+        <div class="bm-top"><span class="bm-name">KOPER · 4%</span><span class="bm-px">$6,40</span></div>
+        <p class="bm-txt">Markt staat <strong style="color:#7a4515">iets bóven</strong> Goldman (~$6,2). Vandaag groen (+1,1%) tegen de olie-dag in. Nog onder jouw bijkoop-trigger.</p>
+        <div class="bm-src"><strong>Banken:</strong> GS year-end ~$6,2/lb &nbsp;|&nbsp; <strong>Regel:</strong> FCX-trigger op &gt;$7/lb sustained</div>
+      </div>
+      <div class="bm over">
+        <div class="bm-top"><span class="bm-name">KOLEN/PLV · 15%</span><span class="bm-px">$207–244</span></div>
+        <p class="bm-txt"><strong style="color:#7a4515">Bron-afhankelijk:</strong> spot ~$207 vs SGX-future $243,50 (boven de $230-piek). Beide ruim boven de breaker ($150); marge $53–81/t. <strong>Verse 9-juni-print ontbreekt nog.</strong></p>
+        <div class="bm-src"><strong>Bronnen:</strong> SGX $243,50 · spot ~$200 · Fitch $180 &nbsp;|&nbsp; <strong>Regel:</strong> marge=(PLV×0,75)−102 · breaker &lt;$150</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DALIO KRACHTEN -->
+  <div class="sec">
+    <span class="sec-kicker">03 · Macro</span>
+    <div class="sec-h">Dalio's krachten</div>
+    <div class="sec-note">Macro-first: elke positie hangt aan één structurele kracht. Versneller nu: olie-de-escalatie (Hormuz-premie loopt eruit), bovenop de week-risk-off (banenrapport → rente-hike-vrees).</div>
+    <div class="force-grid">
+      <div class="force f-gold">
+        <div class="force-k">Kracht 1 · C8=2</div>
+        <div class="force-h">Schuldmonetarisering</div>
+        <p class="force-t"><strong>Goud — IGLN, WPM · 20%.</strong> Deficits &gt;6% BBP, CB-aankopen 585t/kwartaal. Maar in een rente-gedreven risk-off dempt goud niet: reële yields omhoog.</p>
+      </div>
+      <div class="force f-red">
+        <div class="force-k">Kracht 2 · C8=2</div>
+        <div class="force-h">Structurele stagflatie</div>
+        <p class="force-t"><strong>Olie — RIG, TTE, OXY · 30%</strong> + <strong>kolen — HCC, AMR · 15%.</strong> Grootste bucket (45%). Brent $91 na de de-escalatie; broze wapenrust houdt de premie deels in leven.</p>
+      </div>
+      <div class="force f-blue">
+        <div class="force-k">Kracht 3 · C8 2/1</div>
+        <div class="force-h">Multipolaire fragmentatie</div>
+        <p class="force-t"><strong>Defensie — SAAB · 8%, EM-fintech — KSPI · 7%, China — TME, PROSY · 9%, koper — FCX · 4%.</strong> SAAB versterkt door FCAS-afblazing.</p>
+      </div>
+      <div class="force f-grey">
+        <div class="force-k">Geen rugwind · C8=1</div>
+        <div class="force-h">Software, value</div>
+        <p class="force-t"><strong>ADBE · 8%.</strong> Pabrai-value-bet, geen Dalio-tailwind. Bewust begrensd op 8% zolang C8=1. Q2-cijfers 11 juni.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ACTIEPUNTEN -->
+  <div class="sec">
+    <span class="sec-kicker">04 · Actiepunten</span>
+    <div class="sec-h">Openstaand voor de volgende sessie</div>
+    <ul class="acts">
+      <li><strong>RIG — Pabrai-trim (besloten 9 juni):</strong> −24,6% getrimd maar nog $135 mln / 20,4 mln aandelen aangehouden (2e positie), Valaris 100% verkocht. Gelezen als pre-close merger-arb → <strong>laten staan op 14%, geen wijziging</strong>. Een trim &gt;20% ná closing telt wél als signaal.</li>
+      <li><strong>Olie-de-escalatie = trend om te volgen:</strong> de zoveelste vrede-dag. Een patroon maakt scenario 2D (vredesdeal) waarschijnlijker, wat de 30% energie-weging op termijn uitholt. Niet vandaag een breuk, wel bewaken (WP-094 Hormuz-premie).</li>
+      <li><strong>ADBE — Q2-cijfers 11 juni:</strong> de echte breaker-test (betaalde abonnees / ARR). Bijkoop-trigger &lt;$240 nadert (~$248). Watch.</li>
+      <li><strong>Macro-ijkpunten:</strong> CPI 10 jun · ECB 11 jun · Fed/Warsh 16-17 jun. Hawkish → correctie kan kantelen; verzoenend → koersruis bevestigd.</li>
+      <li><strong>Verse PLV-kolenprijs (SGX):</strong> enige niet-ingevulde cel in de breaker-tabel; spot ~$207 vs future $243,50, bronkeuze nog te bevestigen.</li>
+      <li><strong>KSPI — geel vlaggetje:</strong> &gt;20% onder consensus + momentum gebroken. Geduld, niet bijkopen tot je weet of het kans of waarschuwing is.</li>
+      <li><strong>WPM:</strong> ~$111 onder de $120 bijkoop-drempel (25% MoS vs IV ~$160), maar IV leunt op hoog goud dat juist daalde. Geen automatische bijkoop.</li>
+      <li><strong>Pentagon-lijst (WP-047):</strong> BYD/Baidu/Alibaba op de national-security-lijst; Tencent/TME niet genoemd. Bij uitbreiding naar consumenten-tech → C8-toets TME/PROSY.</li>
+    </ul>
+  </div>
+
+  <footer>
+    <span>Dit is <strong>geen financieel advies</strong>. Uitsluitend informatief. 9 juni 2026: macro + dag-bewegingen via fetch_ticker_data.py (yfinance 17:09) + WebSearch; analistendoelen geverifieerd. Geen euro-bedragen, alleen %-wegingen en publieke koersen. Volledige thesis per positie in de deep dives.</span>
+    <span>Bronnen: yfinance · JPMorgan Global Research · Goldman Sachs · Morgan Stanley · UBS · Citi · Economist · Deep dives MNinvest-vault.</span>
+    <span class="brand">MNinvest · Pabrai Dhandho × Dalio Big Cycle</span>
+  </footer>
+
+</div>
+
+<script>
+(function () {
+  var heads = document.querySelectorAll(".pt-head");
+  for (var i = 0; i < heads.length; i++) {
+    heads[i].addEventListener("click", function () {
+      var open = this.classList.toggle("open");
+      var detail = this.nextElementSibling;
+      detail.classList.toggle("open", open);
+      this.setAttribute("aria-expanded", open ? "true" : "false");
+    });
+  }
+})();
+</script>
+
+</body>
+</html>

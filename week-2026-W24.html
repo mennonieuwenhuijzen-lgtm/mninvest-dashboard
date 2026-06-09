@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Week 24 · Nieuws &amp; effect per positie · MNinvest</title>
+<link rel="stylesheet" href="week.css">
+</head>
+<body>
+<div class="wrap">
+
+  <header class="masthead a1">
+    <div class="masthead-brand">MNinvest · Nieuwsarchief</div>
+    <h1>Week 24</h1>
+    <div class="masthead-sub">2 – 8 juni 2026 · nieuws &amp; effect per positie</div>
+    <div class="masthead-meta">
+      <span><strong>5</strong> bronnen</span>
+      <span><strong>6</strong> posities geraakt</span>
+      <span><strong>0</strong> trades</span>
+    </div>
+  </header>
+
+  <section class="intro a2">
+    <p>Een week gedomineerd door <b>Israël-Iran</b>: de eerste energie-site-hit binnen Iran sinds het april-bestand duwde Brent terug naar de hold-band ($94). Daarnaast een <b>tech-selloff</b> (NASDAQ &minus;4%, KOSPI &minus;8%) en twee structurele macro-stukken (Treasury-vraag verschuift weg van centrale banken; Duits-Frans defensie-onevenwicht). Geen enkele breaker geraakt, geen trade. <em>Tijdlijn-context: het bestand van 7/8 april hield nominaal stand (de-escalatie dreef Brent heel mei van $125 naar $92); deze 8-juni-hit is de eerste energie-site-escalatie sindsdien, geen hervatting na een breuk.</em> Hieronder per positie wat het nieuws deed.</p>
+  </section>
+
+  <div class="chartcard a2">
+    <h3>Koersverloop deze week</h3>
+    <div class="chart-sub">Genormaliseerd: % vanaf de eerste handelsdag. Klik een ticker in de legenda om te tonen of verbergen, beweeg over de lijn voor de exacte stand.</div>
+    <div class="chart-holder"><canvas id="weekChart"></canvas></div>
+    <div class="chart-note">Bron: yfinance daggegevens. Posities zoals gehouden in deze week (13 na de herbalancering).</div>
+  </div>
+
+  <span class="sector-label">Olie · ~30% van de portefeuille</span>
+  <div class="pos">
+    <div class="pos-head">
+      <div class="pos-id"><span class="pos-ticker">RIG · TTE · OXY</span><span class="pos-name">Transocean · TotalEnergies · Occidental</span></div>
+      <div class="pos-right"><span class="chip chip-w">14 + 10 + 6%</span><span class="chip chip-gold">Thesis bevestigd</span></div>
+    </div>
+    <div class="pos-verdict">Brent $94 = hold-band, C8 = 2 ongewijzigd, geen breaker. Risicopremie omhoog, geen positie-actie.</div>
+    <div class="news-item">
+      <div class="news-head">Israël-Iran heropleving — eerste energie-site-hit sinds april-bestand</div>
+      <div class="news-src">Economist world-in-brief + web · 8 juni</div>
+      <div class="news-effect">Israël trof een petrochemische fabriek bij Mahshahr; Iran belooft "een volle week aanvallen". Brent +1,3% naar <b>$94,34</b> (yfinance), briefing meldde bijna $97. <b>Effect:</b> risicopremie ↑, 2B-escalatiesignaal salienter, maar single-day-event met Trump-restraint-druk &mdash; geen kans-shift.</div>
+    </div>
+    <div class="news-item">
+      <div class="news-head">"The Hormuz Apprentice" — wat een half-af Iran-deal zou betekenen</div>
+      <div class="news-src">The Economist · 8 juni</div>
+      <div class="news-effect">Risico dat het interim-akkoord het eindstation wordt (Gaza-parallel). Trage/gefaseerde Hormuz-heropening. <b>Effect:</b> versterkt de "fysieke krapte blijft"-vloer onder de hold-band. Thesis bevestigd, geen actie.</div>
+    </div>
+    <div class="news-item">
+      <div class="news-head">OPEC+ verhoogt quota voor de 4e maand op rij</div>
+      <div class="news-src">Economist briefing · 8 juni</div>
+      <div class="news-effect"><b>Effect:</b> mild-bearish (tegenkracht op de olieprijs) &mdash; maar de oorlog drukt de groeps-export juist (feb 42 → april 33 mln b/d), wat het deels compenseert.</div>
+    </div>
+    <div class="news-item">
+      <div class="news-head">Eurozone-inflatie 3,2% j-o-j in mei, "owing to high oil prices"</div>
+      <div class="news-src">Economist (zijzin) · 8 juni</div>
+      <div class="news-effect"><b>Effect:</b> bevestigt de hoge-olie-omgeving, al ingeprijsd in het Brent-protocol (&gt;$90 = hold). Geen nieuwe thesis-info.</div>
+    </div>
+  </div>
+
+  <span class="sector-label">Goud · ~20% van de portefeuille</span>
+  <div class="pos">
+    <div class="pos-head">
+      <div class="pos-id"><span class="pos-ticker">WPM · IGLN</span><span class="pos-name">Wheaton Precious Metals · iShares Physical Gold</span></div>
+      <div class="pos-right"><span class="chip chip-w">10 + 10%</span><span class="chip chip-green">Structurele rugwind</span></div>
+    </div>
+    <div class="pos-verdict">Twee stukken die de goud-thesis structureel onderbouwen. Geen kans-shift (scenario 1A blijft 55%), hold.</div>
+    <div class="news-item">
+      <div class="news-head">"Debt of a salesman" — wie de Amerikaanse staatsschuld koopt</div>
+      <div class="news-src">The Economist · special report · 8 juni</div>
+      <div class="news-effect">Buitenlandse overheden houden nog maar <b>13%</b> van de Treasuries (laagste in 30 jaar); centrale banken kopen sinds 2022 ~<b>1.000 ton goud/jaar</b>; <b>49%</b> van reservebeheerders bezorgd over wapenisering (was 14% in 2023). <b>Effect:</b> structurele rugwind voor goud als reserve-alternatief.</div>
+    </div>
+    <div class="news-item">
+      <div class="news-head">Hormuz-limbo houdt de bom-vrees in stand</div>
+      <div class="news-src">The Economist · 8 juni</div>
+      <div class="news-effect"><b>Effect:</b> een half-af deal is mínder bearish voor goud dan een schoon einddeal &mdash; WPM-trigger-1 (de-escalatie) vuurt slechts gedeeltelijk. Goud-nuance, geen actie.</div>
+    </div>
+  </div>
+
+  <span class="sector-label">Defensie · ~8% van de portefeuille</span>
+  <div class="pos">
+    <div class="pos-head">
+      <div class="pos-id"><span class="pos-ticker">SAAB B</span><span class="pos-name">Saab AB</span></div>
+      <div class="pos-right"><span class="chip chip-w">7,8%</span><span class="chip chip-green">Mild-positief</span></div>
+    </div>
+    <div class="pos-verdict">Structurele Europese herbewapening bevestigt de C8 = 2-tailwind. Geen meetbare trigger, hold.</div>
+    <div class="news-item">
+      <div class="news-head">Frankrijks onbehagen over Duitse herbewapening</div>
+      <div class="news-src">The Economist · 8 juni</div>
+      <div class="news-effect">Duits defensiebudget → <b>€150 mrd in 2029</b> (~2× Frankrijk); het gezamenlijke jet-project <b>FCAS</b> (Dassault vs Airbus) dreigt te stranden. <b>Effect:</b> licht positief &mdash; hoe langer Europa geen eigen next-gen jet heeft, hoe langer Gripen E het enige productieklare niet-VS/VK-toestel blijft. Saab zelf niet genoemd.</div>
+    </div>
+    <div class="news-item">
+      <div class="news-head">NAVO schiet Russische drone neer boven Letland</div>
+      <div class="news-src">Economist briefing · 8 juni</div>
+      <div class="news-effect"><b>Effect:</b> mild-positief &mdash; drone-incursies in Oost-Europa nemen toe, houdt de herbewapening warm.</div>
+    </div>
+  </div>
+
+  <span class="sector-label">Software &amp; China-internet · risk-off</span>
+  <div class="pos">
+    <div class="pos-head">
+      <div class="pos-id"><span class="pos-ticker">ADBE · TME · PROSY</span><span class="pos-name">Adobe · Tencent Music · Prosus</span></div>
+      <div class="pos-right"><span class="chip chip-w">7,6 + 5 + 3,8%</span><span class="chip chip-blue">Risk-off, geen thesis-feit</span></div>
+    </div>
+    <div class="pos-verdict">Marktbrede selloff, geen bedrijfsspecifiek nieuws dat een thesis raakt. Hold.</div>
+    <div class="news-item">
+      <div class="news-head">Tech-selloff: NASDAQ &minus;4%, Aziatische tech volgt</div>
+      <div class="news-src">Economist briefing · 8 juni</div>
+      <div class="news-effect">KOSPI <b>&minus;8%</b> (handel gepauzeerd) door dumping Samsung + SK Hynix (AI-geheugenchips). <b>Effect:</b> risk-off-druk op de hele tech-sleeve, maar geen thesis-feit voor ADBE/TME/PROSY. <b>Let op:</b> KOSPI ≠ KSPI &mdash; Kaspi (Kazachse fintech) heeft een eigen cyclus en is hier níet geraakt.</div>
+    </div>
+  </div>
+
+  <span class="sector-label">Earnings-preview</span>
+  <div class="pos">
+    <div class="pos-head">
+      <div class="pos-id"><span class="pos-ticker">ADBE</span><span class="pos-name">Adobe · Q2 FY2026 op 11 juni</span></div>
+      <div class="pos-right"><span class="chip chip-blue">Breaker-test</span></div>
+    </div>
+    <div class="news-item">
+      <div class="news-head">Q2-cijfers 11 juni: guidance $6,43-6,48 mrd, EPS-verw. ~$5,01, ARR-test</div>
+      <div class="news-src">Barchart / GuruFocus · preview</div>
+      <div class="news-effect">Laatste ARR $26,06 mrd (+10,9%). De markt let op AI-commercialisatie en of de betaalde abonnees standhouden. <b>Effect:</b> eerste echte breaker-test van de positie (WP-ADBE-01); de bijkoop-trigger (&lt;$240 of fwd P/E &lt;9x) nadert. Geen actie tot de cijfers.</div>
+    </div>
+  </div>
+
+  <div class="untouched">
+    <h3>Niet geraakt deze week</h3>
+    <div class="untouched-row">
+      <b>HCC</b> &amp; <b>AMR</b> (kolen · 15%) — geen PLV-nieuws ·
+      <b>FCX</b> (koper · 3,8%) — geen nieuws ·
+      <b>KSPI</b> (fintech · 6,9%) — expliciet níet geraakt (KOSPI ≠ KSPI)
+    </div>
+  </div>
+
+  <div class="foot">
+    Bron: alle items uit <code>bronnen/2026-W24/</code> (5 stuks, verwerkt 8 juni 2026). Effecten overgenomen uit de "Portefeuille-relevantie"-velden per bronnotitie. Geen financieel advies — statische preview, percentages zijn weging van de aandelen-bucket.
+  </div>
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script>var WEEK_CHART = {"dates":["2026-06-02","2026-06-03","2026-06-04","2026-06-05","2026-06-08"],"series":{"RIG":[0.0,-1.12,0.0,-4.8,-1.68],"TTE":[0.0,0.2,0.86,-0.77,-0.22],"OXY":[0.0,0.93,-0.71,-3.66,-2.72],"HCC":[0.0,-3.99,-3.94,-9.39,-10.99],"AMR":[0.0,-2.35,-1.23,-7.12,-8.7],"FCX":[0.0,-1.51,-2.83,-11.64,-9.98],"KSPI":[0.0,-3.4,-5.9,-8.43,-8.15],"WPM":[0.0,-4.11,-1.44,-10.81,-10.24],"SAAB":[0.0,-1.41,0.17,0.67,1.31],"IGLN":[0.0,-1.45,-0.79,-3.54,-3.89],"ADBE":[0.0,-2.24,-1.41,-4.07,-6.16],"TME":[0.0,-3.89,-2.21,-4.52,-5.21],"PROSY":[0.0,-5.69,-5.69,-7.42,-7.32]}};</script>
+<script src="chart-init.js"></script>
+<script src="week-quiz.js"></script>
+</body>
+</html>

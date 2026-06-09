@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Het raamwerk: theorie en criteria · MNinvest</title>
+<style>
+:root {
+  --cream:    #f7f3ed;
+  --paper:    #fefcf8;
+  --ink:      #1a1714;
+  --ink2:     #3d3830;
+  --ink3:     #7a6f64;
+  --gold:     #b07d2a;
+  --gold-lt:  #e8d5a8;
+  --green:    #2a5c43;
+  --green-lt: #d4eadf;
+  --red:      #8b2331;
+  --red-lt:   #f0d8dc;
+  --blue:     #2b3f7c;
+  --blue-lt:  #d8dff0;
+  --rule:     #d8cfc4;
+  --mono:     'Courier New', Courier, monospace;
+  --serif:    Georgia, 'Times New Roman', serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { background: var(--cream); color: var(--ink); font-family: var(--serif); font-size: 16px; line-height: 1.75; -webkit-font-smoothing: antialiased; }
+
+/* PROGRESS BAR */
+.progress-bar { position: fixed; top: 0; left: 0; height: 3px; width: 0; background: var(--gold); z-index: 40; transition: width .08s linear; }
+
+/* TOP BAR */
+.guide-top { display: flex; align-items: center; gap: 14px; max-width: 1120px; margin: 0 auto; padding: 16px 28px 0; }
+.back-btn { display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px; background: var(--paper); border: 1px solid var(--rule); border-radius: 4px; color: var(--ink2); text-decoration: none; font-family: var(--mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; transition: border-color .2s, color .2s; }
+.back-btn:hover { border-color: var(--gold); color: var(--gold); }
+.guide-brand { margin-left: auto; font-family: var(--mono); font-size: 11px; letter-spacing: .26em; text-transform: uppercase; color: var(--ink3); }
+.guide-brand b { color: var(--ink); }
+
+/* HERO */
+.hero { max-width: 1120px; margin: 0 auto; padding: 30px 28px 26px; border-bottom: 2px solid var(--ink); }
+.hero-kicker { font-family: var(--mono); font-size: 11px; letter-spacing: .26em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; }
+.hero h1 { font-size: clamp(28px,5vw,44px); font-weight: 400; letter-spacing: -.025em; line-height: 1.12; margin-bottom: 12px; max-width: 17ch; }
+.hero-sub { font-size: 17px; color: var(--ink2); font-style: italic; max-width: 60ch; }
+.hero-hint { margin-top: 16px; font-family: var(--mono); font-size: 11px; letter-spacing: .04em; color: var(--ink3); }
+.hero-hint b { color: var(--green); font-weight: 700; }
+
+/* LAYOUT: rail + content */
+.layout { max-width: 1120px; margin: 0 auto; padding: 28px 28px 0; display: grid; grid-template-columns: 224px 1fr; gap: 44px; align-items: start; }
+.panels { min-width: 0; }
+
+/* RAIL (table of contents, scroll-spy) */
+.rail { position: sticky; top: 18px; }
+.rail-title { font-family: var(--mono); font-size: 10px; letter-spacing: .24em; text-transform: uppercase; color: var(--ink3); padding: 0 0 10px 16px; }
+.rail-inner { border-left: 2px solid var(--rule); }
+.rail-link { display: flex; gap: 9px; align-items: baseline; padding: 9px 0 9px 16px; margin-left: -2px; border-left: 2px solid transparent; text-decoration: none; color: var(--ink3); transition: color .15s, border-color .15s; }
+.rail-link:hover { color: var(--ink); }
+.rail-link.active { color: var(--ink); border-left-color: var(--gold); }
+.rail-num { font-family: var(--mono); font-size: 10px; font-weight: 700; color: var(--gold); min-width: 18px; flex-shrink: 0; }
+.rail-txt { font-size: 13px; line-height: 1.3; }
+.rail-cta { display: block; margin-top: 18px; text-align: center; background: var(--green); color: var(--paper); font-family: var(--mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; padding: 11px 12px; border-radius: 6px; text-decoration: none; cursor: pointer; transition: background .2s; }
+.rail-cta:hover { background: #1f4733; }
+
+/* PANELS (collapsible accordion) */
+.panel { background: var(--paper); border: 1px solid var(--rule); border-radius: 10px; margin-bottom: 18px; overflow: hidden; box-shadow: 0 1px 3px rgba(26,23,20,.05); }
+.panel-head { display: flex; align-items: center; gap: 14px; padding: 18px 22px; cursor: pointer; border-left: 4px solid var(--green); user-select: none; transition: background .15s; }
+.panel-head:hover { background: #faf6ef; }
+.panel-badge { font-family: var(--mono); font-size: 12px; font-weight: 700; color: var(--green); background: var(--green-lt); border-radius: 5px; padding: 5px 9px; min-width: 36px; text-align: center; flex-shrink: 0; }
+.panel-title { flex: 1; font-size: 18px; font-weight: 400; line-height: 1.3; }
+.panel-chev { font-family: var(--mono); font-size: 13px; color: var(--ink3); transition: transform .2s; flex-shrink: 0; }
+.panel.collapsed .panel-chev { transform: rotate(-90deg); }
+.panel-body { padding: 22px 24px 26px; border-top: 1px solid var(--rule); }
+.panel.collapsed .panel-body { display: none; }
+.panel.accent-red .panel-head { border-left-color: var(--red); }
+.panel.accent-red .panel-badge { color: var(--red); background: var(--red-lt); }
+.panel.accent-gold .panel-head { border-left-color: var(--gold); }
+.panel.accent-gold .panel-badge { color: #7a4515; background: var(--gold-lt); }
+
+/* TEXT BITS */
+.intro-text { font-size: 16px; line-height: 1.8; color: var(--ink2); }
+.intro-text + .intro-text { margin-top: 14px; }
+.intro-text strong { color: var(--ink); }
+.pull-quote { border-left: 3px solid var(--gold); padding: 14px 20px; margin: 26px 0 4px; background: rgba(176,125,42,.06); border-radius: 0 4px 4px 0; font-size: 15px; color: var(--ink2); font-style: italic; }
+
+/* VIDEO */
+.video-frame { border: 1px solid var(--rule); border-radius: 8px; overflow: hidden; background: var(--ink); box-shadow: 0 4px 18px rgba(26,23,20,.10); margin-top: 4px; }
+.video-frame video { width: 100%; display: block; }
+.video-cap { font-family: var(--mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink3); margin-top: 10px; text-align: center; }
+
+/* TWO BOSSES */
+.boss-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 22px; }
+.boss-card { background: var(--cream); border: 1px solid var(--rule); border-radius: 6px; padding: 20px 22px; }
+.boss-card.pabrai { border-top: 4px solid var(--gold); }
+.boss-card.dalio  { border-top: 4px solid var(--blue); }
+.boss-name { font-family: var(--mono); font-size: 12px; letter-spacing: .15em; text-transform: uppercase; color: var(--ink3); margin-bottom: 4px; }
+.boss-title { font-size: 19px; margin-bottom: 12px; }
+.boss-card.pabrai .boss-title { color: var(--gold); }
+.boss-card.dalio  .boss-title { color: var(--blue); }
+.boss-text { font-size: 14px; color: var(--ink2); line-height: 1.7; }
+
+/* POINTS BOX */
+.points-row { display: flex; gap: 12px; margin: 22px 0; flex-wrap: wrap; }
+.point-pill { flex: 1; min-width: 150px; border: 1px solid var(--rule); border-radius: 6px; padding: 16px 18px; background: var(--cream); }
+.point-num { font-family: var(--mono); font-size: 28px; font-weight: 700; line-height: 1; margin-bottom: 8px; }
+.point-pill.p0 .point-num { color: var(--red); }
+.point-pill.p1 .point-num { color: var(--gold); }
+.point-pill.p2 .point-num { color: var(--green); }
+.point-lbl { font-size: 14px; color: var(--ink2); }
+.point-lbl strong { display: block; color: var(--ink); margin-bottom: 2px; }
+
+.threshold-banner { background: var(--ink); color: var(--paper); border-radius: 6px; padding: 18px 22px; margin: 22px 0; text-align: center; }
+.threshold-banner .big { font-family: var(--mono); font-size: 32px; font-weight: 700; color: var(--gold-lt); }
+.threshold-banner .small { font-size: 14px; color: rgba(255,255,255,.75); margin-top: 4px; }
+
+/* CRITERIA LIST (source for flip-cards + breaker examples) */
+.crit-list { list-style: none; counter-reset: crit; }
+.crit-list li { padding: 14px 0 14px 46px; border-bottom: 1px solid var(--rule); position: relative; }
+.crit-list li::before { counter-increment: crit; content: 'C' counter(crit); position: absolute; left: 0; top: 14px; font-family: var(--mono); font-size: 11px; font-weight: 700; color: var(--gold); width: 34px; }
+.crit-list li:last-child { border-bottom: none; }
+.crit-q { font-size: 15px; color: var(--ink); font-weight: 700; }
+.crit-a { font-size: 14px; color: var(--ink2); line-height: 1.65; margin-top: 3px; }
+.crit-list li.veto { background: rgba(139,35,49,.05); border-radius: 6px; padding-left: 46px; padding-right: 16px; border-bottom: 1px solid var(--rule); }
+.crit-list li.veto::before { color: var(--red); }
+.veto-tag { display: inline-block; font-family: var(--mono); font-size: 9px; letter-spacing: .15em; text-transform: uppercase; background: var(--red-lt); color: var(--red); padding: 2px 8px; border-radius: 2px; margin-left: 8px; vertical-align: middle; }
+
+/* C8 BLOCK */
+.c8-hero { background: var(--cream); border: 2px solid var(--red); border-radius: 8px; padding: 24px; margin-top: 8px; }
+.c8-hero h3 { font-size: 20px; font-weight: 400; margin-bottom: 8px; }
+.c8-scale { display: grid; gap: 12px; margin-top: 20px; }
+.c8-step { display: flex; gap: 14px; align-items: flex-start; padding: 14px 16px; border-radius: 6px; }
+.c8-step.s0 { background: var(--red-lt); }
+.c8-step.s1 { background: var(--gold-lt); }
+.c8-step.s2 { background: var(--green-lt); }
+.c8-badge { flex-shrink: 0; font-family: var(--mono); font-size: 13px; font-weight: 700; padding: 5px 11px; border-radius: 3px; white-space: nowrap; }
+.c8-step.s0 .c8-badge { background: var(--red); color: var(--paper); }
+.c8-step.s1 .c8-badge { background: var(--gold); color: var(--ink); }
+.c8-step.s2 .c8-badge { background: var(--green); color: var(--paper); }
+.c8-step-text { font-size: 14px; line-height: 1.6; }
+.c8-step-text strong { display: block; margin-bottom: 2px; }
+.c8-step.s0 .c8-step-text strong { color: var(--red); }
+.c8-step.s1 .c8-step-text strong { color: #7a4515; }
+.c8-step.s2 .c8-step-text strong { color: var(--green); }
+
+/* KNOBS (MoS zones) */
+.knob-grid { display: grid; gap: 12px; margin-top: 20px; }
+.knob { display: flex; gap: 14px; align-items: flex-start; padding: 14px 16px; border: 1px solid var(--rule); border-left-width: 4px; border-radius: 0 6px 6px 0; background: var(--cream); }
+.knob.buy  { border-left-color: var(--green); }
+.knob.hold { border-left-color: var(--gold); }
+.knob.trim { border-left-color: var(--red); }
+.knob-name { flex-shrink: 0; width: 92px; font-family: var(--mono); font-size: 11px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; }
+.knob.buy  .knob-name { color: var(--green); }
+.knob.hold .knob-name { color: #7a4515; }
+.knob.trim .knob-name { color: var(--red); }
+.knob-text { font-size: 14px; color: var(--ink2); line-height: 1.6; }
+
+/* GLOSSARY */
+.gloss { width: 100%; border-collapse: collapse; font-size: 14px; }
+.gloss tr { border-bottom: 1px solid var(--rule); }
+.gloss tr:last-child { border-bottom: none; }
+.gloss td { padding: 12px 12px 12px 0; vertical-align: top; }
+.gloss td.term { font-family: var(--mono); font-size: 12px; font-weight: 700; color: var(--blue); white-space: nowrap; width: 130px; }
+.gloss td.def { color: var(--ink2); line-height: 1.6; }
+
+.callout { border-left: 3px solid var(--green); padding: 14px 18px; margin: 22px 0 4px; background: rgba(42,92,67,.05); border-radius: 0 4px 4px 0; font-size: 14px; color: var(--ink2); line-height: 1.7; }
+.callout strong { color: var(--green); }
+
+/* QUIZ (C8) - interactieve test-jezelf-module */
+.quiz { background: var(--cream); border: 1px solid var(--rule); border-top: 4px solid var(--gold); border-radius: 8px; padding: 24px 26px; margin-top: 4px; }
+.quiz-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 4px; }
+.quiz-kicker { font-family: var(--mono); font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: var(--gold); }
+.quiz-prog { font-family: var(--mono); font-size: 11px; color: var(--ink3); letter-spacing: .08em; }
+.quiz-q { font-size: 18px; color: var(--ink); font-weight: 700; margin: 14px 0 8px; line-height: 1.4; }
+.quiz-scenario { font-size: 15px; color: var(--ink2); line-height: 1.65; margin-bottom: 18px; }
+.quiz-opts { display: flex; gap: 10px; }
+.quiz-opt { flex: 1; cursor: pointer; border: 1px solid var(--rule); background: var(--paper); border-radius: 6px; padding: 14px 10px; text-align: center; font-family: var(--serif); }
+.quiz-opt:hover:not(:disabled) { border-color: var(--gold); }
+.quiz-opt .n { display: block; font-family: var(--mono); font-size: 24px; font-weight: 700; color: var(--ink); }
+.quiz-opt .l { display: block; font-size: 12px; color: var(--ink3); margin-top: 4px; }
+.quiz-opt:disabled { cursor: default; opacity: .8; }
+.quiz-opt.correct { background: var(--green-lt); border-color: var(--green); opacity: 1; }
+.quiz-opt.correct .n { color: var(--green); }
+.quiz-opt.wrong { background: var(--red-lt); border-color: var(--red); opacity: 1; }
+.quiz-opt.wrong .n { color: var(--red); }
+.quiz-fb { margin-top: 16px; padding: 14px 16px; border-radius: 6px; font-size: 14px; line-height: 1.6; }
+.quiz-fb strong { display: block; margin-bottom: 3px; }
+.quiz-fb.good { background: var(--green-lt); }
+.quiz-fb.good strong { color: var(--green); }
+.quiz-fb.bad { background: var(--red-lt); }
+.quiz-fb.bad strong { color: var(--red); }
+.quiz-fb .why { color: var(--ink2); }
+.quiz-actions { margin-top: 16px; display: flex; gap: 10px; align-items: center; }
+.quiz-btn { cursor: pointer; border: none; background: var(--green); color: var(--paper); font-family: var(--serif); font-size: 15px; padding: 11px 20px; border-radius: 5px; }
+.quiz-btn:hover { background: #1f4733; }
+.quiz-btn.ghost { background: transparent; border: 1px solid var(--rule); color: var(--ink2); }
+.quiz-btn.ghost:hover { background: var(--paper); border-color: var(--gold); }
+.quiz-result { text-align: center; padding: 6px 0 2px; }
+.quiz-result .score { font-family: var(--mono); font-size: 42px; font-weight: 700; color: var(--gold); line-height: 1.1; }
+.quiz-result .msg { font-size: 16px; color: var(--ink2); margin: 8px auto 18px; line-height: 1.6; max-width: 460px; }
+
+/* FLIP-CARDS (18 criteria) */
+.crit-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 4px; }
+.crit-prog { font-family: var(--mono); font-size: 11px; letter-spacing: .08em; color: var(--ink3); margin-top: 16px; text-align: center; }
+.flip-card { perspective: 1200px; cursor: pointer; min-height: 178px; }
+.flip-inner { position: relative; width: 100%; min-height: 178px; transition: transform .5s cubic-bezier(.4,0,.2,1); transform-style: preserve-3d; }
+.flip-card.flipped .flip-inner { transform: rotateY(180deg); }
+.flip-front, .flip-back { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; border: 1px solid var(--rule); border-radius: 8px; padding: 16px 18px; display: flex; flex-direction: column; }
+.flip-front { background: var(--cream); }
+.flip-back { background: var(--paper); transform: rotateY(180deg); }
+.flip-c { font-family: var(--mono); font-size: 11px; font-weight: 700; color: var(--gold); letter-spacing: .1em; margin-bottom: 8px; }
+.flip-q { font-family: var(--serif); font-size: 16px; font-weight: 700; color: var(--ink); line-height: 1.35; }
+.flip-hint { font-family: var(--mono); font-size: 9px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink3); margin-top: auto; padding-top: 12px; }
+.flip-a { font-family: var(--serif); font-size: 13.5px; color: var(--ink2); line-height: 1.5; }
+.flip-card.veto .flip-front, .flip-card.veto .flip-back { border-color: var(--gold); border-width: 2px; }
+.flip-card.veto .flip-c { color: var(--red); }
+.flip-veto-tag { display: inline-block; font-family: var(--mono); font-size: 9px; letter-spacing: .12em; text-transform: uppercase; background: var(--red-lt); color: var(--red); padding: 2px 7px; border-radius: 2px; margin-left: 6px; vertical-align: middle; }
+
+/* FOOTER */
+footer { background: var(--ink); color: rgba(255,255,255,.6); padding: 32px 0; margin-top: 30px; text-align: center; font-size: 12px; line-height: 1.7; }
+footer .wrap { max-width: 720px; margin: 0 auto; padding: 0 28px; display: flex; flex-direction: column; align-items: center; gap: 8px; }
+footer a { color: var(--gold-lt); text-decoration: none; border-bottom: 1px solid rgba(232,213,168,.4); }
+footer .brand { font-family: var(--mono); letter-spacing: .2em; font-size: 11px; color: var(--gold); text-transform: uppercase; margin-top: 8px; }
+
+/* RESPONSIVE */
+@media (max-width: 980px) {
+  .crit-cards { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 860px) {
+  .layout { grid-template-columns: 1fr; gap: 0; padding-top: 0; }
+  .rail { position: sticky; top: 0; z-index: 15; margin: 0 -28px 18px; padding: 8px 0; background: rgba(247,243,237,.96); border-bottom: 1px solid var(--rule); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
+  .rail-title { display: none; }
+  .rail-inner { border-left: none; display: flex; gap: 8px; overflow-x: auto; padding: 4px 28px; -webkit-overflow-scrolling: touch; }
+  .rail-link { flex: 0 0 auto; border: 1px solid var(--rule); border-radius: 20px; padding: 7px 13px; margin: 0; white-space: nowrap; }
+  .rail-link.active { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+  .rail-link.active .rail-num { color: var(--gold-lt); }
+  .rail-txt { font-size: 12px; }
+  .rail-cta { display: none; }
+}
+@media (max-width: 600px) {
+  .boss-grid { grid-template-columns: 1fr; }
+  .knob-name { width: auto; }
+  .crit-cards { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+
+<!-- TOP BAR -->
+<div class="guide-top">
+  <a class="back-btn" href="index.html">← Terug naar het dashboard</a>
+  <span class="guide-brand"><b>MNinvest</b> &nbsp;·&nbsp; Handleiding</span>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-kicker">Het raamwerk uitgelegd</div>
+  <h1>De theorie en de achttien criteria</h1>
+  <p class="hero-sub">Het denkkader van Pabrai en Dalio, plus elk criterium van het dashboard uitgelegd.</p>
+  <p class="hero-hint">Spring met de inhoud hiernaast naar een blok. <b>Klik op een koptekst</b> om een blok in te klappen als je het gelezen hebt.</p>
+</div>
+
+<!-- LAYOUT -->
+<div class="layout">
+
+  <!-- RAIL (table of contents) -->
+  <aside class="rail">
+    <div class="rail-title">Inhoud</div>
+    <nav class="rail-inner" id="rail">
+      <a class="rail-link" data-target="video"><span class="rail-num">▶</span><span class="rail-txt">Video</span></a>
+      <a class="rail-link" data-target="idee"><span class="rail-num">00</span><span class="rail-txt">Het idee</span></a>
+      <a class="rail-link" data-target="rapport"><span class="rail-num">01</span><span class="rail-txt">Rapportcijfer</span></a>
+      <a class="rail-link" data-target="checklist"><span class="rail-num">02</span><span class="rail-txt">De 18 vragen</span></a>
+      <a class="rail-link" data-target="c8"><span class="rail-num">03</span><span class="rail-txt">C8 vetorecht</span></a>
+      <a class="rail-link" data-target="test"><span class="rail-num">✓</span><span class="rail-txt">Test jezelf</span></a>
+      <a class="rail-link" data-target="mos"><span class="rail-num">04</span><span class="rail-txt">Veiligheidsmarge</span></a>
+      <a class="rail-link" data-target="breaker"><span class="rail-num">05</span><span class="rail-txt">De breaker</span></a>
+      <a class="rail-link" data-target="cash"><span class="rail-num">06</span><span class="rail-txt">Geen cash</span></a>
+      <a class="rail-link" data-target="woordenboek"><span class="rail-num">07</span><span class="rail-txt">Woordenboek</span></a>
+    </nav>
+    <a class="rail-cta" data-target="test">▶ Test jezelf</a>
+  </aside>
+
+  <!-- CONTENT PANELS -->
+  <main class="panels">
+
+    <!-- VIDEO -->
+    <section class="panel accent-gold" id="video">
+      <div class="panel-head"><span class="panel-badge">▶</span><span class="panel-title">Bekijk eerst: het raamwerk in 75 seconden</span><span class="panel-chev">▾</span></div>
+      <div class="panel-body">
+        <p class="intro-text" style="margin-bottom:20px">Liever kijken dan lezen? Deze korte video legt de twee bazen, het rapportcijfer, C8 en de veiligheidsmarge in beeld uit. Daaronder staat alles rustig nagelezen.</p>
+        <div class="video-frame">
+          <video controls muted playsinline preload="metadata" poster="theorie-poster.jpg">
+            <source src="theorie-explainer.mp4" type="video/mp4">
+            Je browser kan deze video niet tonen.
+          </video>
+        </div>
+        <div class="video-cap">MNinvest · het raamwerk in 75 seconden · geen geluid</div>
+      </div>
+    </section>
+
+    <!-- 0 · TWEE BAZEN -->
+    <section class="panel" id="idee">
+      <div class="panel-head"><span class="panel-badge">00</span><span class="panel-title">Twee bazen die het samen eens moeten zijn</span><span class="panel-chev">▾</span></div>
+      <div class="panel-body">
+        <p class="intro-text">Voor ik een aandeel koop, moet het langs twee bazen. De ene baas kijkt naar het bedrijf zelf. De andere baas kijkt naar de hele wereld eromheen. Pas als ze het allebei goedvinden, koop ik.</p>
+        <div class="boss-grid">
+          <div class="boss-card pabrai">
+            <div class="boss-name">Baas 1 · Mohnish Pabrai</div>
+            <div class="boss-title">Koop iets goeds, veel te goedkoop</div>
+            <p class="boss-text">Pabrai zoekt een sterk bedrijf dat tijdelijk in de uitverkoop ligt. Zijn regel: betaal weinig, krijg veel. Hij noemt dit "Dhandho". Heads I win, tails I don't lose much: als het goed gaat win je veel, als het misgaat verlies je weinig.</p>
+          </div>
+          <div class="boss-card dalio">
+            <div class="boss-name">Baas 2 · Ray Dalio</div>
+            <div class="boss-title">Waait de wereldwind mee?</div>
+            <p class="boss-text">Dalio kijkt naar het grote weer: schulden, inflatie, oorlog, wie de baas is in de wereld. Hij noemt dat de "Big Cycle". Sommige soorten bedrijven krijgen wind in de rug door dat weer. Andere wind tegen.</p>
+          </div>
+        </div>
+        <div class="pull-quote">Pabrai zegt of het bedrijf goed en goedkoop is. Dalio zegt of de tijd ervoor goed is. Allebei ja, dan pas koop ik.</div>
+      </div>
+    </section>
+
+    <!-- 1 · RAPPORTCIJFER -->
+    <section class="panel" id="rapport">
+      <div class="panel-head"><span class="panel-badge">01</span><span class="panel-title">Het rapportcijfer: achttien vragen, punten per vraag</span><span class="panel-chev">▾</span></div>
+      <div class="panel-body">
+        <p class="intro-text">Elk aandeel krijgt een rapport. Er zijn <strong>18 vragen</strong>. Op elke vraag geef ik 0, 1 of 2 punten. Net als op school: meer punten is beter.</p>
+        <div class="points-row">
+          <div class="point-pill p0"><div class="point-num">0</div><div class="point-lbl"><strong>Slecht</strong>hier zit een probleem</div></div>
+          <div class="point-pill p1"><div class="point-num">1</div><div class="point-lbl"><strong>Oké</strong>mag, maar niet sterk</div></div>
+          <div class="point-pill p2"><div class="point-num">2</div><div class="point-lbl"><strong>Top</strong>precies wat ik zoek</div></div>
+        </div>
+        <p class="intro-text">Alle punten tel je op. Het maximum is 36. Maar de grens om mee te mogen doen ligt op:</p>
+        <div class="threshold-banner">
+          <div class="big">14 / 18</div>
+          <div class="small">haalt het dat niet, dan koop ik het niet</div>
+        </div>
+        <p class="intro-text">In het dashboard zie je dus dingen staan als <strong>"17/18"</strong> (heel sterk, zoals Warrior Met Coal) of <strong>"13/18"</strong> (net te zwak, zoals Freeport). Dat is gewoon de optelsom van die 18 vragen.</p>
+      </div>
+    </section>
+
+    <!-- 2 · DE 18 VRAGEN -->
+    <section class="panel" id="checklist">
+      <div class="panel-head"><span class="panel-badge">02</span><span class="panel-title">De 18 vragen, elk in één zin</span><span class="panel-chev">▾</span></div>
+      <div class="panel-body">
+        <p class="intro-text" style="margin-bottom:6px">Dit zijn de vragen. In het dashboard heten ze C1 tot en met C18 (C is van "criterium", een chique woord voor "vraag op de checklist"). Klik een kaart om het antwoord te zien.</p>
+        <div id="critCards" class="crit-cards"></div>
+        <div class="crit-prog" id="critProg"></div>
+        <ul class="crit-list" id="critSource">
+          <li><div class="crit-q">Verdient het nu al echt geld?</div><div class="crit-a">Een bedrijf dat al jaren geld binnenharkt is veiliger dan een belofte voor later.</div></li>
+          <li><div class="crit-q">Snap ik het in drie zinnen?</div><div class="crit-a">Kan ik in drie simpele zinnen uitleggen hoe het bedrijf geld verdient? Zo nee, dan is het te ingewikkeld.</div></li>
+          <li><div class="crit-q">Is het nu goedkoop omdat mensen bang zijn?</div><div class="crit-a">De beste koopjes liggen er als iedereen angstig wegloopt. Angst maakt de prijs laag.</div></li>
+          <li><div class="crit-q">Heeft het een gracht eromheen?</div><div class="crit-a">Een "gracht" (moat) is iets dat concurrenten buitenhoudt: een sterk merk, een patent, een netwerk. Hoe breder, hoe beter.</div></li>
+          <li><div class="crit-q">Durf ik er veel geld in te stoppen?</div><div class="crit-a">Pabrai zegt: zet weinig grote weddenschappen op, niet veel kleine. Een topidee mag groot zijn (meer dan 10%).</div></li>
+          <li><div class="crit-q">Is er een vangnet als het misgaat?</div><div class="crit-a">Veel spaargeld en weinig schuld is een zacht kussen. Veel schuld is gevaarlijk.</div></li>
+          <li><div class="crit-q">Komt er iets aan dat de koers omhoog kan duwen?</div><div class="crit-a">Een "katalysator": een gebeurtenis met een datum, zoals een nieuwe fabriek of een fusie.</div></li>
+          <li class="veto"><div class="crit-q">Waait de wereldwind mee? <span class="veto-tag">Vetorecht</span></div><div class="crit-a">Dit is de baas-vraag van Dalio. Past het bedrijf bij het grote weer van nu? Hierover lees je hieronder veel meer, want deze vraag mag alles tegenhouden.</div></li>
+          <li><div class="crit-q">Heeft de baas zelf veel eigen aandelen?</div><div class="crit-a">Als de oprichter zijn eigen geld erin heeft zitten, vecht hij harder voor jouw geld ook.</div></li>
+          <li><div class="crit-q">Koop ik het echt met korting?</div><div class="crit-a">De "veiligheidsmarge" (MoS): koop je een euro voor 50 cent? Hoe groter de korting, hoe veiliger. Zie blok 04.</div></li>
+          <li><div class="crit-q">Hoe lang blijft het sterk?</div><div class="crit-a">Een mijn met grondstof voor 20 jaar, of een merk dat decennia meegaat, is beter dan iets dat zo op is.</div></li>
+          <li><div class="crit-q">Profiteert het ervan dat niemand anders durft?</div><div class="crit-a">In "vieze" sectoren (kolen, olie) stopt bijna niemand nog geld. Wie er wél zit, heeft minder concurrentie en hogere prijzen.</div></li>
+          <li><div class="crit-q">Heeft het een plek-voordeel?</div><div class="crit-a">Vlak bij de klant of bij een haven zitten scheelt transportkosten. Dat is een blijvend voordeel.</div></li>
+          <li><div class="crit-q">Hoe diep kan het vallen in het ergste geval?</div><div class="crit-a">Stel alles gaat fout: hou je dan nog iets over (gebouwen, cash, grond)? Dat beschermt tegen een totaal verlies.</div></li>
+          <li><div class="crit-q">Doen slimme beleggers het ook?</div><div class="crit-a">"Clonen": als Buffett of Pabrai er ook in zitten, is het idee al door knappe koppen getest.</div></li>
+          <li><div class="crit-q">Heeft het management het al vaker goed gedaan?</div><div class="crit-a">Een bewezen team dat eerder leverde, geeft vertrouwen voor de toekomst.</div></li>
+          <li><div class="crit-q">Kan de overheid het stukmaken?</div><div class="crit-a">Nieuwe regels, belastingen of sancties kunnen een bedrijf raken. Hoe rustiger het land, hoe beter.</div></li>
+          <li><div class="crit-q">Hoe deed het het in vorige crises?</div><div class="crit-a">Een bedrijf dat eerdere stormen goed doorstond, doet dat de volgende keer waarschijnlijk weer.</div></li>
+        </ul>
+        <p class="intro-text" style="margin-top:18px">De eerste 9 vragen komen van Pabrai zelf. De andere 9 zijn er later bij gemaakt voor de eigen portefeuille (grondstoffen, vieze sectoren, staartrisico).</p>
+      </div>
+    </section>
+
+    <!-- 3 · C8 -->
+    <section class="panel accent-red" id="c8">
+      <div class="panel-head"><span class="panel-badge">03</span><span class="panel-title">C8: de baas met een rode kaart</span><span class="panel-chev">▾</span></div>
+      <div class="panel-body">
+        <p class="intro-text">Eén vraag is machtiger dan alle andere: <strong>C8</strong>, de wereldwind van Dalio. C8 mag in zijn eentje "nee" zeggen, ook al staan alle andere vragen op groen. Dat heet <strong>vetorecht</strong>: een rode kaart waar niemand tegenin mag.</p>
+        <div class="c8-hero">
+          <h3>Wat C8 meet</h3>
+          <p class="intro-text" style="font-size:15px">C8 vraagt: past dit bedrijf bij het grote weer van nu? Het weer van nu is volgens Dalio: hoge schulden, geld bijdrukken, inflatie, oorlog, en een wereld die opsplitst (VS tegen China). Bedrijven in goud, olie, kolen en defensie krijgen daardoor wind in de rug.</p>
+          <p class="intro-text" style="font-size:15px;margin-top:12px">C8 krijgt net als elke vraag 0, 1 of 2 punten. Maar de betekenis is veel zwaarder:</p>
+          <div class="c8-scale">
+            <div class="c8-step s0">
+              <span class="c8-badge">C8 = 0</span>
+              <div class="c8-step-text"><strong>Rode kaart, niet kopen</strong>De wereldwind waait tégen. Wat de andere 17 vragen ook zeggen: dit aandeel komt er niet in, of gaat eruit. Dit is het vetorecht.</div>
+            </div>
+            <div class="c8-step s1">
+              <span class="c8-badge">C8 = 1</span>
+              <div class="c8-step-text"><strong>Twijfel, klein houden</strong>De wind helpt niet echt mee, maar werkt ook niet tegen. Mag wel, maar dan met een kleine inzet. In het dashboard zie je C8=1 bv. bij Adobe en Prosus: bewust klein gehouden.</div>
+            </div>
+            <div class="c8-step s2">
+              <span class="c8-badge">C8 = 2</span>
+              <div class="c8-step-text"><strong>Wind vol in de rug</strong>Dit past precies bij de tijd van nu. Minstens twee van Dalio's grote krachten helpen mee. Zo staat goud (IGLN), kolen (HCC) en defensie (Saab) op C8=2.</div>
+            </div>
+          </div>
+        </div>
+        <div class="callout"><strong>Kort:</strong> "C8=2" in het dashboard betekent dus simpelweg: de wereld zit nú mee voor dit soort bedrijf. "C8=0" betekent: stoppen, hoe goed het bedrijf zelf ook is.</div>
+      </div>
+    </section>
+
+    <!-- 3b · C8-QUIZ -->
+    <section class="panel accent-gold" id="test">
+      <div class="panel-head"><span class="panel-badge">✓</span><span class="panel-title">Test jezelf: welke C8-score zou jij geven?</span><span class="panel-chev">▾</span></div>
+      <div class="panel-body">
+        <p class="intro-text">Drie korte gevallen. Kies 0, 1 of 2 en zie meteen waarom. Even zelf oefenen blijft beter hangen dan alleen lezen.</p>
+        <div class="quiz" id="c8quiz">
+          <div class="quiz-head">
+            <span class="quiz-kicker">C8 · de wereldwind</span>
+            <span class="quiz-prog" id="qProg"></span>
+          </div>
+          <div id="qBody"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4 · MoS + KNOPPEN -->
+    <section class="panel" id="mos">
+      <div class="panel-head"><span class="panel-badge">04</span><span class="panel-title">De veiligheidsmarge en de drie knoppen</span><span class="panel-chev">▾</span></div>
+      <div class="panel-body">
+        <p class="intro-text">Een goed bedrijf is nog geen goede koop. Je moet het ook goedkoop krijgen. De <strong>veiligheidsmarge</strong> (in het dashboard: MoS, van "margin of safety") is het verschil tussen wat iets echt waard is en wat je betaalt.</p>
+        <p class="intro-text">Stel: een aandeel is eigenlijk 100 euro waard, maar je koopt het voor 50 euro. Dan heb je 50% veiligheidsmarge. Gaat er iets mis, dan heb je een buffer. Pabrai wil het liefst minstens 50% korting.</p>
+        <p class="intro-text">Wat je dan doet, hangt af van hoe groot die korting is. Drie knoppen:</p>
+        <div class="knob-grid">
+          <div class="knob buy"><div class="knob-name">Bijkopen</div><div class="knob-text">Grote korting (meer dan 40%). Goedkoop én goed, dus actief inslaan.</div></div>
+          <div class="knob hold"><div class="knob-name">Vasthouden</div><div class="knob-text">Redelijke korting (20 tot 40%). Lekker houden wat je hebt, alleen bijkopen als de koers flink zakt.</div></div>
+          <div class="knob trim"><div class="knob-name">Afbouwen</div><div class="knob-text">Weinig of geen korting (onder 20%), of de koers is boven de echte waarde. Niet bijkopen, misschien wat verkopen.</div></div>
+        </div>
+        <div class="callout"><strong>Belangrijke regel:</strong> een koers die zakt is op zichzelf nóóit een reden om te verkopen. Ik verkoop alleen als de prijs de echte waarde inhaalt, of als het verhaal achter het bedrijf echt kapot is.</div>
+      </div>
+    </section>
+
+    <!-- 5 · BREAKER -->
+    <section class="panel" id="breaker">
+      <div class="panel-head"><span class="panel-badge">05</span><span class="panel-title">De "breaker": wanneer ik opnieuw moet nadenken</span><span class="panel-chev">▾</span></div>
+      <div class="panel-body">
+        <p class="intro-text">Bij elk aandeel spreek ik vooraf één duidelijke alarm-voorwaarde af. Dat heet een <strong>breaker</strong> (thesis-breker). Het is een vooraf bepaald lijntje. Wordt dat lijntje overschreden, dan is mijn reden om het te bezitten misschien stuk en moet ik alles opnieuw bekijken.</p>
+        <p class="intro-text">Voorbeelden uit het dashboard:</p>
+        <ul class="crit-list" style="counter-reset:none">
+          <li style="padding-left:0"><div class="crit-q">Transocean (olie): breaker = Brent-olie blijvend onder 65 dollar</div><div class="crit-a">Zo lang olie duur is (nu 97 dollar), verdient het bedrijf goed. Zakt olie te ver, dan gaat het alarm af.</div></li>
+          <li style="padding-left:0"><div class="crit-q">Warrior Met Coal (kolen): breaker = kolenprijs onder 150 dollar per ton</div><div class="crit-a">De prijs staat nu rond 230. Ver van het alarm, dus rustig.</div></li>
+          <li style="padding-left:0"><div class="crit-q">Goud (IGLN): breaker = echte rente blijvend boven +2%</div><div class="crit-a">Als sparen ineens veel oplevert, wordt goud minder aantrekkelijk. Dat zou het alarm zijn.</div></li>
+        </ul>
+        <div class="callout"><strong>Het verschil met paniek:</strong> een breaker gaat over fundamenten, niet over een schrik-dag op de beurs. "Niet geraakt" in het dashboard betekent: alles rustig, het verhaal staat nog overeind.</div>
+      </div>
+    </section>
+
+    <!-- 6 · CASH -->
+    <section class="panel" id="cash">
+      <div class="panel-head"><span class="panel-badge">06</span><span class="panel-title">Waarom bijna geen cash en geen obligaties</span><span class="panel-chev">▾</span></div>
+      <div class="panel-body">
+        <p class="intro-text">Je vraagt je misschien af waarom er nergens "sparen" of "obligaties" in de portefeuille zit. Dat is Dalio's redenering, simpel gezegd:</p>
+        <p class="intro-text">Als overheden enorme schulden hebben, gaan ze geld bijdrukken. Door dat bijdrukken wordt geld elk jaar een beetje minder waard (inflatie). Spaargeld en obligaties leveren dan minder op dan de inflatie. Je wordt er stiekem armer van.</p>
+        <p class="intro-text">Dalio's advies in zo'n tijd: koop liever echte spullen die hun waarde houden, zoals goud, grondstoffen en aandelen van bedrijven met echte bezittingen. Daarom staat de portefeuille vol met goud, olie, kolen en metaal, en niet met spaargeld.</p>
+        <div class="pull-quote">"In plaats van minder te krijgen dan de inflatie: koop spullen die de inflatie bijhouden of verslaan." vrij naar Ray Dalio</div>
+      </div>
+    </section>
+
+    <!-- 7 · WOORDENBOEK -->
+    <section class="panel" id="woordenboek">
+      <div class="panel-head"><span class="panel-badge">07</span><span class="panel-title">Mini-woordenboek: alle jargon vertaald</span><span class="panel-chev">▾</span></div>
+      <div class="panel-body">
+        <table class="gloss">
+          <tr><td class="term">Dhandho</td><td class="def">Pabrai's manier van beleggen: koop iets goeds heel goedkoop, zodat je veel kunt winnen en weinig kunt verliezen.</td></tr>
+          <tr><td class="term">Big Cycle</td><td class="def">Dalio's idee dat de wereld in lange golven beweegt: opkomst, bloei, te veel schuld, geld drukken, neergang, nieuwe orde.</td></tr>
+          <tr><td class="term">C1 ... C18</td><td class="def">De 18 vragen op de checklist. "C" staat voor criterium (een chique woord voor checklist-vraag).</td></tr>
+          <tr><td class="term">C8</td><td class="def">De wereldwind-vraag van Dalio. De belangrijkste, met vetorecht.</td></tr>
+          <tr><td class="term">C8 = 0 / 1 / 2</td><td class="def">Wind tegen (rode kaart) / twijfel / wind vol in de rug.</td></tr>
+          <tr><td class="term">Vetorecht</td><td class="def">Het recht om alleen alles tegen te houden. Alleen C8 heeft dit.</td></tr>
+          <tr><td class="term">14/18</td><td class="def">De grens. Een aandeel moet minstens 14 van de 18 punten halen om mee te mogen doen.</td></tr>
+          <tr><td class="term">MoS</td><td class="def">Margin of Safety, de veiligheidsmarge. Hoeveel korting je krijgt op de echte waarde.</td></tr>
+          <tr><td class="term">IV</td><td class="def">Intrinsic Value, de echte waarde. Wat een bedrijf volgens de berekening écht waard is, los van de dagkoers.</td></tr>
+          <tr><td class="term">Breaker</td><td class="def">De vooraf afgesproken alarm-voorwaarde. Wordt die geraakt, dan opnieuw nadenken.</td></tr>
+          <tr><td class="term">Moat</td><td class="def">Gracht. Iets dat concurrenten buitenhoudt: merk, patent, netwerk, locatie.</td></tr>
+          <tr><td class="term">Katalysator</td><td class="def">Een gebeurtenis met een datum die de koers omhoog kan duwen (fusie, nieuwe fabriek, cijfers).</td></tr>
+          <tr><td class="term">Consensus</td><td class="def">Het gemiddelde oordeel van alle analisten samen: koersdoel en koop/houd/verkoop-advies.</td></tr>
+          <tr><td class="term">Gap</td><td class="def">Het gat tussen de huidige koers en wat analisten denken dat hij waard wordt. "+39%" = analisten zien 39% omhoog.</td></tr>
+          <tr><td class="term">Fwd P/E</td><td class="def">De prijs gedeeld door de verwachte winst. Laag = goedkoop, hoog = duur. Saab op 54 is duur, Adobe op 10 is goedkoop.</td></tr>
+          <tr><td class="term">Trim</td><td class="def">Een stukje verkopen, niet alles. Wat afromen.</td></tr>
+          <tr><td class="term">Stagflatie</td><td class="def">Lelijke combinatie: hoge inflatie én weinig groei tegelijk. Goed voor grondstoffen, slecht voor sparen.</td></tr>
+        </table>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<footer>
+  <div class="wrap">
+    <span>Deze pagina legt het raamwerk uit. De cijfers en posities staan op het <a href="index.html">dashboard</a>.</span>
+    <span>Dit is <strong style="color:rgba(255,255,255,.9)">geen financieel advies</strong>. Uitsluitend informatief.</span>
+    <span class="brand">MNinvest · Pabrai Dhandho × Dalio Big Cycle</span>
+  </div>
+</footer>
+
+<script>
+/* ---- C8-QUIZ ---- */
+(function () {
+  var QUESTIONS = [
+    {
+      q: "Goud (IGLN). Welke C8-score?",
+      scenario: "Het wereldweer nu: hoge schulden, centrale banken drukken geld bij, inflatie, en een wereld die opsplitst. Goud profiteert van minstens twee van die krachten tegelijk.",
+      answer: 2,
+      good: "Klopt. Minstens twee van Dalio's krachten helpen mee, dus wind vol in de rug. Zo staan goud, kolen en defensie op C8 = 2.",
+      bad: "Niet helemaal. Minstens twee krachten helpen goud mee, dus dit is wind vol in de rug: C8 = 2."
+    },
+    {
+      q: "Adobe (software). Welke C8-score?",
+      scenario: "Een sterk bedrijf, aantrekkelijk geprijsd. Maar het grote wereldweer (inflatie, grondstoffen, fragmentatie) helpt software niet echt mee, en werkt ook niet tegen.",
+      answer: 1,
+      good: "Juist. Geen macro-rugwind, maar ook geen tegenwind. Mag wel, maar bewust klein gehouden. Zo staan Adobe en Prosus op C8 = 1.",
+      bad: "Niet helemaal. De wind helpt niet mee maar werkt ook niet tegen: dat is twijfel, klein houden. C8 = 1."
+    },
+    {
+      q: "Een wereldhandel-bedrijf. Welke C8-score?",
+      scenario: "Stel: een bedrijf dat volledig leunt op goedkope wereldhandel en jarenlang lage rente. In een tijd van fragmentatie, hoge rente en aanhoudende inflatie waait alles tegen.",
+      answer: 0,
+      good: "Precies. De wereldwind waait tégen. Wat de andere 17 vragen ook zeggen: dit is de rode kaart, het vetorecht. C8 = 0 betekent niet kopen.",
+      bad: "Kijk nog eens: de wind waait hier tégen. Dat is de rode kaart met vetorecht. C8 = 0, niet kopen."
+    }
+  ];
+  var LABELS = ["rode kaart", "twijfel", "vol in de rug"];
+  var KEY = "mninvest_c8quiz_best";
+
+  var body = document.getElementById("qBody");
+  var prog = document.getElementById("qProg");
+  if (!body) return;
+  var idx = 0, score = 0, answered = false;
+
+  function renderQuestion() {
+    answered = false;
+    var item = QUESTIONS[idx];
+    prog.textContent = "Vraag " + (idx + 1) + " van " + QUESTIONS.length;
+    var opts = "";
+    for (var i = 0; i < 3; i++) {
+      opts += '<button class="quiz-opt" data-v="' + i + '">' +
+        '<span class="n">' + i + '</span><span class="l">' + LABELS[i] + '</span></button>';
+    }
+    body.innerHTML =
+      '<div class="quiz-q">' + item.q + '</div>' +
+      '<div class="quiz-scenario">' + item.scenario + '</div>' +
+      '<div class="quiz-opts">' + opts + '</div>' +
+      '<div id="qFb"></div>' +
+      '<div id="qAct"></div>';
+    var buttons = body.querySelectorAll(".quiz-opt");
+    for (var b = 0; b < buttons.length; b++) {
+      buttons[b].addEventListener("click", onAnswer);
+    }
+  }
+
+  function onAnswer(e) {
+    if (answered) return;
+    answered = true;
+    var chosen = parseInt(e.currentTarget.getAttribute("data-v"), 10);
+    var item = QUESTIONS[idx];
+    var correct = chosen === item.answer;
+    if (correct) score++;
+    var buttons = body.querySelectorAll(".quiz-opt");
+    for (var b = 0; b < buttons.length; b++) {
+      var v = parseInt(buttons[b].getAttribute("data-v"), 10);
+      buttons[b].disabled = true;
+      if (v === item.answer) buttons[b].classList.add("correct");
+      else if (v === chosen) buttons[b].classList.add("wrong");
+    }
+    var fb = document.getElementById("qFb");
+    fb.className = "quiz-fb " + (correct ? "good" : "bad");
+    fb.innerHTML = "<strong>" + (correct ? "Goed" : "Net niet") + "</strong>" +
+      '<span class="why">' + (correct ? item.good : item.bad) + "</span>";
+    var act = document.getElementById("qAct");
+    act.className = "quiz-actions";
+    var last = idx === QUESTIONS.length - 1;
+    act.innerHTML = '<button class="quiz-btn" id="qNext">' +
+      (last ? "Bekijk je resultaat" : "Volgende vraag →") + "</button>";
+    document.getElementById("qNext").addEventListener("click", next);
+  }
+
+  function next() {
+    if (idx < QUESTIONS.length - 1) { idx++; renderQuestion(); }
+    else renderResult();
+  }
+
+  function renderResult() {
+    var best = parseInt(localStorage.getItem(KEY) || "0", 10);
+    if (score > best) { best = score; try { localStorage.setItem(KEY, String(score)); } catch (err) {} }
+    prog.textContent = "Klaar";
+    var msg = score === 3 ? "Top, je snapt het vetorecht volledig. C8 mag in zijn eentje nee zeggen."
+      : score === 2 ? "Goed bezig, je hebt het idee te pakken. Eén geval nog even nalezen hierboven."
+      : "Lees het C8-blok hierboven nog eens rustig, en probeer het opnieuw. Oefenen is juist het punt.";
+    body.innerHTML =
+      '<div class="quiz-result">' +
+        '<div class="score">' + score + " / 3</div>" +
+        '<div class="msg">' + msg + "</div>" +
+        '<div class="quiz-actions" style="justify-content:center">' +
+          '<button class="quiz-btn ghost" id="qRetry">Opnieuw proberen</button>' +
+        "</div>" +
+        (best > 0 ? '<div class="quiz-prog" style="margin-top:14px">Beste score: ' + best + ' / 3</div>' : "") +
+      "</div>";
+    document.getElementById("qRetry").addEventListener("click", function () {
+      idx = 0; score = 0; renderQuestion();
+    });
+  }
+
+  renderQuestion();
+})();
+</script>
+
+<script>
+/* ---- FLIP-CARDS (18 criteria) ---- */
+(function () {
+  var source = document.getElementById("critSource");
+  var grid = document.getElementById("critCards");
+  var prog = document.getElementById("critProg");
+  if (!source || !grid) return;
+
+  var items = source.querySelectorAll("li");
+  var flipped = {};
+  var total = items.length;
+
+  function updateProg() {
+    var n = Object.keys(flipped).length;
+    prog.textContent = "Omgedraaid: " + n + " van " + total +
+      (n === total ? "  ·  alle vragen bekeken" : "");
+  }
+
+  for (var i = 0; i < items.length; i++) {
+    var li = items[i];
+    var isVeto = li.classList.contains("veto");
+    // Vraagtekst zonder de eventuele vetorecht-span.
+    var qNode = li.querySelector(".crit-q").cloneNode(true);
+    var tag = qNode.querySelector(".veto-tag");
+    if (tag) tag.remove();
+    var qText = qNode.textContent.trim();
+    var aText = li.querySelector(".crit-a").textContent.trim();
+    var label = "C" + (i + 1);
+
+    var card = document.createElement("div");
+    card.className = "flip-card" + (isVeto ? " veto" : "");
+    card.setAttribute("tabindex", "0");
+    card.setAttribute("role", "button");
+    card.dataset.idx = String(i);
+    card.innerHTML =
+      '<div class="flip-inner">' +
+        '<div class="flip-front">' +
+          '<span class="flip-c">' + label +
+            (isVeto ? '<span class="flip-veto-tag">Vetorecht</span>' : "") + "</span>" +
+          '<span class="flip-q">' + qText + "</span>" +
+          '<span class="flip-hint">klik voor het antwoord</span>' +
+        "</div>" +
+        '<div class="flip-back">' +
+          '<span class="flip-c">' + label + "</span>" +
+          '<span class="flip-a">' + aText + "</span>" +
+        "</div>" +
+      "</div>";
+
+    (function (c) {
+      function toggle() {
+        c.classList.toggle("flipped");
+        flipped[c.dataset.idx] = true;
+        updateProg();
+      }
+      c.addEventListener("click", toggle);
+      c.addEventListener("keydown", function (e) {
+        if (e.key === "Enter" || e.key === " ") { e.preventDefault(); toggle(); }
+      });
+    })(card);
+
+    grid.appendChild(card);
+  }
+
+  source.style.display = "none";
+  updateProg();
+})();
+</script>
+
+<script>
+/* ---- ACCORDION + INHOUDSRAIL (scroll-spy) + VOORTGANGSBALK ---- */
+(function () {
+  var panels = Array.prototype.slice.call(document.querySelectorAll(".panel"));
+  var links  = Array.prototype.slice.call(document.querySelectorAll(".rail-link"));
+  var ctas   = Array.prototype.slice.call(document.querySelectorAll(".rail-cta"));
+  var bar    = document.getElementById("progressBar");
+
+  /* Accordion: klik op de kop om in/uit te klappen */
+  panels.forEach(function (p) {
+    var head = p.querySelector(".panel-head");
+    if (!head) return;
+    head.addEventListener("click", function () {
+      p.classList.toggle("collapsed");
+      onScroll();
+    });
+  });
+
+  function jumpTo(id) {
+    var t = document.getElementById(id);
+    if (!t) return;
+    t.classList.remove("collapsed");
+    var y = t.getBoundingClientRect().top + (window.pageYOffset || document.documentElement.scrollTop) - 12;
+    window.scrollTo({ top: y, behavior: "smooth" });
+  }
+
+  links.concat(ctas).forEach(function (l) {
+    l.addEventListener("click", function (e) {
+      e.preventDefault();
+      jumpTo(l.dataset.target);
+    });
+  });
+
+  function onScroll() {
+    var st = window.pageYOffset || document.documentElement.scrollTop;
+    var h = (document.documentElement.scrollHeight - window.innerHeight);
+    bar.style.width = (h > 0 ? Math.min(100, (st / h) * 100) : 0) + "%";
+
+    var mid = st + window.innerHeight * 0.28;
+    var cur = panels.length ? panels[0].id : null;
+    for (var i = 0; i < panels.length; i++) {
+      if (panels[i].offsetTop <= mid) cur = panels[i].id;
+    }
+    links.forEach(function (l) {
+      l.classList.toggle("active", l.dataset.target === cur);
+    });
+  }
+
+  window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("resize", onScroll);
+  onScroll();
+})();
+</script>
+
+</body>
+</html>

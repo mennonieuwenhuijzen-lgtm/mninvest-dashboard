@@ -1,0 +1,32 @@
+{
+  "_comment": "Config voor refresh_live.py. Posities = wat op het dashboard staat (gewichten 2026-06-09). yf = Yahoo-symbool. Koers en dagmutatie komen live van yfinance; valuta wordt door yfinance zelf gerapporteerd (geen handmatige valuta-aannames).",
+  "positions": [
+    { "ticker": "RIG",   "yf": "RIG",        "name": "Transocean",            "groep": "Olie",      "weight": "14%" },
+    { "ticker": "HCC",   "yf": "HCC",        "name": "Warrior Met Coal",      "groep": "Kolen",     "weight": "11%" },
+    { "ticker": "WPM",   "yf": "WPM",        "name": "Wheaton Precious Metals","groep": "Goud",     "weight": "10%" },
+    { "ticker": "IGLN",  "yf": "IGLN.L",     "name": "iShares Physical Gold", "groep": "Goud",      "weight": "10%" },
+    { "ticker": "TTE",   "yf": "TTE",        "name": "TotalEnergies",         "groep": "Olie",      "weight": "10%" },
+    { "ticker": "ADBE",  "yf": "ADBE",       "name": "Adobe",                 "groep": "Software",  "weight": "8%" },
+    { "ticker": "SAAB",  "yf": "SAAB-B.ST",  "name": "Saab AB",               "groep": "Defensie",  "weight": "8%" },
+    { "ticker": "KSPI",  "yf": "KSPI",       "name": "Kaspi.kz",              "groep": "EM fintech","weight": "7%" },
+    { "ticker": "OXY",   "yf": "OXY",        "name": "Occidental Petroleum",  "groep": "Olie",      "weight": "6%" },
+    { "ticker": "TME",   "yf": "TME",        "name": "Tencent Music",         "groep": "China",     "weight": "5%" },
+    { "ticker": "AMR",   "yf": "AMR",        "name": "Alpha Metallurgical",   "groep": "Kolen",     "weight": "4%" },
+    { "ticker": "FCX",   "yf": "FCX",        "name": "Freeport-McMoRan",      "groep": "Koper",     "weight": "3,5%" },
+    { "ticker": "PROSY", "yf": "PROSY",      "name": "Prosus N.V.",           "groep": "China",     "weight": "3,5%" }
+  ],
+  "macro": [
+    { "ticker": "Brent",   "yf": "BZ=F",    "name": "Brent olie" },
+    { "ticker": "WTI",     "yf": "CL=F",    "name": "WTI olie" },
+    { "ticker": "Goud",    "yf": "GC=F",    "name": "Goud spot" },
+    { "ticker": "Koper",   "yf": "HG=F",    "name": "Koper" },
+    { "ticker": "VIX",     "yf": "^VIX",    "name": "VIX angst-index" },
+    { "ticker": "US10Y",   "yf": "^TNX",    "name": "US 10-jaars rente" },
+    { "ticker": "Bitcoin", "yf": "BTC-USD", "name": "Bitcoin" }
+  ],
+  "fx": [
+    { "ticker": "EUR/USD", "yf": "EURUSD=X", "name": "Euro / Dollar" },
+    { "ticker": "EUR/SEK", "yf": "EURSEK=X", "name": "Euro / Kroon" },
+    { "ticker": "DXY",     "yf": "DX-Y.NYB", "name": "Dollar-index" }
+  ]
+}

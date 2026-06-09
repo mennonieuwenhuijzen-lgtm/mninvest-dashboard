@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Week 18 · Nieuws &amp; effect per positie · MNinvest</title>
+<link rel="stylesheet" href="week.css">
+</head>
+<body>
+<div class="wrap">
+
+  <header class="masthead a1">
+    <div class="masthead-brand">MNinvest · Nieuwsarchief</div>
+    <h1>Week 18</h1>
+    <div class="masthead-sub">27 april – 4 mei 2026 · nieuws &amp; effect per positie</div>
+    <div class="masthead-meta">
+      <span><strong>4</strong> bronnen</span>
+      <span><strong>2</strong> earnings-beats</span>
+      <span><strong>0</strong> trades</span>
+    </div>
+  </header>
+
+  <section class="intro a2">
+    <p>Earnings-week tijdens de piek van de Hormuz-crisis (Brent <b>~$125</b>). Twee kernposities rapporteerden sterk: <b>Warrior Met Coal</b> (Blue Creek-mijn af, on time/budget) en <b>Transocean</b> (backlog +$1 mrd naar $7,1 mrd). De Economist noemde de olie-crisis "groter voor hij kleiner wordt". Thesis bevestigd over de hele linie, geen trade.</p>
+  </section>
+
+  <div class="chartcard a2">
+    <h3>Koersverloop deze week</h3>
+    <div class="chart-sub">Genormaliseerd: % vanaf de eerste handelsdag. Klik een ticker in de legenda om te tonen of verbergen, beweeg over de lijn voor de exacte stand.</div>
+    <div class="chart-holder"><canvas id="weekChart"></canvas></div>
+    <div class="chart-note">Bron: yfinance daggegevens. Posities zoals gehouden in deze week.</div>
+  </div>
+
+  <span class="sector-label">Kolen · ~31% van de portefeuille</span>
+  <div class="pos">
+    <div class="pos-head">
+      <div class="pos-id"><span class="pos-ticker">HCC</span><span class="pos-name">Warrior Met Coal</span></div>
+      <div class="pos-right"><span class="chip chip-w">~19%</span><span class="chip chip-green">Earnings-beat</span></div>
+    </div>
+    <div class="pos-verdict">De belangrijkste catalyst (Blue Creek) is gerealiseerd; PLV in bull-territorium ($234,50). Thesis bevestigd.</div>
+    <div class="news-item">
+      <div class="news-head">HCC Q1 2026 — Blue Creek af, Adj. EBITDA $143M (4× j-o-j), EPS $1,37</div>
+      <div class="news-src">Warrior Met Coal earnings · 30 april</div>
+      <div class="news-effect">Cash cost $96/ton (&minus;14%), record-sales 3,0 mln ton. <b>Effect:</b> structureel positief; eerste real-world Blue Creek-bewijs. Caveat: 45X-belastingkrediet drukt de kosten en is politiek terugdraaibaar.</div>
+    </div>
+  </div>
+
+  <span class="sector-label">Olie &amp; drilling · ~28% van de portefeuille</span>
+  <div class="pos">
+    <div class="pos-head">
+      <div class="pos-id"><span class="pos-ticker">RIG · TTE · OXY</span><span class="pos-name">Transocean · TotalEnergies · Occidental</span></div>
+      <div class="pos-right"><span class="chip chip-w">~28%</span><span class="chip chip-green">Earnings-beat + hold</span></div>
+    </div>
+    <div class="pos-verdict">RIG-backlog structureel versterkt; Brent boven de superbull-grens betekent hold, niet bijkopen. C8 = 2 robust.</div>
+    <div class="news-item">
+      <div class="news-head">RIG Q1 2026 — revenue $1,08 mrd (beat), backlog $6,1 → $7,1 mrd</div>
+      <div class="news-src">Transocean earnings + Fleet Status · 4 mei</div>
+      <div class="news-effect">~30 maanden runway, impliciete dayrate &gt;$450k, $358M schuld vervroegd afgelost. <b>Effect:</b> backlog-pijler materieel versterkt; C8-trigger (backlog &lt;$4 mrd) mijlenver weg.</div>
+    </div>
+    <div class="news-item">
+      <div class="news-head">"De olie-crisis wordt groter voor hij kleiner wordt" — Brent $125</div>
+      <div class="news-src">The Economist (briefing) · 30 april</div>
+      <div class="news-effect">14 mln b/d vast door Hormuz; voorraden laagste sinds 2018. <b>Effect:</b> Brent boven superbull-grens → hold, niet bijkopen voor RIG/TTE. Scenario 2B verhoogd (30 → 35-40%).</div>
+    </div>
+  </div>
+
+  <span class="sector-label">Goud · ~16% van de portefeuille</span>
+  <div class="pos">
+    <div class="pos-head">
+      <div class="pos-id"><span class="pos-ticker">IGLN · WPM</span><span class="pos-name">iShares Physical Gold · Wheaton Precious Metals</span></div>
+      <div class="pos-right"><span class="chip chip-w">~16%</span><span class="chip chip-green">Structurele rugwind</span></div>
+    </div>
+    <div class="pos-verdict">Een inflatoire olieschok is direct gunstig voor edelmetalen. Hold.</div>
+    <div class="news-item">
+      <div class="news-head">Hormuz-olieschok → tweede inflatoire shock van het decennium</div>
+      <div class="news-src">The Economist · 30 april</div>
+      <div class="news-effect"><b>Effect:</b> structurele tailwind voor goud/zilver als inflatie-hedge. Bevestigend, geen trigger.</div>
+    </div>
+  </div>
+
+  <span class="sector-label">Defensie &amp; koper · indirect</span>
+  <div class="pos">
+    <div class="pos-head">
+      <div class="pos-id"><span class="pos-ticker">SAAB · FCX</span><span class="pos-name">Saab AB · Freeport-McMoRan</span></div>
+      <div class="pos-right"><span class="chip chip-w">~12 + 7,5%</span><span class="chip chip-grey">Indirect</span></div>
+    </div>
+    <div class="pos-verdict">Eén macro-stuk over havenconcurrentie raakt beide alleen via de multipolair-thesis.</div>
+    <div class="news-item">
+      <div class="news-head">"The scramble for ports" — wereldwijde havenconcurrentie</div>
+      <div class="news-src">The Economist (briefing) · 2 mei</div>
+      <div class="news-effect">China zit in 129 havens buiten China; $140 mrd niet-Chinese tegenacquisities. <b>Effect:</b> SAAB structurele rugwind (China-VS-spanning); FCX waakzaam (supply-chain-bifurcatie kan kopervraag-routes raken); HCC/AMR marginaal positief via Amerikaanse exportroutes.</div>
+    </div>
+  </div>
+
+  <div class="untouched">
+    <h3>Niet geraakt deze week</h3>
+    <div class="untouched-row">
+      <b>AMR</b> (kolen) — alleen indirect (PLV is de eigen drijver) ·
+      <b>KSPI</b> (fintech) — niet relevant (Kazachstan landlocked)
+    </div>
+  </div>
+
+  <div class="foot">
+    Bron: alle items uit <code>bronnen/2026-W18/</code> (4 stuks). Effecten overgenomen uit de "Effect op portefeuille"-velden per bronnotitie. Wegingen zijn die van vóór de herbalancering van 1 juni. Geen financieel advies — statische preview.
+  </div>
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script>var WEEK_CHART = {"dates":["2026-04-27","2026-04-28","2026-04-29","2026-04-30","2026-05-01","2026-05-04"],"series":{"RIG":[0.0,4.14,6.75,4.6,4.91,5.52],"TTE":[0.0,2.58,3.94,4.47,4.55,4.01],"OXY":[0.0,2.34,6.09,5.78,2.51,5.24],"HCC":[0.0,2.37,2.93,2.72,-1.36,-3.86],"AMR":[0.0,0.23,-2.51,-4.36,-6.45,-5.17],"FCX":[0.0,-3.9,-6.01,-4.61,-6.64,-8.25],"KSPI":[0.0,-3.8,-3.8,-3.86,-3.21,-4.35],"WPM":[0.0,-5.19,-8.51,-7.36,-7.82,-9.06],"SAAB":[0.0,0.41,-1.36,-1.3,null,0.83],"IGLN":[0.0,-2.28,-2.89,-1.18,-0.91,null]}};</script>
+<script src="chart-init.js"></script>
+<script src="week-quiz.js"></script>
+</body>
+</html>

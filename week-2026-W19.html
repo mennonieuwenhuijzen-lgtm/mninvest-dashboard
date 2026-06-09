@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Week 19 · Nieuws &amp; effect per positie · MNinvest</title>
+<link rel="stylesheet" href="week.css">
+</head>
+<body>
+<div class="wrap">
+
+  <header class="masthead a1">
+    <div class="masthead-brand">MNinvest · Nieuwsarchief</div>
+    <h1>Week 19</h1>
+    <div class="masthead-sub">4 – 10 mei 2026 · nieuws &amp; effect per positie</div>
+    <div class="masthead-meta">
+      <span><strong>14</strong> bronnen</span>
+      <span><strong>3</strong> sectoren geraakt</span>
+      <span><strong>0</strong> trades</span>
+    </div>
+  </header>
+
+  <section class="intro a2">
+    <p>De Iran-oorlog escaleerde concreet: de VS en Iran beschoten elkaar en ook de <b>UAE werd geraakt</b> &mdash; het "Hardliner-escalatie naar UAE/Qatar"-sub-scenario werd deels werkelijkheid (Adnoc-gasinstallatie pas in 2027 weer op volle capaciteit). Tegelijk koelde Brent af van $125 naar ~$104. Op de achtergrond de <b>Trump-Xi-top</b> in Beijing en een Economist-stuk over de erosie van de petrodollar. Geen breaker, geen trade.</p>
+  </section>
+
+  <div class="chartcard a2">
+    <h3>Koersverloop deze week</h3>
+    <div class="chart-sub">Genormaliseerd: % vanaf de eerste handelsdag. Klik een ticker in de legenda om te tonen of verbergen, beweeg over de lijn voor de exacte stand.</div>
+    <div class="chart-holder"><canvas id="weekChart"></canvas></div>
+    <div class="chart-note">Bron: yfinance daggegevens. Posities zoals gehouden in deze week.</div>
+  </div>
+
+  <span class="sector-label">Olie · ~29% van de portefeuille</span>
+  <div class="pos">
+    <div class="pos-head">
+      <div class="pos-id"><span class="pos-ticker">RIG · TTE · OXY</span><span class="pos-name">Transocean · TotalEnergies · Occidental</span></div>
+      <div class="pos-right"><span class="chip chip-w">~29%</span><span class="chip chip-gold">Thesis bevestigd</span></div>
+    </div>
+    <div class="pos-verdict">Zes bronnen, allemaal Iran/Hormuz. Brent koelt af maar blijft &gt;$90 = hold-band; geen breaker, C8 = 2.</div>
+    <div class="news-item">
+      <div class="news-head">Beschietingen tussen VS en Iran, ook de UAE aangevallen</div>
+      <div class="news-src">Het Financieele Dagblad · 8 mei</div>
+      <div class="news-effect">Escalatie binnen het ceasefire-frame; de UAE-component van het hardliner-sub-scenario is nu gerealiseerd. <b>Effect:</b> tijdlijn-shift binnen 2B, thesis bevestigd. Secundair IGLN/WPM (safe-haven) en SAAB.</div>
+    </div>
+    <div class="news-item">
+      <div class="news-head">Belangrijke Adnoc-gasinstallatie (UAE) pas in 2027 weer volledig in bedrijf</div>
+      <div class="news-src">Het Financieele Dagblad · 12 mei</div>
+      <div class="news-effect">Nu 60% capaciteit; Q2-klap voor Adnoc-gas $400-600M. <b>Effect:</b> concrete operationele bevestiging van het UAE-sub-scenario; geen breaker geraakt, tijdlijn-kalibratie.</div>
+    </div>
+    <div class="news-item">
+      <div class="news-head">Gasmarkt verwerkt de Hormuz-blokkade — winterrisico blijft</div>
+      <div class="news-src">Het Financieele Dagblad · 7 mei</div>
+      <div class="news-effect">TTE primair. <b>Effect:</b> LNG-prijs-rugwind voor TotalEnergies; thesis bevestigd mét nieuwe data.</div>
+    </div>
+    <div class="news-item">
+      <div class="news-head">Winst Shell schiet omhoog door Iran-oorlog ($6,9 mrd, &gt;2× Q4)</div>
+      <div class="news-src">Het Financieele Dagblad · 8 mei</div>
+      <div class="news-effect">Olie-futures "sorteren voor op vrede". <b>Effect:</b> bevestigend voor de base-case (2A); zwak vredessignaal zonder kans-shift.</div>
+    </div>
+    <div class="news-item">
+      <div class="news-head">Iran's pragmatisten vs hardliners + "Is the Gulf war stuck once again?"</div>
+      <div class="news-src">The Economist · 7 + 13 mei</div>
+      <div class="news-effect">Factie-strijd achter de Hormuz-blokkade; drie operationele/structurele bevestigingen (GCC-fragmentatie, Abraham-akkoorden-credibility). <b>Effect:</b> baseline bevestigd, nieuw UAE/Qatar-sub-scenario, geen kans-band-wijziging.</div>
+    </div>
+  </div>
+
+  <span class="sector-label">Goud · ~22% van de portefeuille</span>
+  <div class="pos">
+    <div class="pos-head">
+      <div class="pos-id"><span class="pos-ticker">IGLN · WPM</span><span class="pos-name">iShares Physical Gold · Wheaton Precious Metals</span></div>
+      <div class="pos-right"><span class="chip chip-w">~22%</span><span class="chip chip-green">Structurele rugwind</span></div>
+    </div>
+    <div class="pos-verdict">De-dollarisatie en veilige-haven-vraag onderbouwd; geen kans-shift, hold.</div>
+    <div class="news-item">
+      <div class="news-head">"The other hostage crisis — heeft de Iran-oorlog de petrodollar beëindigd?"</div>
+      <div class="news-src">The Economist · 10 mei</div>
+      <div class="news-effect">Reservevaluta-status onder druk; alternatieve betaal-rails en "hostage capital". <b>Effect:</b> macro-context-watchpoint onder het goud-pad (5C), geen positie-thesis-breuk.</div>
+    </div>
+  </div>
+
+  <span class="sector-label">Defensie · ~12% van de portefeuille</span>
+  <div class="pos">
+    <div class="pos-head">
+      <div class="pos-id"><span class="pos-ticker">SAAB B</span><span class="pos-name">Saab AB</span></div>
+      <div class="pos-right"><span class="chip chip-w">~12%</span><span class="chip chip-green">Indirecte rugwind</span></div>
+    </div>
+    <div class="pos-verdict">EU-cohesie en Russische instabiliteit voeden de defensie-rugwind; geen thesisbreuk.</div>
+    <div class="news-item">
+      <div class="news-head">Magyar's Tisza verslaat Orbán's Fidesz in Hongarije</div>
+      <div class="news-src">The Economist · 10 mei</div>
+      <div class="news-effect"><b>Effect:</b> pro-EU-verschuiving = defensie-rugwind via EU-cohesie; secundair RIG/TTE (strakkere Russische olie-sancties mogelijk). Scenario-tijdlijn verschoven, geen positie-breuk.</div>
+    </div>
+    <div class="news-item">
+      <div class="news-head">"Putin's Zugzwang" — Russische elites zeggen geen "wij" meer</div>
+      <div class="news-src">The Economist · 10 mei</div>
+      <div class="news-effect"><b>Effect:</b> Russische instabiliteit = defensie-rugwind + Brent-asymmetrie (Russia-event-optionaliteit) + safe-haven-frame. Geen kanswijziging.</div>
+    </div>
+  </div>
+
+  <span class="sector-label">Earnings &amp; ratings deze week</span>
+  <div class="pos">
+    <div class="pos-head">
+      <div class="pos-id"><span class="pos-ticker">WPM</span><span class="pos-name">Wheaton Precious Metals · Q1 2026 (7 mei)</span></div>
+      <div class="pos-right"><span class="chip chip-green">Recordkwartaal</span></div>
+    </div>
+    <div class="news-item">
+      <div class="news-head">Recordomzet $901M, operationele kasstroom $766M</div>
+      <div class="news-src">WPM earnings · 7 mei</div>
+      <div class="news-effect">GEO's ~212k (+22%), gerealiseerde goud-equivalente prijs bijna verdubbeld, cash $2,16B, nul schuld. <b>Effect:</b> bevestigt de streaming-moat; onderbouwt de IV-herberekening (~$160). Thesis bevestigd, hold.</div>
+    </div>
+  </div>
+  <div class="pos">
+    <div class="pos-head">
+      <div class="pos-id"><span class="pos-ticker">AMR</span><span class="pos-name">Alpha Metallurgical · Q1 2026 (8 mei)</span></div>
+      <div class="pos-right"><span class="chip chip-red">Realisatie onder index</span></div>
+    </div>
+    <div class="news-item">
+      <div class="news-head">Verlies versmald naar min $0,86/aandeel, maar gerealiseerd $124/ton</div>
+      <div class="news-src">AMR earnings · 8 mei</div>
+      <div class="news-effect">Kolenomzet $523,5M, adj EBITDA $30M, gerealiseerde PLV <b>$124,39/ton</b> met marge slechts $16,41/ton, lage schuld ($12M). <b>Effect:</b> de realisatie ligt ver onder de PLV-index ($207-244) door langlopende contracten. Thesis intact, maar AMR kwetsbaarder dan de index suggereert.</div>
+    </div>
+  </div>
+
+  <div class="untouched">
+    <h3>Macro-context &amp; archief (geen positie direct geraakt)</h3>
+    <ul class="macro-list">
+      <li><span class="mt">Trump-Xi-top Beijing (coverpakket + "grand bargain"-leader)</span> <span class="ms">· Economist · 7 + 10 mei · China-as, sancties Chinese refiners → 5A</span></li>
+      <li><span class="mt">US-China AI-diplomatie vóór de top</span> <span class="ms">· Economist · 7 mei · C8-context, datacenter-energie lange termijn</span></li>
+      <li><span class="mt">AI kan veel, maar zelfstandig beleggen is een brug te ver</span> <span class="ms">· FD · 7 mei · werkwijze-meta, geen positie</span></li>
+      <li><span class="mt">Pabrai SXSW 2026 — 14 mental models</span> <span class="ms">· keynote · 5 mei · anti-bias-denkgereedschap</span></li>
+    </ul>
+    <div class="untouched-row" style="margin-top:14px">
+      Niet geraakt: <b>HCC</b> · <b>AMR</b> (kolen) · <b>FCX</b> (koper) · <b>KSPI</b> (fintech) — geen positiespecifiek nieuws deze week.
+    </div>
+  </div>
+
+  <div class="foot">
+    Bron: alle items uit <code>bronnen/2026-W19/</code> (14 stuks). Effecten overgenomen uit de "Portefeuille-relevantie"-velden per bronnotitie. Wegingen zijn die van vóór de herbalancering van 1 juni. Geen financieel advies — statische preview.
+  </div>
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script>var WEEK_CHART = {"dates":["2026-05-04","2026-05-05","2026-05-06","2026-05-07","2026-05-08"],"series":{"RIG":[0.0,-9.16,-9.45,-10.32,-6.98],"TTE":[0.0,1.41,-2.54,-3.87,-4.14],"OXY":[0.0,-1.54,-8.54,-10.5,-12.01],"HCC":[0.0,3.07,4.19,4.55,2.2],"AMR":[0.0,1.97,6.65,4.63,-0.41],"FCX":[0.0,3.8,9.57,9.07,10.94],"KSPI":[0.0,-1.4,2.24,1.5,0.57],"WPM":[0.0,0.89,8.4,5.98,11.85],"SAAB":[0.0,0.61,2.81,-1.68,-5.96],"IGLN":[null,0.0,2.52,3.65,2.92]}};</script>
+<script src="chart-init.js"></script>
+<script src="week-quiz.js"></script>
+</body>
+</html>

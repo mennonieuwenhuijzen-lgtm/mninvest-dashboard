@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Week 20 · Nieuws &amp; effect per positie · MNinvest</title>
+<link rel="stylesheet" href="week.css">
+</head>
+<body>
+<div class="wrap">
+
+  <header class="masthead a1">
+    <div class="masthead-brand">MNinvest · Nieuwsarchief</div>
+    <h1>Week 20</h1>
+    <div class="masthead-sub">11 – 17 mei 2026 · nieuws &amp; effect per positie</div>
+    <div class="masthead-meta">
+      <span><strong>12</strong> bronnen</span>
+      <span><strong>4</strong> sectoren geraakt</span>
+      <span><strong>0</strong> trades</span>
+    </div>
+  </header>
+
+  <section class="intro a2">
+    <p>Een week vol harde data. De Amerikaanse <b>inflatie versnelde naar 3,8%</b> (kern 2,8%), het <b>EIA</b> verlengde de Hormuz-sluiting en meldde dat <b>de UAE OPEC verlaat</b>, en een Economist-analyse legde uit waarom Brent ondanks alles "maar" ~$105 staat: drie buffers die nu uitgewerkt raken. SIPRI bevestigde de Europese defensie-versnelling. Brent koelde af richting de hold-band; geen breaker, geen trade.</p>
+  </section>
+
+  <div class="chartcard a2">
+    <h3>Koersverloop deze week</h3>
+    <div class="chart-sub">Genormaliseerd: % vanaf de eerste handelsdag. Klik een ticker in de legenda om te tonen of verbergen, beweeg over de lijn voor de exacte stand.</div>
+    <div class="chart-holder"><canvas id="weekChart"></canvas></div>
+    <div class="chart-note">Bron: yfinance daggegevens. Posities zoals gehouden in deze week.</div>
+  </div>
+
+  <span class="sector-label">Olie · ~29% van de portefeuille</span>
+  <div class="pos">
+    <div class="pos-head">
+      <div class="pos-id"><span class="pos-ticker">RIG · TTE · OXY</span><span class="pos-name">Transocean · TotalEnergies · Occidental</span></div>
+      <div class="pos-right"><span class="chip chip-w">~29%</span><span class="chip chip-gold">Thesis bevestigd</span></div>
+    </div>
+    <div class="pos-verdict">Brent ~$104–107 = hold-band, breakers ver weg, C8 = 2. TTE relatief sterkste positie. Geen kans-shift.</div>
+    <div class="news-item">
+      <div class="news-head">Westerse oliemajors in de derde Golfoorlog — TTE +14-17%, Exxon &minus;2%</div>
+      <div class="news-src">The Economist · 12 mei</div>
+      <div class="news-effect">Europese majors profiteren meer door hedging, trading én asset-locatie (Exxon ~20% Midden-Oosten-exposure). <b>Effect:</b> bevestigt het structurele TTE-voordeel zolang Hormuz dicht is. Nieuw watchpoint: Trump fuel-export-ban bij $5/gallon.</div>
+    </div>
+    <div class="news-item">
+      <div class="news-head">EIA STEO mei — Brent $95 (2026), UAE verlaat OPEC, shut-ins piek 10,75 mln b/d</div>
+      <div class="news-src">EIA (primair) · 12 mei</div>
+      <div class="news-effect">Hormuz-sluiting officieel +1 maand verlengd; OPEC-spare-capacity 2027 valt naar 2,5 mln b/d. <b>Effect:</b> $95-forecast zit in de hold-band; UAE-OPEC-exit is een nieuw aanbod-fragmentatie-signaal (watchpoint). Geen score-shift.</div>
+    </div>
+    <div class="news-item">
+      <div class="news-head">"The great oil-market mystery is deepening" — drie buffers raken leeg</div>
+      <div class="news-src">The Economist · 13 mei</div>
+      <div class="news-effect">VS-export op record (9 mln b/d), China teert op voorraad, vraagvernietiging ~4-5 mln b/d. Fuel-export-ban-kans 35% → mogelijk &gt;50% bij Memorial Day. <b>Effect:</b> bevestigt de krapte-vloer onder de hold-band.</div>
+    </div>
+    <div class="news-item">
+      <div class="news-head">Iran-war-trade-disruption-mapping + Tuapse-raffinaderij-aanvallen</div>
+      <div class="news-src">The Economist · 11–12 mei</div>
+      <div class="news-effect">180 tankers/maand door Hormuz (&minus;88%); IEA waarschuwt voor Europese kerosine-tekorten vanaf juni; Oekraïense drones raken Russische olie-export herhaaldelijk. <b>Effect:</b> bevestigt 2B/5A, geen kans-band-wijziging.</div>
+    </div>
+    <div class="news-item">
+      <div class="news-head">FD-beursblog: CPI 3,8%, Brent $104, Britse 30j-rente 5,81% + "America's productivity miracle"</div>
+      <div class="news-src">FD + The Economist · 12 mei</div>
+      <div class="news-effect"><b>Effect:</b> shale/LNG-productiviteit = lange-termijn aanbod-druk (watchpoint 2027+); TTE's LNG-poot bevestigd. Brent-afkoeling als tijdlijn-anker. Geen actie.</div>
+    </div>
+  </div>
+
+  <span class="sector-label">Goud · ~22% van de portefeuille</span>
+  <div class="pos">
+    <div class="pos-head">
+      <div class="pos-id"><span class="pos-ticker">IGLN · WPM</span><span class="pos-name">iShares Physical Gold · Wheaton Precious Metals</span></div>
+      <div class="pos-right"><span class="chip chip-w">~22%</span><span class="chip chip-green">Structurele rugwind</span></div>
+    </div>
+    <div class="pos-verdict">Stagflatie zichtbaar in officiële cijfers; reële rentes onder druk. Hold.</div>
+    <div class="news-item">
+      <div class="news-head">BLS CPI april — 3,8% headline, 2,8% kern, energie 40%+ van de stijging</div>
+      <div class="news-src">U.S. Bureau of Labor Statistics (primair) · 12 mei</div>
+      <div class="news-effect">Markt schat nu 30% kans op een Fed-renteVERHOGING eind 2026 (was nihil). <b>Effect:</b> stagflatie-hedge structureel bevestigd; reële rentes blijven negatief.</div>
+    </div>
+    <div class="news-item">
+      <div class="news-head">Trump-crypto-corruptie + SEC-versoepeling (institutionele decay)</div>
+      <div class="news-src">NL-onderzoeksjournalistiek (secundair) · 12 mei</div>
+      <div class="news-effect"><b>Effect:</b> versterkt het 1A-institutionele-decay-pad → de-dollarisatie-thesis, geen kans-shift. Indirect FCX via UAE→China-chip-omleiding (watchpoint).</div>
+    </div>
+  </div>
+
+  <span class="sector-label">Defensie · ~12% van de portefeuille</span>
+  <div class="pos">
+    <div class="pos-head">
+      <div class="pos-id"><span class="pos-ticker">SAAB B</span><span class="pos-name">Saab AB</span></div>
+      <div class="pos-right"><span class="chip chip-w">~12%</span><span class="chip chip-green">Macro-rugwind</span></div>
+    </div>
+    <div class="pos-verdict">SIPRI kwantificeert de Europese herbewapening; bevestigend, geen breaker.</div>
+    <div class="news-item">
+      <div class="news-head">SIPRI 2025 — Europa +14,1%, bondgenoten 111% van VS (PPP) voor het eerst sinds 2001</div>
+      <div class="news-src">The Economist + SIPRI (primair) · 12 mei</div>
+      <div class="news-effect">Europese defensie stijgt zelfs zonder Oekraïne-steun (+13,4%). <b>Effect:</b> structurele tailwind bevestigd. Caveat: PPP-cijfer sluit hardware uit; Saabs marktaandeel binnen die budgetten blijft de open vraag.</div>
+    </div>
+  </div>
+
+  <span class="sector-label">Koper · ~7,5% van de portefeuille</span>
+  <div class="pos">
+    <div class="pos-head">
+      <div class="pos-id"><span class="pos-ticker">FCX</span><span class="pos-name">Freeport-McMoRan</span></div>
+      <div class="pos-right"><span class="chip chip-w">~7,5%</span><span class="chip chip-grey">Gemengd</span></div>
+    </div>
+    <div class="pos-verdict">Korte-termijn tegenwind (Aziatische vraagvernietiging), lange-termijn rugwind (datacenters). Geen breaker.</div>
+    <div class="news-item">
+      <div class="news-head">EIA-vraagvernietiging Azië &amp; "How to share the AI windfall"</div>
+      <div class="news-src">EIA + The Economist · 12–14 mei</div>
+      <div class="news-effect"><b>Effect:</b> demand-destruction in Azië = mild-negatief korte termijn; datacenter-kopervraag (8,5% van VS-piekstroom in 2027) = positief lange termijn. Per saldo geen actie.</div>
+    </div>
+  </div>
+
+  <span class="sector-label">Earnings &amp; ratings deze week</span>
+  <div class="pos">
+    <div class="pos-head">
+      <div class="pos-id"><span class="pos-ticker">KSPI</span><span class="pos-name">Kaspi.kz · Q1 2026 (11 mei)</span></div>
+      <div class="pos-right"><span class="chip chip-green">Omzet +31%</span></div>
+    </div>
+    <div class="news-item">
+      <div class="news-head">Omzet +31%, e-commerce-GMV +41%, Hepsiburada volledig geconsolideerd</div>
+      <div class="news-src">KSPI earnings · 11 mei</div>
+      <div class="news-effect">Nettowinst vlak (min 1%) door fundingkosten en Hepsiburada-COGS; Turkije nu 50% van de e-commerce-GMV; take-rate 15,8% (+90bp); dividend ~&#8376;850. <b>Effect:</b> de Hepsiburada-breakeven-trigger verschuift van "toekomstig" naar "lopende integratie die nu nog de marge drukt".</div>
+    </div>
+  </div>
+  <div class="pos">
+    <div class="pos-head">
+      <div class="pos-id"><span class="pos-ticker">TME</span><span class="pos-name">Tencent Music · Q1 2026 (12 mei) · destijds nog geen positie</span></div>
+      <div class="pos-right"><span class="chip chip-gold">ByteDance-dreiging</span></div>
+    </div>
+    <div class="news-item">
+      <div class="news-head">Omzet RMB7,9B (+7,3%), 125,7M betalend, maar ByteDance Soda/Qishui groeit hard</div>
+      <div class="news-src">TME earnings · 12 mei</div>
+      <div class="news-effect">Muziekdiensten +12,2%, betalend +6% (125,7M), ARPPU +10%. ByteDance Soda ~140M MAU, Qishui +91% naar 120M. CEO erkende abonnee-zwakte door concurrentie. <b>Effect:</b> dit is later (2 juni) de reden dat de Dhandho-score van TME naar 14 ging, en mede de basis voor de opening op 1 juni.</div>
+    </div>
+  </div>
+
+  <div class="untouched">
+    <h3>Macro-context &amp; archief (geen positie direct geraakt)</h3>
+    <ul class="macro-list">
+      <li><span class="mt">UK Labour-leiderschapscrisis (Starmer) — gilts richting 6%</span> <span class="ms">· Economist · 12 mei · Dalio late-stage, indirect goud</span></li>
+      <li><span class="mt">"America's productivity miracle"</span> <span class="ms">· Economist · 12 mei · shale/LNG raakt RIG/TTE indirect (zie olie)</span></li>
+    </ul>
+    <div class="untouched-row" style="margin-top:14px">
+      Niet geraakt: <b>HCC</b> · <b>AMR</b> (kolen, alleen indirect) · <b>KSPI</b> (fintech) — geen positiespecifiek nieuws deze week.
+    </div>
+  </div>
+
+  <div class="foot">
+    Bron: alle items uit <code>bronnen/2026-W20/</code> (12 stuks). Effecten overgenomen uit de "Portefeuille-relevantie"-velden per bronnotitie. Wegingen zijn die van vóór de herbalancering van 1 juni. Geen financieel advies — statische preview.
+  </div>
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script>var WEEK_CHART = {"dates":["2026-05-11","2026-05-12","2026-05-13","2026-05-14","2026-05-15"],"series":{"RIG":[0.0,-0.15,1.07,5.5,7.48],"TTE":[0.0,1.18,0.75,0.8,1.75],"OXY":[0.0,2.05,1.89,3.08,8.12],"HCC":[0.0,1.26,-2.41,-1.5,-2.34],"AMR":[0.0,0.34,-4.24,-2.91,-4.11],"FCX":[0.0,2.58,4.33,2.75,-2.11],"KSPI":[0.0,0.63,2.52,3.19,1.95],"WPM":[0.0,-0.74,-1.1,-3.16,-9.31],"SAAB":[0.0,-2.99,-6.5,null,-8.19],"IGLN":[0.0,-1.52,-0.78,-0.94,-3.97]}};</script>
+<script src="chart-init.js"></script>
+<script src="week-quiz.js"></script>
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Week 23 · Nieuws &amp; effect per positie · MNinvest</title>
+<link rel="stylesheet" href="week.css">
+</head>
+<body>
+<div class="wrap">
+
+  <header class="masthead a1">
+    <div class="masthead-brand">MNinvest · Nieuwsarchief</div>
+    <h1>Week 23</h1>
+    <div class="masthead-sub">1 – 7 juni 2026 · nieuws &amp; effect per positie</div>
+    <div class="masthead-meta">
+      <span><strong>6</strong> bronnen</span>
+      <span><strong>2</strong> posities geraakt</span>
+      <span><strong>0</strong> trades</span>
+    </div>
+  </header>
+
+  <section class="intro a2">
+    <p>Eerste week na de herbalancering van 1 juni (13 posities). Het olienieuws draaide om <b>de-escalatie</b>: Israël dreigde Beiroet te bombarderen maar trok zich terug na een Trump-telefoontje, en Griekse tankers positioneerden zich voor een Hormuz-heropening. Brent bleef in de hold-band ($96). Verder vooral macro-/archiefstukken (BYD, 9/11-retrospectief, Laffer, een literaire anti-bias-lens). Geen breaker, geen trade.</p>
+  </section>
+
+  <div class="chartcard a2">
+    <h3>Koersverloop deze week</h3>
+    <div class="chart-sub">Genormaliseerd: % vanaf de eerste handelsdag. Klik een ticker in de legenda om te tonen of verbergen, beweeg over de lijn voor de exacte stand.</div>
+    <div class="chart-holder"><canvas id="weekChart"></canvas></div>
+    <div class="chart-note">Bron: yfinance daggegevens. Posities zoals gehouden in deze week (13 na de herbalancering).</div>
+  </div>
+
+  <span class="sector-label">Olie · ~30% van de portefeuille</span>
+  <div class="pos">
+    <div class="pos-head">
+      <div class="pos-id"><span class="pos-ticker">RIG · TTE · OXY</span><span class="pos-name">Transocean · TotalEnergies · Occidental</span></div>
+      <div class="pos-right"><span class="chip chip-w">14 + 10 + 6%</span><span class="chip chip-gold">Thesis bevestigd</span></div>
+    </div>
+    <div class="pos-verdict">Brent $96 = hold-band, geen breaker (RIG &lt;$65 / TTE &lt;$50 sustained), C8 alle drie = 2. De-escalatiedruk drukt de risicopremie licht, geen actie.</div>
+    <div class="news-item">
+      <div class="news-head">Israël richt zich op Beiroet, Trump houdt Netanyahu tegen</div>
+      <div class="news-src">The Economist · 1 juni</div>
+      <div class="news-effect">Israël dreigde Hizbullah-doelen in Beiroet te bombarderen maar deed het niet na een telefoontje van Trump. Golf-leiders vreesden dat escalatie Iran van de onderhandelingstafel (en Hormuz-heropening) zou jagen. <b>Effect:</b> mild-bearish voor de risicopremie, richting onderkant hold-band. Nieuwe Libanon-front-watchpoint, geen kans-shift.</div>
+    </div>
+    <div class="news-item">
+      <div class="news-head">Griekse tankeroperators positioneren schepen voor Hormuz-heropening</div>
+      <div class="news-src">Financial Times · 1 juni</div>
+      <div class="news-effect">Dynacom stuurde 4 lege schepen richting Hormuz (revealed-preference-signaal voor heropening), terwijl Iran tegelijk de gesprekken opschortte en met "volledige sluiting" dreigde. Nieuw: de Iraanse Strait Authority is nu VS-gesanctioneerd → een tol-heropening blijft juridisch geblokkeerd voor westerse reders. <b>Effect:</b> two-way-signaal, geen kans-shift, hold.</div>
+    </div>
+  </div>
+
+  <span class="sector-label">Goud · ~20% van de portefeuille</span>
+  <div class="pos">
+    <div class="pos-head">
+      <div class="pos-id"><span class="pos-ticker">WPM · IGLN</span><span class="pos-name">Wheaton Precious Metals · iShares Physical Gold</span></div>
+      <div class="pos-right"><span class="chip chip-w">10 + 10%</span><span class="chip chip-grey">Licht-bearish, intact</span></div>
+    </div>
+    <div class="pos-verdict">Minder oorlogsangst = lichte tegenwind voor veilige-haven-vraag; structureel intact. Hold.</div>
+    <div class="news-item">
+      <div class="news-head">De-escalatie Israël-Libanon dempt de oorlogsangst</div>
+      <div class="news-src">The Economist · 1 juni</div>
+      <div class="news-effect"><b>Effect:</b> kortstondige tegenwind voor de safe-haven-premie; geen thesisbreuk.</div>
+    </div>
+    <div class="news-item">
+      <div class="news-head">9/11, 25 jaar later — Amerikaans institutioneel verval (essay)</div>
+      <div class="news-src">opinie-essay (archief) · 4 juni</div>
+      <div class="news-effect"><b>Effect:</b> indirecte onderbouwing van de de-dollarisatie-/intern-verval-tak (Dalio Kracht 3). Achtergrond, geen cijfer of trigger.</div>
+    </div>
+  </div>
+
+  <span class="sector-label">Koper &amp; China-internet · indirect</span>
+  <div class="pos">
+    <div class="pos-head">
+      <div class="pos-id"><span class="pos-ticker">FCX · TME · PROSY</span><span class="pos-name">Freeport-McMoRan · Tencent Music · Prosus</span></div>
+      <div class="pos-right"><span class="chip chip-w">3,8 + 5 + 3,8%</span><span class="chip chip-grey">Context, geen actie</span></div>
+    </div>
+    <div class="pos-verdict">Eén archiefstuk dat alleen via context raakt; geen thesisbeweging.</div>
+    <div class="news-item">
+      <div class="news-head">BYD — verticale integratie als kracht én zwakte</div>
+      <div class="news-src">The Economist (archief) · 4 juni</div>
+      <div class="news-effect">BYD niet in portefeuille. <b>Effect:</b> achtergrond bij de Chinese EV-prijzenoorlog → kopervraag (FCX) en China-tech-concurrentie (TME/PROSY). Geen directe positie-impact.</div>
+    </div>
+  </div>
+
+  <span class="sector-label">Earnings &amp; ratings deze week</span>
+  <div class="pos">
+    <div class="pos-head">
+      <div class="pos-id"><span class="pos-ticker">PROSY</span><span class="pos-name">Prosus · analist-rating (2 juni)</span></div>
+      <div class="pos-right"><span class="chip chip-green">MS Overweight</span></div>
+    </div>
+    <div class="news-item">
+      <div class="news-head">Morgan Stanley: Overweight, ~29% upside, "de korting piekt"</div>
+      <div class="news-src">Morgan Stanley · 2 juni</div>
+      <div class="news-effect">NAV-korting ~35% (beurswaarden) tot 48% (op analist-doelen); inkoop FY26 ~$7 mrd, deels Tencent-funded; Tencent ~85% van NAV. <b>Effect:</b> dekking verbreed van enkel naar institutioneel; bevestigt de NAV-korting-thesis. Op de week +9,5%, de sterkste mover (zie grafiek).</div>
+    </div>
+  </div>
+
+  <div class="untouched">
+    <h3>Macro-context &amp; archief (geen positie geraakt)</h3>
+    <ul class="macro-list">
+      <li><span class="mt">Laffer — de belastingrevolutie van Reagan en Thatcher</span> <span class="ms">· opinie-essay · 4 juni · fiscaal-beleid-referentie, geen positie</span></li>
+      <li><span class="mt">"Ungoliant" leeslijst — 12 klassiekers als anti-bias-lens</span> <span class="ms">· Economist satire · 4 juni · denkgereedschap, geen C8-input</span></li>
+    </ul>
+    <div class="untouched-row" style="margin-top:14px">
+      Niet geraakt: <b>HCC</b> · <b>AMR</b> (kolen) · <b>KSPI</b> (fintech) · <b>SAAB</b> (defensie) · <b>ADBE</b> (software) — geen positiespecifiek nieuws deze week.
+    </div>
+  </div>
+
+  <div class="foot">
+    Bron: alle items uit <code>bronnen/2026-W23/</code> (6 stuks). Effecten overgenomen uit de "Portefeuille-relevantie"-velden per bronnotitie. Geen financieel advies — statische preview, percentages zijn weging van de aandelen-bucket.
+  </div>
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script>var WEEK_CHART = {"dates":["2026-06-01","2026-06-02","2026-06-03","2026-06-04","2026-06-05"],"series":{"RIG":[0.0,0.0,-1.12,0.0,-4.8],"TTE":[0.0,0.78,0.98,1.65,0.0],"OXY":[0.0,0.29,1.22,-0.42,-3.38],"HCC":[0.0,3.79,-0.35,-0.3,-5.96],"AMR":[0.0,1.17,-1.2,-0.07,-6.03],"FCX":[0.0,6.98,5.37,3.95,-5.47],"KSPI":[0.0,-1.7,-5.03,-7.5,-9.98],"WPM":[0.0,1.16,-3.0,-0.3,-9.77],"SAAB":[0.0,-2.11,-3.49,-1.94,-1.45],"IGLN":[0.0,0.66,-0.8,-0.13,-2.9],"ADBE":[0.0,-4.35,-6.49,-5.7,-8.24],"TME":[0.0,0.11,-3.79,-2.11,-4.42],"PROSY":[0.0,9.45,3.23,3.23,1.33]}};</script>
+<script src="chart-init.js"></script>
+<script src="week-quiz.js"></script>
+</body>
+</html>

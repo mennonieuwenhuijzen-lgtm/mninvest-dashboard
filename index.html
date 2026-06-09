@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MNinvest · Dashboard &amp; Nieuwsarchief</title>
+<style>
+:root{
+  --cream:#f7f3ed; --paper:#fefcf8; --ink:#1a1714; --ink2:#3d3830; --ink3:#7a6f64;
+  --gold:#b07d2a; --gold-lt:#e8d5a8; --green:#2a5c43; --rule:#d8cfc4;
+  --mono:'Courier New',Courier,monospace; --serif:Georgia,'Times New Roman',serif;
+  --bar:54px; --ticker:34px;
+  --up:#2a5c43; --down:#8b2331;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html,body{height:100%;}
+body{font-family:var(--serif);color:var(--ink);background:var(--cream);overflow:hidden;}
+
+/* TOPBAR */
+.topbar{position:fixed;top:0;left:0;right:0;height:var(--bar);background:var(--paper);
+  border-bottom:2px solid var(--ink);display:flex;align-items:center;gap:14px;
+  padding:0 16px;z-index:30;}
+.hamb{width:40px;height:40px;border:1px solid var(--rule);border-radius:5px;background:var(--cream);
+  display:flex;flex-direction:column;justify-content:center;align-items:center;gap:4px;cursor:pointer;
+  flex-shrink:0;transition:background .15s;}
+.hamb:hover{background:#efe9df;}
+.hamb span{display:block;width:18px;height:2px;background:var(--ink);border-radius:2px;transition:transform .2s,opacity .2s;}
+.hamb.open span:nth-child(1){transform:translateY(6px) rotate(45deg);}
+.hamb.open span:nth-child(2){opacity:0;}
+.hamb.open span:nth-child(3){transform:translateY(-6px) rotate(-45deg);}
+.brand{font-family:var(--mono);font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--ink);font-weight:700;}
+.brand .dot{color:var(--gold);}
+.cur-title{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3);
+  margin-left:auto;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+
+/* SIDEBAR */
+.sidebar{position:fixed;top:calc(var(--bar) + var(--ticker));left:0;bottom:0;width:290px;max-width:84vw;background:var(--cream);
+  border-right:1px solid var(--rule);transform:translateX(-102%);transition:transform .26s cubic-bezier(.4,0,.2,1);
+  z-index:25;overflow-y:auto;padding:8px 0 40px;}
+.sidebar.open{transform:translateX(0);box-shadow:6px 0 24px rgba(26,23,20,.12);}
+.nav-group{font-family:var(--mono);font-size:9px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);
+  padding:20px 22px 8px;}
+.nav-item{display:block;padding:13px 22px;border-bottom:1px solid var(--rule);cursor:pointer;
+  border-left:3px solid transparent;transition:background .15s,border-color .15s;text-decoration:none;color:var(--ink);}
+.nav-item:hover{background:var(--paper);}
+.nav-item.active{background:var(--paper);border-left-color:var(--gold);}
+.nav-item-title{font-size:16px;line-height:1.3;}
+.nav-item-sub{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink3);margin-top:3px;}
+.nav-item.dash .nav-item-title{font-weight:700;}
+.sidebar-foot{padding:22px;font-size:12px;color:var(--ink3);line-height:1.6;font-style:italic;}
+
+/* BACKDROP */
+.backdrop{position:fixed;inset:0;top:calc(var(--bar) + var(--ticker));background:rgba(26,23,20,.28);z-index:20;opacity:0;
+  pointer-events:none;transition:opacity .26s;}
+.backdrop.open{opacity:1;pointer-events:auto;}
+
+/* TICKERBALK (live koersen, gevoed door live.json) */
+.tickerbar{position:fixed;top:var(--bar);left:0;right:0;height:var(--ticker);background:var(--ink);
+  border-bottom:1px solid #000;z-index:28;overflow:hidden;display:flex;align-items:center;}
+.ticker-track{display:inline-flex;align-items:center;white-space:nowrap;will-change:transform;
+  animation:ticker 80s linear infinite;}
+.tickerbar:hover .ticker-track{animation-play-state:paused;}
+@keyframes ticker{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+.tk{display:inline-flex;align-items:baseline;gap:7px;padding:0 18px;border-right:1px solid rgba(255,255,255,.08);
+  font-family:var(--mono);font-size:12px;color:var(--cream);}
+.tk b{font-weight:700;letter-spacing:.04em;color:#fff;}
+.tk .px{color:rgba(255,255,255,.62);}
+.tk .ch{font-weight:700;}
+.tk .ch.up{color:#7fc4a0;} .tk .ch.down{color:#e58b97;} .tk .ch.flat{color:rgba(255,255,255,.5);}
+.tk.sep{color:var(--gold-lt);border-right:none;}
+.tk.meta{color:rgba(255,255,255,.45);font-style:italic;border-right:none;}
+@media (prefers-reduced-motion: reduce){ .ticker-track{animation:none;} }
+
+/* CONTENT */
+.content{position:fixed;top:calc(var(--bar) + var(--ticker));left:0;right:0;bottom:0;background:var(--cream);}
+.content iframe{width:100%;height:100%;border:0;display:block;}
+</style>
+</head>
+<body>
+
+  <div class="topbar">
+    <button class="hamb" id="hamb" aria-label="Menu"><span></span><span></span><span></span></button>
+    <span class="brand">MN<span class="dot">·</span>invest</span>
+    <span class="cur-title" id="curTitle"></span>
+  </div>
+
+  <div class="tickerbar" id="tickerbar"><div class="ticker-track" id="tickerTrack"></div></div>
+
+  <nav class="sidebar" id="sidebar"></nav>
+  <div class="backdrop" id="backdrop"></div>
+
+  <main class="content">
+    <iframe id="frame" title="MNinvest" src="dashboard.html"></iframe>
+  </main>
+
+<script>
+/* ---- Menu-data — voeg hier een week toe en hij verschijnt automatisch ---- */
+var DASHBOARD = { id:'dashboard', file:'dashboard.html', title:'Dashboard — nu', sub:'Markt vs. analisten' };
+var UITLEG    = { id:'uitleg',    file:'uitleg.html',    title:'Theorie & uitleg', sub:'Raamwerk & 18 criteria' };
+var KOERSEN   = { id:'koersen',   file:'koersen.html',   title:'Koersen', sub:'Sinds aankoop per aandeel' };
+var WEEKS = [
+  { id:'week-2026-W24', file:'week-2026-W24.html', title:'Week 24', sub:'2 – 8 juni 2026' },
+  { id:'week-2026-W23', file:'week-2026-W23.html', title:'Week 23', sub:'1 – 7 juni 2026' },
+  { id:'week-2026-W22', file:'week-2026-W22.html', title:'Week 22', sub:'25 – 31 mei 2026' },
+  { id:'week-2026-W21', file:'week-2026-W21.html', title:'Week 21', sub:'18 – 24 mei 2026' },
+  { id:'week-2026-W20', file:'week-2026-W20.html', title:'Week 20', sub:'11 – 17 mei 2026' },
+  { id:'week-2026-W19', file:'week-2026-W19.html', title:'Week 19', sub:'4 – 10 mei 2026' },
+  { id:'week-2026-W18', file:'week-2026-W18.html', title:'Week 18', sub:'27 apr – 4 mei 2026' }
+];
+
+/* ---- Bouw het menu ---- */
+var sidebar = document.getElementById('sidebar');
+var frame   = document.getElementById('frame');
+var hamb    = document.getElementById('hamb');
+var backdrop= document.getElementById('backdrop');
+var curTitle= document.getElementById('curTitle');
+
+function makeItem(v, extraClass){
+  var a = document.createElement('a');
+  a.className = 'nav-item' + (extraClass ? ' '+extraClass : '');
+  a.href = '#' + v.id;
+  a.dataset.id = v.id;
+  a.innerHTML = '<div class="nav-item-title">'+v.title+'</div>'+
+                (v.sub ? '<div class="nav-item-sub">'+v.sub+'</div>' : '');
+  return a;
+}
+function group(label){
+  var g = document.createElement('div'); g.className='nav-group'; g.textContent=label; return g;
+}
+
+sidebar.appendChild(group('Actueel'));
+sidebar.appendChild(makeItem(DASHBOARD,'dash'));
+sidebar.appendChild(makeItem(KOERSEN));
+sidebar.appendChild(group('Nieuws per week'));
+WEEKS.forEach(function(w){ sidebar.appendChild(makeItem(w)); });
+sidebar.appendChild(group('Achtergrond'));
+sidebar.appendChild(makeItem(UITLEG));
+var foot = document.createElement('div'); foot.className='sidebar-foot';
+foot.textContent = 'Nieuws per week wordt geordend zoals bronnen/2026-Wxx. Geen financieel advies.';
+sidebar.appendChild(foot);
+
+/* ---- Index alle views ---- */
+var VIEWS = {};
+VIEWS[DASHBOARD.id] = DASHBOARD;
+VIEWS[UITLEG.id] = UITLEG;
+VIEWS[KOERSEN.id] = KOERSEN;
+WEEKS.forEach(function(w){ VIEWS[w.id] = w; });
+
+/* ---- Navigatie ---- */
+function setOpen(open){
+  hamb.classList.toggle('open', open);
+  sidebar.classList.toggle('open', open);
+  backdrop.classList.toggle('open', open);
+}
+function activate(id, push){
+  var v = VIEWS[id] || DASHBOARD;
+  frame.src = v.file;
+  curTitle.textContent = v.title;
+  var items = sidebar.querySelectorAll('.nav-item');
+  for(var i=0;i<items.length;i++){ items[i].classList.toggle('active', items[i].dataset.id===v.id); }
+  if(push && location.hash !== '#'+v.id){ history.replaceState(null,'','#'+v.id); }
+}
+
+hamb.addEventListener('click', function(){ setOpen(!sidebar.classList.contains('open')); });
+backdrop.addEventListener('click', function(){ setOpen(false); });
+sidebar.addEventListener('click', function(e){
+  var a = e.target.closest('.nav-item'); if(!a) return;
+  e.preventDefault();
+  activate(a.dataset.id, true);
+  setOpen(false);
+});
+window.addEventListener('hashchange', function(){ activate(location.hash.slice(1), false); });
+document.addEventListener('keydown', function(e){ if(e.key==='Escape') setOpen(false); });
+
+/* ---- Start ---- */
+activate(location.hash ? location.hash.slice(1) : DASHBOARD.id, true);
+
+/* ---- Live tickerbalk (leest live.json, door de dagelijkse cloud-taak ververst) ---- */
+(function(){
+  var track = document.getElementById('tickerTrack');
+  var bar = document.getElementById('tickerbar');
+  if(!track) return;
+
+  function fmtPrice(p){
+    if(p===null||p===undefined) return '--';
+    return (p>=1000) ? p.toLocaleString('nl-NL') : String(p).replace('.', ',');
+  }
+  function chClass(c){ if(c===null||c===undefined) return 'flat'; return c>0?'up':(c<0?'down':'flat'); }
+  function chText(c){ if(c===null||c===undefined) return '–'; var s=(c>0?'+':'')+c.toFixed(2).replace('.',','); return s+'%'; }
+
+  function item(row){
+    return '<span class="tk"><b>'+row.ticker+'</b>'+
+      '<span class="px">'+fmtPrice(row.price)+'</span>'+
+      '<span class="ch '+chClass(row.change_pct)+'">'+chText(row.change_pct)+'</span></span>';
+  }
+
+  function build(data){
+    var rows = (data.positions||[]).concat(data.macro||[]).concat(data.fx||[]);
+    rows = rows.filter(function(r){ return r.price!==null && r.price!==undefined; });
+    if(!rows.length){ bar.style.display='none'; return; }
+    var when = '';
+    if(data.generated_utc){
+      var d = new Date(data.generated_utc);
+      if(!isNaN(d)){ when = d.toLocaleString('nl-NL',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'}); }
+    }
+    var seq = rows.map(item).join('') +
+      '<span class="tk meta">koersen bijgewerkt '+when+' · indicatief, geen advies</span>' +
+      '<span class="tk sep">MN·invest</span>';
+    // twee keer voor naadloze loop (animatie schuift -50%)
+    track.innerHTML = seq + seq;
+  }
+
+  fetch('live.json?cb=' + (location.hash||'') , {cache:'no-store'})
+    .then(function(r){ if(!r.ok) throw 0; return r.json(); })
+    .then(build)
+    .catch(function(){ bar.style.display='none'; });
+})();
+</script>
+</body>
+</html>
