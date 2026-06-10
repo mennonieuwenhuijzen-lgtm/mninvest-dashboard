@@ -59,5 +59,11 @@ jobs:
       - name: Vercel-CLI installeren
         run: npm install --global vercel@latest
 
-      - name: Naar Vercel-productie deployen
-        run: vercel deploy --prod --yes --token=${{ secrets.VERCEL_TOKEN }}
+      - name: Vercel-project ophalen
+        run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
+
+      - name: Lokaal bouwen (slaat Vercel-cloudbuild over)
+        run: vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
+
+      - name: Prebuilt deployen naar productie
+        run: vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
