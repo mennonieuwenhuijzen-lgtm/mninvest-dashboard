@@ -210,10 +210,19 @@ activate(location.hash ? location.hash.slice(1) : DASHBOARD.id, true);
     track.innerHTML = seq + seq;
   }
 
-  fetch('live.json?cb=' + (location.hash||'') , {cache:'no-store'})
-    .then(function(r){ if(!r.ok) throw 0; return r.json(); })
-    .then(build)
-    .catch(function(){ bar.style.display='none'; });
+  // live.json komt rechtstreeks van GitHub (de dagelijkse Action commit het daar).
+  // Zo is geen Vercel-deploy nodig om de koersen te verversen. Valt terug op de
+  // lokale kopie op de site als GitHub even niet bereikbaar is.
+  var RAW = 'https://raw.githubusercontent.com/mennonieuwenhuijzen-lgtm/mninvest-dashboard/main/live.json';
+  function load(url, onFail){
+    fetch(url + (url.indexOf('?')>-1?'&':'?') + 't=' + Date.now(), {cache:'no-store'})
+      .then(function(r){ if(!r.ok) throw 0; return r.json(); })
+      .then(build)
+      .catch(onFail);
+  }
+  load(RAW, function(){
+    load('live.json', function(){ bar.style.display = 'none'; });
+  });
 })();
 </script>
 </body>

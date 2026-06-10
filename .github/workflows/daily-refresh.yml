@@ -1,12 +1,9 @@
 name: Dagelijkse koers-refresh
 
 # Draait in GitHub's cloud, dus laptop-onafhankelijk.
-# 1) ververst live.json met verse koersen
-# 2) commit dat naar de repo (historie)
-# 3) deployt zelf naar Vercel-productie via de CLI (betrouwbare publieke alias)
-#
-# Eenmalig nodig: repo-secret VERCEL_TOKEN (Vercel > Account Settings > Tokens).
-# De org- en project-ID's zijn identifiers (geen geheim) en staan hieronder.
+# Ververst live.json met verse koersen en commit dat naar de repo.
+# De tickerbalk op de site leest live.json rechtstreeks van GitHub (raw),
+# dus er is GEEN Vercel-deploy nodig om de koersen te verversen.
 
 on:
   schedule:
@@ -20,10 +17,6 @@ permissions:
 concurrency:
   group: daily-refresh
   cancel-in-progress: false
-
-env:
-  VERCEL_ORG_ID: team_U7vQFfuwSF2dqLLeDVLM2P64
-  VERCEL_PROJECT_ID: prj_PBJ2EIGFdqXn7S6rIRVx0ZF6GMNw
 
 jobs:
   refresh:
@@ -43,7 +36,7 @@ jobs:
       - name: Koersen verversen
         run: python refresh_live.py
 
-      - name: Wijziging committen (historie, alleen als er iets veranderde)
+      - name: Wijziging committen (alleen als er iets veranderde)
         run: |
           git config user.name  "mninvest-bot"
           git config user.email "actions@users.noreply.github.com"
@@ -55,15 +48,3 @@ jobs:
           else
             echo "Geen wijziging in live.json."
           fi
-
-      - name: Vercel-CLI installeren
-        run: npm install --global vercel@latest
-
-      - name: Vercel-project ophalen
-        run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
-
-      - name: Lokaal bouwen (slaat Vercel-cloudbuild over)
-        run: vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
-
-      - name: Prebuilt deployen naar productie
-        run: vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}

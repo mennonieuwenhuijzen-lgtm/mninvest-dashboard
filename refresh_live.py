@@ -13,6 +13,7 @@ Output:         live.json (naast dit script)
 """
 
 import json
+import math
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
@@ -32,11 +33,16 @@ def fetch(symbol):
         if len(h) == 0:
             return None, None, None
         price = float(h["Close"].iloc[-1])
+        # yfinance kan NaN teruggeven; NaN is ongeldige JSON, dus behandel als ontbrekend.
+        if math.isnan(price):
+            return None, None, None
         change = None
         if len(h) >= 2:
             prev = float(h["Close"].iloc[-2])
-            if prev:
+            if prev and not math.isnan(prev):
                 change = (price - prev) / prev * 100.0
+        if change is not None and math.isnan(change):
+            change = None
         currency = None
         try:
             currency = t.fast_info.get("currency")
@@ -79,7 +85,8 @@ def main():
         "fx": fx,
         "missing": missing,
     }
-    OUTPUT.write_text(json.dumps(out, ensure_ascii=False, indent=2), encoding="utf-8")
+    # allow_nan=False: liever luid falen dan ooit ongeldige JSON (NaN) wegschrijven.
+    OUTPUT.write_text(json.dumps(out, ensure_ascii=False, indent=2, allow_nan=False), encoding="utf-8")
     print(f"\nGeschreven: {OUTPUT}  ({missing} zonder data)")
     # Exit 1 als alles faalt (dan niet committen in de Action).
     if missing == len(positions) + len(macro) + len(fx):
