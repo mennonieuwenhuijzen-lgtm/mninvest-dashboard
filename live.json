@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-06-19T23:35:06Z",
+  "generated_utc": "2026-06-20T23:43:34Z",
   "positions": [
     {
       "ticker": "RIG",
@@ -37,9 +37,9 @@
       "name": "iShares Physical Gold",
       "groep": "Goud",
       "weight": "10%",
-      "price": null,
-      "change_pct": null,
-      "currency": null
+      "price": 80.54,
+      "change_pct": -1.88,
+      "currency": "USD"
     },
     {
       "ticker": "TTE",
@@ -169,8 +169,8 @@
       "ticker": "VIX",
       "yf": "^VIX",
       "name": "VIX angst-index",
-      "price": 16.78,
-      "change_pct": 2.32,
+      "price": 16.4,
+      "change_pct": -11.06,
       "currency": "USD"
     },
     {
@@ -185,8 +185,8 @@
       "ticker": "Bitcoin",
       "yf": "BTC-USD",
       "name": "Bitcoin",
-      "price": 63266.1,
-      "change_pct": 0.59,
+      "price": 64235.06,
+      "change_pct": 1.09,
       "currency": "USD"
     }
   ],
@@ -216,5 +216,5 @@
       "currency": "USD"
     }
   ],
-  "missing": 1
+  "missing": 0
 }
