@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-06-27T23:33:19Z",
+  "generated_utc": "2026-06-28T23:36:49Z",
   "positions": [
     {
       "ticker": "RIG",
@@ -137,32 +137,32 @@
       "ticker": "Brent",
       "yf": "BZ=F",
       "name": "Brent olie",
-      "price": 71.99,
-      "change_pct": -4.34,
+      "price": 73.19,
+      "change_pct": 1.67,
       "currency": "USD"
     },
     {
       "ticker": "WTI",
       "yf": "CL=F",
       "name": "WTI olie",
-      "price": 69.23,
-      "change_pct": -3.74,
+      "price": 69.92,
+      "change_pct": 1.0,
       "currency": "USD"
     },
     {
       "ticker": "Goud",
       "yf": "GC=F",
       "name": "Goud spot",
-      "price": 4078.7,
-      "change_pct": 1.2,
+      "price": 4071.9,
+      "change_pct": -0.17,
       "currency": "USD"
     },
     {
       "ticker": "Koper",
       "yf": "HG=F",
       "name": "Koper",
-      "price": 6.14,
-      "change_pct": 1.17,
+      "price": 6.19,
+      "change_pct": 0.8,
       "currency": "USD"
     },
     {
@@ -178,15 +178,15 @@
       "yf": "^TNX",
       "name": "US 10-jaars rente",
       "price": 4.37,
-      "change_pct": null,
+      "change_pct": -0.46,
       "currency": "USD"
     },
     {
       "ticker": "Bitcoin",
       "yf": "BTC-USD",
       "name": "Bitcoin",
-      "price": 59899.99,
-      "change_pct": -0.19,
+      "price": 59623.99,
+      "change_pct": -0.53,
       "currency": "USD"
     }
   ],
@@ -196,15 +196,15 @@
       "yf": "EURUSD=X",
       "name": "Euro / Dollar",
       "price": 1.14,
-      "change_pct": 0.31,
+      "change_pct": 0.21,
       "currency": "USD"
     },
     {
       "ticker": "EUR/SEK",
       "yf": "EURSEK=X",
       "name": "Euro / Kroon",
-      "price": 11.09,
-      "change_pct": 0.1,
+      "price": 11.08,
+      "change_pct": 0.11,
       "currency": "SEK"
     },
     {
@@ -212,7 +212,7 @@
       "yf": "DX-Y.NYB",
       "name": "Dollar-index",
       "price": 101.36,
-      "change_pct": -0.07,
+      "change_pct": 0.0,
       "currency": "USD"
     }
   ],
