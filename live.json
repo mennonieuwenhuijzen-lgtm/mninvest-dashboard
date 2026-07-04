@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-07-03T23:33:30Z",
+  "generated_utc": "2026-07-04T23:30:10Z",
   "positions": [
     {
       "ticker": "RIG",
@@ -37,9 +37,9 @@
       "name": "iShares Physical Gold",
       "groep": "Goud",
       "weight": "10%",
-      "price": null,
-      "change_pct": null,
-      "currency": null
+      "price": 80.86,
+      "change_pct": 0.9,
+      "currency": "USD"
     },
     {
       "ticker": "TTE",
@@ -67,9 +67,9 @@
       "name": "Saab AB",
       "groep": "Defensie",
       "weight": "8%",
-      "price": null,
-      "change_pct": null,
-      "currency": null
+      "price": 562.8,
+      "change_pct": -0.25,
+      "currency": "SEK"
     },
     {
       "ticker": "KSPI",
@@ -169,15 +169,15 @@
       "ticker": "VIX",
       "yf": "^VIX",
       "name": "VIX angst-index",
-      "price": 15.81,
-      "change_pct": -2.11,
+      "price": 16.15,
+      "change_pct": -2.65,
       "currency": "USD"
     },
     {
       "ticker": "US10Y",
       "yf": "^TNX",
       "name": "US 10-jaars rente",
-      "price": 4.37,
+      "price": 4.48,
       "change_pct": null,
       "currency": "USD"
     },
@@ -185,8 +185,8 @@
       "ticker": "Bitcoin",
       "yf": "BTC-USD",
       "name": "Bitcoin",
-      "price": 62603.34,
-      "change_pct": 1.82,
+      "price": 63046.0,
+      "change_pct": 0.8,
       "currency": "USD"
     }
   ],
@@ -203,8 +203,8 @@
       "ticker": "EUR/SEK",
       "yf": "EURSEK=X",
       "name": "Euro / Kroon",
-      "price": 11.03,
-      "change_pct": -0.24,
+      "price": 11.04,
+      "change_pct": -0.16,
       "currency": "SEK"
     },
     {
@@ -216,5 +216,5 @@
       "currency": "USD"
     }
   ],
-  "missing": 2
+  "missing": 0
 }
