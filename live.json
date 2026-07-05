@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-07-04T23:30:10Z",
+  "generated_utc": "2026-07-05T23:34:19Z",
   "positions": [
     {
       "ticker": "RIG",
@@ -145,24 +145,24 @@
       "ticker": "WTI",
       "yf": "CL=F",
       "name": "WTI olie",
-      "price": 68.78,
-      "change_pct": 0.13,
+      "price": 68.32,
+      "change_pct": -0.54,
       "currency": "USD"
     },
     {
       "ticker": "Goud",
       "yf": "GC=F",
       "name": "Goud spot",
-      "price": 4187.3,
-      "change_pct": 1.81,
+      "price": 4202.5,
+      "change_pct": 2.18,
       "currency": "USD"
     },
     {
       "ticker": "Koper",
       "yf": "HG=F",
       "name": "Koper",
-      "price": 6.22,
-      "change_pct": 1.79,
+      "price": 6.24,
+      "change_pct": 2.01,
       "currency": "USD"
     },
     {
@@ -177,16 +177,16 @@
       "ticker": "US10Y",
       "yf": "^TNX",
       "name": "US 10-jaars rente",
-      "price": 4.48,
-      "change_pct": null,
+      "price": 4.49,
+      "change_pct": 0.22,
       "currency": "USD"
     },
     {
       "ticker": "Bitcoin",
       "yf": "BTC-USD",
       "name": "Bitcoin",
-      "price": 63046.0,
-      "change_pct": 0.8,
+      "price": 63599.47,
+      "change_pct": 0.81,
       "currency": "USD"
     }
   ],
@@ -196,23 +196,23 @@
       "yf": "EURUSD=X",
       "name": "Euro / Dollar",
       "price": 1.14,
-      "change_pct": 0.55,
+      "change_pct": 0.15,
       "currency": "USD"
     },
     {
       "ticker": "EUR/SEK",
       "yf": "EURSEK=X",
       "name": "Euro / Kroon",
-      "price": 11.04,
-      "change_pct": -0.16,
+      "price": 11.02,
+      "change_pct": -0.35,
       "currency": "SEK"
     },
     {
       "ticker": "DXY",
       "yf": "DX-Y.NYB",
       "name": "Dollar-index",
-      "price": 100.86,
-      "change_pct": -0.0,
+      "price": 100.89,
+      "change_pct": 0.03,
       "currency": "USD"
     }
   ],
