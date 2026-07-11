@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-07-10T23:27:32Z",
+  "generated_utc": "2026-07-11T23:24:27Z",
   "positions": [
     {
       "ticker": "RIG",
@@ -37,9 +37,9 @@
       "name": "iShares Physical Gold",
       "groep": "Goud",
       "weight": "10%",
-      "price": null,
-      "change_pct": null,
-      "currency": null
+      "price": 79.61,
+      "change_pct": -0.56,
+      "currency": "USD"
     },
     {
       "ticker": "TTE",
@@ -67,9 +67,9 @@
       "name": "Saab AB",
       "groep": "Defensie",
       "weight": "8%",
-      "price": null,
-      "change_pct": null,
-      "currency": null
+      "price": 546.5,
+      "change_pct": -3.1,
+      "currency": "SEK"
     },
     {
       "ticker": "KSPI",
@@ -137,32 +137,32 @@
       "ticker": "Brent",
       "yf": "BZ=F",
       "name": "Brent olie",
-      "price": 76.0,
-      "change_pct": -0.39,
+      "price": 76.01,
+      "change_pct": -0.38,
       "currency": "USD"
     },
     {
       "ticker": "WTI",
       "yf": "CL=F",
       "name": "WTI olie",
-      "price": 71.51,
-      "change_pct": -0.79,
+      "price": 71.41,
+      "change_pct": -0.93,
       "currency": "USD"
     },
     {
       "ticker": "Goud",
       "yf": "GC=F",
       "name": "Goud spot",
-      "price": 4128.9,
-      "change_pct": -0.04,
+      "price": 4104.1,
+      "change_pct": -0.64,
       "currency": "USD"
     },
     {
       "ticker": "Koper",
       "yf": "HG=F",
       "name": "Koper",
-      "price": 6.28,
-      "change_pct": 1.13,
+      "price": 6.23,
+      "change_pct": 0.3,
       "currency": "USD"
     },
     {
@@ -185,8 +185,8 @@
       "ticker": "Bitcoin",
       "yf": "BTC-USD",
       "name": "Bitcoin",
-      "price": 64150.48,
-      "change_pct": 1.51,
+      "price": 63922.04,
+      "change_pct": -0.32,
       "currency": "USD"
     }
   ],
@@ -203,18 +203,18 @@
       "ticker": "EUR/SEK",
       "yf": "EURSEK=X",
       "name": "Euro / Kroon",
-      "price": 11.02,
-      "change_pct": -0.39,
+      "price": 11.03,
+      "change_pct": -0.37,
       "currency": "SEK"
     },
     {
       "ticker": "DXY",
       "yf": "DX-Y.NYB",
       "name": "Dollar-index",
-      "price": 100.96,
-      "change_pct": 0.02,
+      "price": 100.97,
+      "change_pct": 0.03,
       "currency": "USD"
     }
   ],
-  "missing": 2
+  "missing": 0
 }
