@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-07-31T23:28:48Z",
+  "generated_utc": "2026-08-01T23:27:19Z",
   "positions": [
     {
       "ticker": "RIG",
@@ -37,9 +37,9 @@
       "name": "iShares Physical Gold",
       "groep": "Goud",
       "weight": "10%",
-      "price": null,
-      "change_pct": null,
-      "currency": null
+      "price": 78.33,
+      "change_pct": -1.51,
+      "currency": "USD"
     },
     {
       "ticker": "TTE",
@@ -67,9 +67,9 @@
       "name": "Saab AB",
       "groep": "Defensie",
       "weight": "8%",
-      "price": null,
-      "change_pct": null,
-      "currency": null
+      "price": 597.9,
+      "change_pct": 1.12,
+      "currency": "SEK"
     },
     {
       "ticker": "KSPI",
@@ -127,8 +127,8 @@
       "name": "Prosus N.V.",
       "groep": "China",
       "weight": "3,5%",
-      "price": 9.24,
-      "change_pct": 0.0,
+      "price": 9.27,
+      "change_pct": 0.32,
       "currency": "USD"
     }
   ],
@@ -145,24 +145,24 @@
       "ticker": "WTI",
       "yf": "CL=F",
       "name": "WTI olie",
-      "price": 86.8,
-      "change_pct": 3.84,
+      "price": 84.67,
+      "change_pct": 1.29,
       "currency": "USD"
     },
     {
       "ticker": "Goud",
       "yf": "GC=F",
       "name": "Goud spot",
-      "price": 4098.6,
-      "change_pct": -0.04,
+      "price": 4049.1,
+      "change_pct": -1.24,
       "currency": "USD"
     },
     {
       "ticker": "Koper",
       "yf": "HG=F",
       "name": "Koper",
-      "price": 6.51,
-      "change_pct": 0.98,
+      "price": 6.44,
+      "change_pct": -0.13,
       "currency": "USD"
     },
     {
@@ -185,8 +185,8 @@
       "ticker": "Bitcoin",
       "yf": "BTC-USD",
       "name": "Bitcoin",
-      "price": 62923.17,
-      "change_pct": -2.78,
+      "price": 62718.08,
+      "change_pct": -0.15,
       "currency": "USD"
     }
   ],
@@ -204,7 +204,7 @@
       "yf": "EURSEK=X",
       "name": "Euro / Kroon",
       "price": 10.97,
-      "change_pct": -0.78,
+      "change_pct": -0.18,
       "currency": "SEK"
     },
     {
@@ -216,5 +216,5 @@
       "currency": "USD"
     }
   ],
-  "missing": 2
+  "missing": 0
 }
