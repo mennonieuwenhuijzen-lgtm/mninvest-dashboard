@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-08-07T23:04:01Z",
+  "generated_utc": "2026-08-08T22:56:21Z",
   "positions": [
     {
       "ticker": "RIG",
@@ -37,9 +37,9 @@
       "name": "iShares Physical Gold",
       "groep": "Goud",
       "weight": "10%",
-      "price": null,
-      "change_pct": null,
-      "currency": null
+      "price": 84.39,
+      "change_pct": 2.36,
+      "currency": "USD"
     },
     {
       "ticker": "TTE",
@@ -67,9 +67,9 @@
       "name": "Saab AB",
       "groep": "Defensie",
       "weight": "8%",
-      "price": null,
-      "change_pct": null,
-      "currency": null
+      "price": 633.4,
+      "change_pct": 0.7,
+      "currency": "SEK"
     },
     {
       "ticker": "KSPI",
@@ -127,8 +127,8 @@
       "name": "Prosus N.V.",
       "groep": "China",
       "weight": "3,5%",
-      "price": 9.8,
-      "change_pct": 3.59,
+      "price": 9.79,
+      "change_pct": 3.49,
       "currency": "USD"
     }
   ],
@@ -137,32 +137,32 @@
       "ticker": "Brent",
       "yf": "BZ=F",
       "name": "Brent olie",
-      "price": 82.27,
-      "change_pct": -0.27,
+      "price": 83.55,
+      "change_pct": 1.29,
       "currency": "USD"
     },
     {
       "ticker": "WTI",
       "yf": "CL=F",
       "name": "WTI olie",
-      "price": 77.08,
-      "change_pct": -0.27,
+      "price": 78.18,
+      "change_pct": 1.15,
       "currency": "USD"
     },
     {
       "ticker": "Goud",
       "yf": "GC=F",
       "name": "Goud spot",
-      "price": 4401.3,
-      "change_pct": 3.76,
+      "price": 4340.7,
+      "change_pct": 2.33,
       "currency": "USD"
     },
     {
       "ticker": "Koper",
       "yf": "HG=F",
       "name": "Koper",
-      "price": 6.59,
-      "change_pct": -1.53,
+      "price": 6.57,
+      "change_pct": -1.74,
       "currency": "USD"
     },
     {
@@ -185,8 +185,8 @@
       "ticker": "Bitcoin",
       "yf": "BTC-USD",
       "name": "Bitcoin",
-      "price": 64851.76,
-      "change_pct": 0.92,
+      "price": 64909.31,
+      "change_pct": 0.04,
       "currency": "USD"
     }
   ],
@@ -216,5 +216,5 @@
       "currency": "USD"
     }
   ],
-  "missing": 2
+  "missing": 0
 }
