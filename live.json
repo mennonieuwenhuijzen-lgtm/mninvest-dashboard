@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-08-14T22:47:58Z",
+  "generated_utc": "2026-08-15T22:45:43Z",
   "positions": [
     {
       "ticker": "RIG",
@@ -67,9 +67,9 @@
       "name": "Saab AB",
       "groep": "Defensie",
       "weight": "8%",
-      "price": null,
-      "change_pct": null,
-      "currency": null
+      "price": 692.7,
+      "change_pct": 1.85,
+      "currency": "SEK"
     },
     {
       "ticker": "KSPI",
@@ -137,8 +137,8 @@
       "ticker": "Brent",
       "yf": "BZ=F",
       "name": "Brent olie",
-      "price": 88.59,
-      "change_pct": 1.75,
+      "price": 88.52,
+      "change_pct": 1.67,
       "currency": "USD"
     },
     {
@@ -153,16 +153,16 @@
       "ticker": "Goud",
       "yf": "GC=F",
       "name": "Goud spot",
-      "price": 4432.0,
-      "change_pct": 1.57,
+      "price": 4380.4,
+      "change_pct": 0.38,
       "currency": "USD"
     },
     {
       "ticker": "Koper",
       "yf": "HG=F",
       "name": "Koper",
-      "price": 6.61,
-      "change_pct": 0.21,
+      "price": 6.6,
+      "change_pct": 0.11,
       "currency": "USD"
     },
     {
@@ -185,8 +185,8 @@
       "ticker": "Bitcoin",
       "yf": "BTC-USD",
       "name": "Bitcoin",
-      "price": 62814.06,
-      "change_pct": -0.93,
+      "price": 63085.41,
+      "change_pct": 0.17,
       "currency": "USD"
     }
   ],
@@ -204,17 +204,17 @@
       "yf": "EURSEK=X",
       "name": "Euro / Kroon",
       "price": 11.02,
-      "change_pct": -0.18,
+      "change_pct": -0.21,
       "currency": "SEK"
     },
     {
       "ticker": "DXY",
       "yf": "DX-Y.NYB",
       "name": "Dollar-index",
-      "price": 99.64,
-      "change_pct": -0.32,
+      "price": 99.67,
+      "change_pct": -0.29,
       "currency": "USD"
     }
   ],
-  "missing": 1
+  "missing": 0
 }
