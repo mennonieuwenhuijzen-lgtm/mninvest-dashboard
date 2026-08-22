@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-08-21T22:49:06Z",
+  "generated_utc": "2026-08-22T22:46:22Z",
   "positions": [
     {
       "ticker": "RIG",
@@ -67,9 +67,9 @@
       "name": "Saab AB",
       "groep": "Defensie",
       "weight": "8%",
-      "price": null,
-      "change_pct": null,
-      "currency": null
+      "price": 655.2,
+      "change_pct": -1.7,
+      "currency": "SEK"
     },
     {
       "ticker": "KSPI",
@@ -127,8 +127,8 @@
       "name": "Prosus N.V.",
       "groep": "China",
       "weight": "3,5%",
-      "price": 8.93,
-      "change_pct": 1.59,
+      "price": 8.94,
+      "change_pct": 1.71,
       "currency": "USD"
     }
   ],
@@ -137,24 +137,24 @@
       "ticker": "Brent",
       "yf": "BZ=F",
       "name": "Brent olie",
-      "price": 93.87,
-      "change_pct": 0.1,
+      "price": 94.39,
+      "change_pct": 0.65,
       "currency": "USD"
     },
     {
       "ticker": "WTI",
       "yf": "CL=F",
       "name": "WTI olie",
-      "price": 86.64,
-      "change_pct": -1.35,
+      "price": 87.06,
+      "change_pct": -0.88,
       "currency": "USD"
     },
     {
       "ticker": "Goud",
       "yf": "GC=F",
       "name": "Goud spot",
-      "price": 4661.6,
-      "change_pct": 3.22,
+      "price": 4624.1,
+      "change_pct": 2.39,
       "currency": "USD"
     },
     {
@@ -162,7 +162,7 @@
       "yf": "HG=F",
       "name": "Koper",
       "price": 6.58,
-      "change_pct": 1.86,
+      "change_pct": 1.85,
       "currency": "USD"
     },
     {
@@ -185,8 +185,8 @@
       "ticker": "Bitcoin",
       "yf": "BTC-USD",
       "name": "Bitcoin",
-      "price": 78367.31,
-      "change_pct": 7.3,
+      "price": 77064.68,
+      "change_pct": -1.62,
       "currency": "USD"
     }
   ],
@@ -203,18 +203,18 @@
       "ticker": "EUR/SEK",
       "yf": "EURSEK=X",
       "name": "Euro / Kroon",
-      "price": 11.05,
-      "change_pct": 0.33,
+      "price": 11.06,
+      "change_pct": -0.16,
       "currency": "SEK"
     },
     {
       "ticker": "DXY",
       "yf": "DX-Y.NYB",
       "name": "Dollar-index",
-      "price": 98.84,
-      "change_pct": -0.06,
+      "price": 98.8,
+      "change_pct": -0.1,
       "currency": "USD"
     }
   ],
-  "missing": 1
+  "missing": 0
 }
