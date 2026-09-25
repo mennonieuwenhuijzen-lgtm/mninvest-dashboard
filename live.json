@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-09-24T00:40:09Z",
+  "generated_utc": "2026-09-25T00:39:20Z",
   "positions": [
     {
       "ticker": "RIG",
@@ -127,8 +127,8 @@
       "name": "Prosus N.V.",
       "groep": "China",
       "weight": "3,5%",
-      "price": 8.21,
-      "change_pct": -1.79,
+      "price": 8.15,
+      "change_pct": -0.85,
       "currency": "USD"
     }
   ],
@@ -137,24 +137,24 @@
       "ticker": "Brent",
       "yf": "BZ=F",
       "name": "Brent olie",
-      "price": 97.47,
-      "change_pct": -1.79,
+      "price": 105.89,
+      "change_pct": 2.73,
       "currency": "USD"
     },
     {
       "ticker": "WTI",
       "yf": "CL=F",
       "name": "WTI olie",
-      "price": 91.63,
-      "change_pct": -3.13,
+      "price": 93.8,
+      "change_pct": 1.78,
       "currency": "USD"
     },
     {
       "ticker": "Goud",
       "yf": "GC=F",
       "name": "Goud spot",
-      "price": 4326.3,
-      "change_pct": -1.14,
+      "price": 4304.2,
+      "change_pct": -0.33,
       "currency": "USD"
     },
     {
@@ -162,31 +162,31 @@
       "yf": "HG=F",
       "name": "Koper",
       "price": 6.76,
-      "change_pct": 0.06,
+      "change_pct": 1.24,
       "currency": "USD"
     },
     {
       "ticker": "VIX",
       "yf": "^VIX",
       "name": "VIX angst-index",
-      "price": 15.18,
-      "change_pct": 2.08,
+      "price": 15.67,
+      "change_pct": 3.23,
       "currency": "USD"
     },
     {
       "ticker": "US10Y",
       "yf": "^TNX",
       "name": "US 10-jaars rente",
-      "price": 5.11,
-      "change_pct": 3.04,
+      "price": 5.16,
+      "change_pct": 0.94,
       "currency": "USD"
     },
     {
       "ticker": "Bitcoin",
       "yf": "BTC-USD",
       "name": "Bitcoin",
-      "price": 84286.42,
-      "change_pct": -2.19,
+      "price": 84568.61,
+      "change_pct": 0.22,
       "currency": "USD"
     }
   ],
@@ -196,7 +196,7 @@
       "yf": "EURUSD=X",
       "name": "Euro / Dollar",
       "price": 1.14,
-      "change_pct": -0.58,
+      "change_pct": -0.07,
       "currency": "USD"
     },
     {
@@ -204,15 +204,15 @@
       "yf": "EURSEK=X",
       "name": "Euro / Kroon",
       "price": 11.29,
-      "change_pct": 0.32,
+      "change_pct": 0.01,
       "currency": "SEK"
     },
     {
       "ticker": "DXY",
       "yf": "DX-Y.NYB",
       "name": "Dollar-index",
-      "price": 101.15,
-      "change_pct": 0.72,
+      "price": 101.29,
+      "change_pct": 0.19,
       "currency": "USD"
     }
   ],
