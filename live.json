@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-10-04T01:46:20Z",
+  "generated_utc": "2026-10-05T01:05:57Z",
   "positions": [
     {
       "ticker": "RIG",
@@ -67,7 +67,7 @@
       "name": "Saab AB",
       "groep": "Defensie",
       "weight": "8%",
-      "price": 612.6,
+      "price": 611.4,
       "change_pct": -1.7,
       "currency": "SEK"
     },
@@ -137,32 +137,32 @@
       "ticker": "Brent",
       "yf": "BZ=F",
       "name": "Brent olie",
-      "price": 102.25,
-      "change_pct": -0.06,
+      "price": 101.96,
+      "change_pct": -0.28,
       "currency": "USD"
     },
     {
       "ticker": "WTI",
       "yf": "CL=F",
       "name": "WTI olie",
-      "price": 91.11,
-      "change_pct": -1.9,
+      "price": 90.49,
+      "change_pct": -0.68,
       "currency": "USD"
     },
     {
       "ticker": "Goud",
       "yf": "GC=F",
       "name": "Goud spot",
-      "price": 4162.3,
-      "change_pct": -0.95,
+      "price": 4184.0,
+      "change_pct": 0.52,
       "currency": "USD"
     },
     {
       "ticker": "Koper",
       "yf": "HG=F",
       "name": "Koper",
-      "price": 6.49,
-      "change_pct": 0.15,
+      "price": 6.61,
+      "change_pct": 1.89,
       "currency": "USD"
     },
     {
@@ -185,8 +185,8 @@
       "ticker": "Bitcoin",
       "yf": "BTC-USD",
       "name": "Bitcoin",
-      "price": 84767.4,
-      "change_pct": 0.32,
+      "price": 86586.69,
+      "change_pct": 2.15,
       "currency": "USD"
     }
   ],
@@ -195,24 +195,24 @@
       "ticker": "EUR/USD",
       "yf": "EURUSD=X",
       "name": "Euro / Dollar",
-      "price": 1.13,
-      "change_pct": -0.62,
+      "price": 1.12,
+      "change_pct": -0.04,
       "currency": "USD"
     },
     {
       "ticker": "EUR/SEK",
       "yf": "EURSEK=X",
       "name": "Euro / Kroon",
-      "price": 11.3,
-      "change_pct": -0.0,
+      "price": 11.28,
+      "change_pct": -0.1,
       "currency": "SEK"
     },
     {
       "ticker": "DXY",
       "yf": "DX-Y.NYB",
       "name": "Dollar-index",
-      "price": 101.93,
-      "change_pct": -0.17,
+      "price": 101.97,
+      "change_pct": 0.04,
       "currency": "USD"
     }
   ],
