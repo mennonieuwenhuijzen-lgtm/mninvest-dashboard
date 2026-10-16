@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-10-15T00:41:27Z",
+  "generated_utc": "2026-10-16T00:32:03Z",
   "positions": [
     {
       "ticker": "RIG",
@@ -7,9 +7,9 @@
       "name": "Transocean",
       "groep": "Olie",
       "weight": "14%",
-      "price": 5.58,
-      "change_pct": -1.24,
-      "currency": "USD"
+      "price": null,
+      "change_pct": null,
+      "currency": null
     },
     {
       "ticker": "HCC",
@@ -27,9 +27,9 @@
       "name": "Wheaton Precious Metals",
       "groep": "Goud",
       "weight": "10%",
-      "price": 129.58,
-      "change_pct": -4.74,
-      "currency": "USD"
+      "price": null,
+      "change_pct": null,
+      "currency": null
     },
     {
       "ticker": "IGLN",
@@ -47,9 +47,9 @@
       "name": "TotalEnergies",
       "groep": "Olie",
       "weight": "10%",
-      "price": 89.64,
-      "change_pct": 0.78,
-      "currency": "USD"
+      "price": null,
+      "change_pct": null,
+      "currency": null
     },
     {
       "ticker": "ADBE",
@@ -57,9 +57,9 @@
       "name": "Adobe",
       "groep": "Software",
       "weight": "8%",
-      "price": 240.68,
-      "change_pct": 1.86,
-      "currency": "USD"
+      "price": null,
+      "change_pct": null,
+      "currency": null
     },
     {
       "ticker": "SAAB",
@@ -87,9 +87,9 @@
       "name": "Occidental Petroleum",
       "groep": "Olie",
       "weight": "6%",
-      "price": 61.41,
-      "change_pct": -0.39,
-      "currency": "USD"
+      "price": null,
+      "change_pct": null,
+      "currency": null
     },
     {
       "ticker": "TME",
@@ -117,9 +117,9 @@
       "name": "Freeport-McMoRan",
       "groep": "Koper",
       "weight": "3,5%",
-      "price": 69.62,
-      "change_pct": -3.87,
-      "currency": "USD"
+      "price": null,
+      "change_pct": null,
+      "currency": null
     },
     {
       "ticker": "PROSY",
@@ -127,8 +127,8 @@
       "name": "Prosus N.V.",
       "groep": "China",
       "weight": "3,5%",
-      "price": 7.85,
-      "change_pct": -2.73,
+      "price": 8.06,
+      "change_pct": 2.68,
       "currency": "USD"
     }
   ],
@@ -137,56 +137,56 @@
       "ticker": "Brent",
       "yf": "BZ=F",
       "name": "Brent olie",
-      "price": 105.45,
-      "change_pct": -0.23,
+      "price": 105.69,
+      "change_pct": -0.35,
       "currency": "USD"
     },
     {
       "ticker": "WTI",
       "yf": "CL=F",
       "name": "WTI olie",
-      "price": 94.59,
-      "change_pct": 0.48,
+      "price": 96.11,
+      "change_pct": 1.07,
       "currency": "USD"
     },
     {
       "ticker": "Goud",
       "yf": "GC=F",
       "name": "Goud spot",
-      "price": 4162.7,
-      "change_pct": -0.35,
+      "price": 4175.9,
+      "change_pct": 1.66,
       "currency": "USD"
     },
     {
       "ticker": "Koper",
       "yf": "HG=F",
       "name": "Koper",
-      "price": 6.62,
-      "change_pct": -0.86,
+      "price": 6.55,
+      "change_pct": -0.92,
       "currency": "USD"
     },
     {
       "ticker": "VIX",
       "yf": "^VIX",
       "name": "VIX angst-index",
-      "price": 16.87,
-      "change_pct": 10.48,
+      "price": 16.46,
+      "change_pct": -2.43,
       "currency": "USD"
     },
     {
       "ticker": "US10Y",
       "yf": "^TNX",
       "name": "US 10-jaars rente",
-      "price": 5.19,
-      "change_pct": -0.52,
+      "price": 5.09,
+      "change_pct": -1.95,
       "currency": "USD"
     },
     {
       "ticker": "Bitcoin",
       "yf": "BTC-USD",
       "name": "Bitcoin",
-      "price": 81510.51,
-      "change_pct": -1.91,
+      "price": 82289.99,
+      "change_pct": 0.89,
       "currency": "USD"
     }
   ],
@@ -196,25 +196,25 @@
       "yf": "EURUSD=X",
       "name": "Euro / Dollar",
       "price": 1.12,
-      "change_pct": -0.07,
+      "change_pct": 0.16,
       "currency": "USD"
     },
     {
       "ticker": "EUR/SEK",
       "yf": "EURSEK=X",
       "name": "Euro / Kroon",
-      "price": 11.18,
-      "change_pct": 0.17,
+      "price": 11.16,
+      "change_pct": -0.14,
       "currency": "SEK"
     },
     {
       "ticker": "DXY",
       "yf": "DX-Y.NYB",
       "name": "Dollar-index",
-      "price": 102.19,
-      "change_pct": 0.01,
+      "price": 102.07,
+      "change_pct": -0.46,
       "currency": "USD"
     }
   ],
-  "missing": 6
+  "missing": 12
 }
