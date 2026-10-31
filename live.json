@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-10-30T02:04:19Z",
+  "generated_utc": "2026-10-31T01:43:01Z",
   "positions": [
     {
       "ticker": "RIG",
@@ -7,8 +7,8 @@
       "name": "Transocean",
       "groep": "Olie",
       "weight": "14%",
-      "price": 6.69,
-      "change_pct": -0.3,
+      "price": 6.94,
+      "change_pct": 3.74,
       "currency": "USD"
     },
     {
@@ -17,8 +17,8 @@
       "name": "Warrior Met Coal",
       "groep": "Kolen",
       "weight": "11%",
-      "price": 85.62,
-      "change_pct": 2.62,
+      "price": 85.97,
+      "change_pct": 0.41,
       "currency": "USD"
     },
     {
@@ -27,8 +27,8 @@
       "name": "Wheaton Precious Metals",
       "groep": "Goud",
       "weight": "10%",
-      "price": 123.26,
-      "change_pct": -2.62,
+      "price": 116.58,
+      "change_pct": -5.42,
       "currency": "USD"
     },
     {
@@ -47,8 +47,8 @@
       "name": "TotalEnergies",
       "groep": "Olie",
       "weight": "10%",
-      "price": 94.03,
-      "change_pct": 1.24,
+      "price": 95.33,
+      "change_pct": 1.38,
       "currency": "USD"
     },
     {
@@ -57,8 +57,8 @@
       "name": "Adobe",
       "groep": "Software",
       "weight": "8%",
-      "price": 248.12,
-      "change_pct": -0.66,
+      "price": 250.23,
+      "change_pct": 0.85,
       "currency": "USD"
     },
     {
@@ -77,8 +77,8 @@
       "name": "Kaspi.kz",
       "groep": "EM fintech",
       "weight": "7%",
-      "price": 94.66,
-      "change_pct": 3.46,
+      "price": 91.27,
+      "change_pct": -3.58,
       "currency": "USD"
     },
     {
@@ -87,8 +87,8 @@
       "name": "Occidental Petroleum",
       "groep": "Olie",
       "weight": "6%",
-      "price": 63.01,
-      "change_pct": 0.24,
+      "price": 64.0,
+      "change_pct": 1.57,
       "currency": "USD"
     },
     {
@@ -97,7 +97,7 @@
       "name": "Tencent Music",
       "groep": "China",
       "weight": "5%",
-      "price": 8.37,
+      "price": 8.41,
       "change_pct": 0.48,
       "currency": "USD"
     },
@@ -107,8 +107,8 @@
       "name": "Alpha Metallurgical",
       "groep": "Kolen",
       "weight": "4%",
-      "price": 161.81,
-      "change_pct": -0.89,
+      "price": 159.19,
+      "change_pct": -1.62,
       "currency": "USD"
     },
     {
@@ -117,8 +117,8 @@
       "name": "Freeport-McMoRan",
       "groep": "Koper",
       "weight": "3,5%",
-      "price": 66.14,
-      "change_pct": -0.69,
+      "price": 62.47,
+      "change_pct": -5.55,
       "currency": "USD"
     },
     {
@@ -127,8 +127,8 @@
       "name": "Prosus N.V.",
       "groep": "China",
       "weight": "3,5%",
-      "price": 7.62,
-      "change_pct": 0.26,
+      "price": 7.61,
+      "change_pct": 0.13,
       "currency": "USD"
     }
   ],
@@ -137,56 +137,56 @@
       "ticker": "Brent",
       "yf": "BZ=F",
       "name": "Brent olie",
-      "price": 114.05,
-      "change_pct": -1.1,
+      "price": 112.33,
+      "change_pct": -2.22,
       "currency": "USD"
     },
     {
       "ticker": "WTI",
       "yf": "CL=F",
       "name": "WTI olie",
-      "price": 104.97,
-      "change_pct": 2.13,
+      "price": 102.95,
+      "change_pct": 0.93,
       "currency": "USD"
     },
     {
       "ticker": "Goud",
       "yf": "GC=F",
       "name": "Goud spot",
-      "price": 4011.5,
-      "change_pct": -0.99,
+      "price": 3884.9,
+      "change_pct": -3.63,
       "currency": "USD"
     },
     {
       "ticker": "Koper",
       "yf": "HG=F",
       "name": "Koper",
-      "price": 6.56,
-      "change_pct": -1.17,
+      "price": 6.51,
+      "change_pct": -1.09,
       "currency": "USD"
     },
     {
       "ticker": "VIX",
       "yf": "^VIX",
       "name": "VIX angst-index",
-      "price": 17.2,
-      "change_pct": 1.71,
+      "price": 19.42,
+      "change_pct": 12.91,
       "currency": "USD"
     },
     {
       "ticker": "US10Y",
       "yf": "^TNX",
       "name": "US 10-jaars rente",
-      "price": 4.99,
-      "change_pct": -1.11,
+      "price": 4.93,
+      "change_pct": -1.2,
       "currency": "USD"
     },
     {
       "ticker": "Bitcoin",
       "yf": "BTC-USD",
       "name": "Bitcoin",
-      "price": 76438.18,
-      "change_pct": -5.94,
+      "price": 77293.2,
+      "change_pct": -0.62,
       "currency": "USD"
     }
   ],
@@ -196,23 +196,23 @@
       "yf": "EURUSD=X",
       "name": "Euro / Dollar",
       "price": 1.12,
-      "change_pct": 0.38,
+      "change_pct": 0.24,
       "currency": "USD"
     },
     {
       "ticker": "EUR/SEK",
       "yf": "EURSEK=X",
       "name": "Euro / Kroon",
-      "price": 11.0,
-      "change_pct": -0.45,
+      "price": 11.01,
+      "change_pct": -0.35,
       "currency": "SEK"
     },
     {
       "ticker": "DXY",
       "yf": "DX-Y.NYB",
       "name": "Dollar-index",
-      "price": 101.74,
-      "change_pct": -0.45,
+      "price": 101.96,
+      "change_pct": -0.07,
       "currency": "USD"
     }
   ],
