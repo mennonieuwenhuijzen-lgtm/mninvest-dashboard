@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-10-31T01:43:01Z",
+  "generated_utc": "2026-11-01T01:19:56Z",
   "positions": [
     {
       "ticker": "RIG",
@@ -37,9 +37,9 @@
       "name": "iShares Physical Gold",
       "groep": "Goud",
       "weight": "10%",
-      "price": null,
-      "change_pct": null,
-      "currency": null
+      "price": 75.64,
+      "change_pct": -2.8,
+      "currency": "USD"
     },
     {
       "ticker": "TTE",
@@ -67,9 +67,9 @@
       "name": "Saab AB",
       "groep": "Defensie",
       "weight": "8%",
-      "price": null,
-      "change_pct": null,
-      "currency": null
+      "price": 675.2,
+      "change_pct": -0.16,
+      "currency": "SEK"
     },
     {
       "ticker": "KSPI",
@@ -137,32 +137,32 @@
       "ticker": "Brent",
       "yf": "BZ=F",
       "name": "Brent olie",
-      "price": 112.33,
-      "change_pct": -2.22,
+      "price": 117.64,
+      "change_pct": 2.4,
       "currency": "USD"
     },
     {
       "ticker": "WTI",
       "yf": "CL=F",
       "name": "WTI olie",
-      "price": 102.95,
-      "change_pct": 0.93,
+      "price": 104.12,
+      "change_pct": 2.08,
       "currency": "USD"
     },
     {
       "ticker": "Goud",
       "yf": "GC=F",
       "name": "Goud spot",
-      "price": 3884.9,
-      "change_pct": -3.63,
+      "price": 3898.9,
+      "change_pct": -3.29,
       "currency": "USD"
     },
     {
       "ticker": "Koper",
       "yf": "HG=F",
       "name": "Koper",
-      "price": 6.51,
-      "change_pct": -1.09,
+      "price": 6.46,
+      "change_pct": -1.86,
       "currency": "USD"
     },
     {
@@ -185,8 +185,8 @@
       "ticker": "Bitcoin",
       "yf": "BTC-USD",
       "name": "Bitcoin",
-      "price": 77293.2,
-      "change_pct": -0.62,
+      "price": 77561.89,
+      "change_pct": 0.47,
       "currency": "USD"
     }
   ],
@@ -211,10 +211,10 @@
       "ticker": "DXY",
       "yf": "DX-Y.NYB",
       "name": "Dollar-index",
-      "price": 101.96,
-      "change_pct": -0.07,
+      "price": 101.88,
+      "change_pct": -0.16,
       "currency": "USD"
     }
   ],
-  "missing": 2
+  "missing": 0
 }
